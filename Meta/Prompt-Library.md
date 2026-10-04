@@ -54,5 +54,19 @@ Ask me as many questions as you need before starting to get the best result.
 - ⚠️ Note: OBJ carries no PBR maps beyond what MTL references; for realistic look in Roblox, ask for separate
   albedo/normal/roughness/metalness PNGs to use in a `SurfaceAppearance` (see [[Shaders-Materials-And-Surfaces]]).
 
+## 2. Creature reference sheet → model with animations (community, Sept 2026)
+Context: sent to Claude Design along with a generated reference sheet (see [[AI-Assisted-Workflow]] §5).
+> lets do these sheets next, since this is a creature, it should be slightly different than a humanoid form, just keep that in mind.. Remember to use work flows and they need animations with vfx. Ask questions if needed
+
+Companion instruction for animations: *"I want idle, walk and attack animations with VFX. Ask me questions."*
+Answer the 2–3 questions it asks.
+
+## 3. UI polish pass from references (community, Oct 2026)
+Attach: reference UI screenshots + an icon pack.
+> Now i want the UI to be better visually. Make it more polished and use these references. Use this icon pack and redesign the UI perfectly. I want there to be good looking gradients, drop shadows, fredoka one style and highlights etc.
+
+➕ Improve it by: listing the screens to redo, giving hex colours, and running it as the 3-pass method
+(layout → colours → icons) from [[AI-Assisted-Workflow]] §1.
+
 ## Related
 - [[Blender-To-Roblox-Pipeline]] · [[VFX-Particles-Beams-Trails]] · [[Shaders-Materials-And-Surfaces]] · [[Asset-Creation-Workflow-And-Marketplace]] · [[Home]]

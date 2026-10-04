@@ -30,13 +30,14 @@ local RunService = game:GetService("RunService")
 local ServerScriptService = game:GetService("ServerScriptService")
 
 local WORKERS = 4
-local template = ServerScriptService:WaitForChild("Parallel"):WaitForChild("WorkerTemplate") :: Actor
+local parallelFolder = ServerScriptService:WaitForChild("Parallel")
+local template = parallelFolder:WaitForChild("WorkerTemplate") :: Actor
 
 local actors: { Actor } = {}
 for i = 1, WORKERS do
 	local a = template:Clone()
 	a.Name = `Worker{i}`
-	a.Parent = ServerScriptService.Parallel
+	a.Parent = parallelFolder
 	table.insert(actors, a)
 end
 
@@ -77,10 +78,11 @@ actor:BindToMessageParallel("Sense", function(positions: SharedTable, index: num
 	-- apply results: set attributes, move NPCs, etc.
 end)
 ```
-⚠️ verify: iteration semantics and typing of `SharedTable` in generalized `for` loops (use `SharedTable` helper functions such as `SharedTable.size`/`SharedTable.clone` per the API reference if direct iteration is restricted).
+SharedTables support element access and generalized `for` iteration (official code sample "SharedTable-ElementIteration"). Keys must be strings or non-negative integers < 2^32 — use numeric/string NPC ids, never Instances as keys.
 
 ### SharedTable notes
-- `SharedTable.new()`; values may be primitives, Roblox value types, or nested SharedTables (no Instances/functions ⚠️ verify).
+- `SharedTable.new()`; values: boolean, number, vector, string, nested SharedTable, or a serializable data type (no functions; ⚠️ verify: whether Instance references count as "serializable" — assume not). Keys: string or integer 0..2^32-1.
+- Share by sending in `Actor:SendMessage` or registering by name in `SharedTableRegistry` (`SharedTableRegistry:GetSharedTable(name)` / `SetSharedTable`).
 - Concurrent writes from multiple Actors are allowed but racy — prefer **one writer** (serial phase) and many parallel readers, or `SharedTable.update(st, key, fn)` for atomic per-key updates.
 - `SharedTable.cloneAndFreeze` for cheap read-only snapshots.
 
@@ -116,5 +118,5 @@ end)
 
 ## Sources
 - https://create.roblox.com/docs/scripting/multithreading (via github.com/Roblox/creator-docs, read 2026-10-04)
-- https://create.roblox.com/docs/reference/engine/datatypes/SharedTable ⚠️ verify API details
+- https://create.roblox.com/docs/reference/engine/datatypes/SharedTable (read 2026-10-04)
 - https://create.roblox.com/docs/reference/engine/classes/Actor

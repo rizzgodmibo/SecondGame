@@ -75,6 +75,39 @@ For saved prompt wording, see [[Prompt-Library]].
     how results are logged). It's free, every exchange is readable, and it can't spiral.
   - ⚠️ todo: write that protocol if/when a second agent starts using this vault.
 
+## 5. Character/armour reference sheets → 3D model (+ animations)
+1. In an image model, describe the character/armour and ask for it **as a reference sheet** like an example you
+   provide. A good sheet has:
+   - a hero render
+   - orthographic views (front / side / back, ideally with and without mount)
+   - a components/gear breakdown
+   - expression/action poses
+   - material colour swatches
+   - a scale reference next to a standard Roblox avatar
+   - a short lore/faction blurb
+   If the first sheet is off, tweak and regenerate it.
+2. Paste the sheet into Claude (Claude Design worked for the person giving this advice) and ask for a 3D model built from the reference sheet,
+   **easy to import into Roblox**. More detail in the prompt is always better.
+3. For animations, ask in the same request: *"idle, walk and attack animations with VFX"*, and tell it to ask
+   questions. It usually asks 2–3 detailed multiple-choice questions. Pick an answer rather than skipping them.
+4. Non-humanoids (e.g. creatures/golems): say so explicitly, because the rig will differ from a humanoid. Ask it to
+   use workflows and to pair animations with VFX. (Exact prompt in [[Prompt-Library]].)
+
+## 6. Getting better AI-made animations (Blender)
+- Have a real **R6 or R15 rig** in Blender for the AI to work with.
+- Use a rig with a **labelled/colour-coded texture** (FRONT/BACK/L/R/UP/DOWN on each limb, e.g. the Roblox shirt
+  template). A plain white rig confuses the AI about which side is which.
+- Have the AI **export each frame and tile them into one contact-sheet image**. It can then see the whole motion while
+  using far less context than separate images.
+- Find R6/R15 animations on YouTube, have the AI **recreate them first** to learn how a Roblox rig animates,
+  then make your own. See [[Animation-Rigging-And-IK]].
+
+## 7. UI polish from references
+- Give it concrete references (screenshots of top simulator UIs) plus an **icon pack**. Name the style elements
+  you want: gradients, drop shadows, highlights, a specific font (e.g. Fredoka One, available in Roblox as
+  `Enum.Font.FredokaOne`). Exact prompt in [[Prompt-Library]]. Combine with the multi-pass method in §1.
+  See [[UI-Polish-And-Juice]].
+
 ## Pitfalls
 - Skipping the analyse-only step → the AI guesses the layout and every later pass inherits the error.
 - Vague corrections ("looks off") waste a whole pass. Give coordinates, sizes, hex colours.
@@ -82,10 +115,10 @@ For saved prompt wording, see [[Prompt-Library]].
 - Model recommendations go out of date fast. Re-check this table every few months.
 
 ## Related
-- [[Prompt-Library]] · [[Blender-To-Roblox-Pipeline]] · [[UI-Architecture]] · [[UI-Layout-And-Device-Scaling]]
+- [[Prompt-Library]] · [[Animation-Rigging-And-IK]] · [[UI-Polish-And-Juice]] · [[Blender-To-Roblox-Pipeline]] · [[UI-Architecture]] · [[UI-Layout-And-Device-Scaling]]
 - [[Tooling-Rojo-Wally-And-Studio-MCP]] · [[Thumbnails-And-Icons]] · [[Home]]
 
 ## Sources
-- Community advice screenshots (Discord, 2026-09-18 to 2026-09-29), supplied by vault owner, 2026-10-04.
+- Community advice screenshots (Discord, 2026-09-18 to 2026-10-03), two batches, supplied by vault owner, 2026-10-04.
 - Roblox mesh specifications (20,000-triangle limit): https://create.roblox.com/docs/art/modeling/specifications
 - Roblox texture specifications: https://create.roblox.com/docs/art/modeling/texture-specifications
