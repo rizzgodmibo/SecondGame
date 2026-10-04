@@ -74,9 +74,9 @@ Roblox can't play MP4 files, so those are reference previews only. Use the still
 - **Flipbooks:** set ParticleEmitter `FlipbookLayout` to Grid4x4 and `FlipbookMode` to OneShot or Loop.
 - **Strips** suit `Beam.Texture` with `TextureMode = Wrap` or `Stretch`, and soft trails suit `Trail.Texture`.
 - Link game-specific VFX systems here with [[wikilinks]] once they exist. [[Roblox VFX Review Skill]] maps every texture here to a building block (`VFXLibrary.luau`); write uploaded ids there too.
-- **Used by:** the Cinder Drake VFX spec v2 in [[Fantasy-Creatures-Set]] (`models/CinderDrake/VFX.md`, 2026-10-04). It uses:
+- **Used by:** the Cinder Drake VFX spec v3 in [[Fantasy-Creatures-Set]] (`models/CinderDrake/VFX.md`, 2026-10-04). Its breath flames use our own `CinderDrake_FlameFlip4x4.png` (not part of this pack). From the pack it uses:
   - smoke_flip4x4 (breath smoke, OneShot);
-  - smoke_puff (nostril smoke, and the breath flames tinted fire colours with additive blending);
+  - smoke_puff (nostril smoke, and the low-end fallback for the breath flames);
   - spark_dot (embers and breath sparks);
   - plus `Glow.png` from [[Dragons-Hoard-Set]] for the breath core.
   - It doesn't use fire_flip4x4 (see Pitfalls). Upload those textures once and record their Image ids in the tables above.

@@ -32,6 +32,7 @@ UI, VFX, animation, 3D pipeline, lighting, audio and art direction. Facts verifi
 | [[Lighting-And-Atmosphere]] | LightingStyle/PrioritizeLightingQuality (replacing Technology), Atmosphere/Sky/Clouds, post-processing, genre presets, mobile cost, day/night |
 | [[Sound-Design]] | Legacy Sound/SoundGroup vs audio API (AudioPlayer/Wire/AudioFader/Emitter/Listener), bus mixer code, rolloff, UI sound map, licensing & upload limits, loudness normalisation |
 | [[Art-Direction]] | Choosing a sustainable style, readability at small sizes, palettes & rarity colours, style guide template, genre expectations, art → thumbnails |
+| [[Creature-Anatomy-And-Proportions]] | Measuring creature limbs on the high-res mesh; big-cat benchmark (forearm ≈ 0.14 × shoulder height), heavier = stouter, joint taper, feet, worked drake example |
 | [[Asset-Creation-Workflow-And-Marketplace]] | Creator Store use & limits, licensing/IP, Importer vs Asset Manager vs Open Cloud, asset privacy, packages, moderation, free-model backdoor auditing |
 
 ## Suggested order for a new game

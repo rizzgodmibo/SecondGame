@@ -94,6 +94,12 @@ Poly Pizza, Poly Haven, Sketchfab (free), modelling in Blender. Check licences a
 - **Review gate:** show an untextured grey model in front, side and three-quarter views under neutral light, and get his anatomy approval before textures, VFX or sheet changes. Focus on one creature at a time.
 - **How it is being applied:** [[Fantasy-Creatures-Set]] → "Drake v3 anatomy pass". Self-critique before showing him cut the "balloon muscles", "beaded joints", "crocodile snout", "button eye" and "saw-blade back" looks.
 - **Holden approved the v3 grey anatomy** with "fix weak points then start the surface and colour pass".
+- **2026-10-04, after the textured v3 sheet: "the legs feel a bit skinny"** (plus "fix whats weak … look up references to fix the weaknesses and proportions").
+  - Read: the legs were anatomically fine but too thin for a heavy, winged predator, and textures make thin limbs read thinner.
+  - Applied in [[Fantasy-Creatures-Set]] v3.1: limbs thickened to lion-or-heavier ratios (forearm about 0.15 × shoulder height), feet and tail bulked to match, joints kept tapered.
+  - Method and numbers: [[Creature-Anatomy-And-Proportions]].
+  - Rule for the next creatures: check the limb thickness against the reference ratios **before** texturing, not after.
+- **2026-10-04: Holden approved the v3.1 drake** (thicker legs, hinged jaw, own flame flipbook, tighter pose cards) with "approved". He then parked the golem for another time and dropped the wolf.
   - In the colour pass, self-critique removed polka-dot scales, lava-skin ember, chrome plates and horns, and grey leopard blotches before he saw it.
   - **Read "a few deliberate areas" literally:** throat-scute seams, the eyes and a faint mouth seam.
 

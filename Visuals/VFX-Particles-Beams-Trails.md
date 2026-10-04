@@ -86,13 +86,20 @@ Methods: `Emit(count)`, `Clear()`.
 `Assets/FantasyCreatures/models/CinderDrake/VFX.md` + `vfx_spec.json` describe a static boss creature's VFX as data, with no scripts. **Not built in Studio yet**, so treat it as a recommendation. See [[Fantasy-Creatures-Set]].
 - **Ambient, always on:** nostril smoke (smoke_puff, Rate 2 per nostril), ember drift (spark_dot, Rate 5) and a throat PointLight (Range 6, no shadows).
 - **Triggered:** fire breath, four emitters toggled together (`Enabled` true for the length of the breath):
-  - BreathFlame: **smoke_puff tinted fire colours**, LightEmission 1, Rate 60, life 0.45–0.6 s, size 0.55 → 2.6;
+  - BreathFlame: **our own flame flipbook** (`CinderDrake_FlameFlip4x4.png`, 512², OneShot), tinted fire colours, LightEmission 1, Rate 60, life 0.45–0.6 s, size 0.55 → 2.6. smoke_puff is the low-end fallback;
   - BreathCore: Hoard `Glow.png`, white-hot, ZOffset 0.8, hides the static closed jaw;
   - BreathSparks;
   - BreathSmoke: smoke flipbook in **OneShot**, starts at Transparency 1 so it first shows past the flames;
   - plus a PointLight (Range 12).
   - Total 124 particles/s, about 66 live.
-- **Why spec v2 dropped the pack's fire flipbook:** its frames are torch flames cut flat at the base, so a jet of flying, rotating flame particles shows straight edges. The smoke flipbook fades over its 16 frames, so Loop would pop. See [[VFX-Texture-Pack]] → Pitfalls.
+- **Why the spec dropped the pack's fire flipbook:** its frames are torch flames cut flat at the base, so a jet of flying, rotating flame particles shows straight edges. The smoke flipbook fades over its 16 frames, so Loop would pop. See [[VFX-Texture-Pack]] → Pitfalls.
+- **The jaw opens with the breath** (spec v3): the static mesh exports the jaw as its own MeshPart with the pivot on the hinge, and a script turns it -28° about X. BreathFX stays on the upper jaw.
+- **Making a flying-flame flipbook** (`make_flame_flipbook` in `build_creatures.py`; recommendation, not yet seen in Roblox):
+  - a 4×4 sheet in which each frame is a heat field: radial falloff + domain-warped fractal noise + vertically stretched streak noise weighted toward the top (tongues) − erosion that grows with the frame number (break-up);
+  - alpha = smoothstep of the heat; greyscale = white core to grey edge;
+  - every cell edge is forced to alpha 0;
+  - rotate each noise octave so value-noise lattice lines don't make straight edges;
+  - render at 2× and box-filter down; 512² is enough for phones.
 - **A JSON layout that works for any creature:**
   - `textures` (key → file, image_id);
   - `attachments` (Position in part space, a pivot-space fallback, Orientation);

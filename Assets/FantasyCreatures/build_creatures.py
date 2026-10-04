@@ -1862,8 +1862,8 @@ def render_drake(sets):
 VFX_DIR = os.path.normpath(os.path.join(OUT, "..", "VFX", "TexturePack"))
 
 
-def billboard(tex, loc, w, h, tint, strength, alpha=1.0, cell=None, name="FX", facing=Vector((1, 0, 0))):
-    """Camera-facing card textured with one of Holden's VFX pack PNGs (white-on-alpha sprites)."""
+def billboard(tex, loc, w, h, tint, strength, alpha=1.0, cell=None, name="FX", facing=Vector((1, 0, 0)), rot=0.0):
+    """Camera-facing card textured with one of Holden's VFX pack PNGs (white-on-alpha sprites); rot = roll in radians."""
     key = f"FXM_{tex}_{tint}_{strength}_{alpha}_{cell}"
     m = bpy.data.materials.get(key)
     if m is None:
@@ -1897,6 +1897,8 @@ def billboard(tex, loc, w, h, tint, strength, alpha=1.0, cell=None, name="FX", f
         t.link(mx.outputs[0], out.inputs["Surface"])
     me = bpy.data.meshes.new(name)
     f_, u_, s_ = basis_from(-facing, Vector((0, 0, 1)))
+    if rot:
+        s_, u_ = s_ * math.cos(rot) + u_ * math.sin(rot), -s_ * math.sin(rot) + u_ * math.cos(rot)
     hw, hh = w / 2, h / 2
     vs = [loc - s_ * hw - u_ * hh, loc + s_ * hw - u_ * hh, loc + s_ * hw + u_ * hh, loc - s_ * hw + u_ * hh]
     me.from_pydata([tuple(v) for v in vs], [], [(0, 1, 2, 3)])
@@ -4214,10 +4216,11 @@ D3_FLAME_TEX = os.path.join(OUT, "models", "CinderDrake", "CinderDrake_FlameFlip
 
 
 def d3_fire_breath(mouth, fwd, cam_loc, seed=3, length=4.8):
-    """Fire breath, mirroring models/CinderDrake/vfx_spec.json (v2): soft smoke_puff cards tinted as fire along a
-    widening cone (white-yellow at the mouth, orange, then dark red), a Glow core at the lips, spark dots, smoke-flipbook
-    cards in OneShot frame order off the far end, and a light. VFX_fire_flip4x4 is NOT used: its frames are torch flames
-    cut flat at the base, which stacked into a hard-edged slab at the end of the jet."""
+    """Fire breath, mirroring models/CinderDrake/vfx_spec.json (v3): cards of our own flame flipbook
+    (make_flame_flipbook, frames picked in OneShot order by age, random roll) tinted along a widening cone (white-yellow at
+    the mouth, orange, then dark red), a Glow core at the lips, spark dots, smoke-flipbook cards in OneShot order off the
+    far end, and a light. VFX_fire_flip4x4 is NOT used: its frames are torch flames cut flat at the base, which stacked
+    into a hard-edged slab at the end of the jet."""
     out = []
     rng = random.Random(seed)
     f, uu, ss = basis_from(fwd, Vector((0, 0, 1)))
@@ -4241,8 +4244,9 @@ def d3_fire_breath(mouth, fwd, cam_loc, seed=3, length=4.8):
         p = mouth + f * (0.12 + length * t) + (uu * math.cos(ang) + ss * math.sin(ang)) * rad + Vector((0, 0, 0.45 * t * t))
         size = 0.45 + 1.9 * t
         tint = d3_lerp_hex("#ffe7a0", "#ff9a2a", min(1.0, t / 0.45)) if t < 0.45 else d3_lerp_hex("#ff9a2a", "#c2300c", (t - 0.45) / 0.55)
-        out.append(billboard("VFX_smoke_puff.png", p, size, size, tint, 4.2 - 2.2 * t, alpha=1.0 - 0.3 * t,
-                             name=f"FX_Breath{i:02d}", facing=face(p)))
+        fr = max(0, min(15, int(round(t * 15 + rng.uniform(-1.2, 1.2)))))      # OneShot: frame follows particle age
+        out.append(billboard(D3_FLAME_TEX, p, size * 1.15, size * 1.15, tint, 4.6 - 2.2 * t, alpha=1.0,
+                             cell=(fr % 4, fr // 4), name=f"FX_Breath{i:02d}", facing=face(p), rot=rng.uniform(0, 2 * math.pi)))
     for i in range(7):
         t = rng.uniform(0.0, 0.18)
         p = mouth + f * (0.08 + length * t)
@@ -4281,12 +4285,15 @@ def _vnoise3(x, y, z, perm):
 
 
 def _fbm3(x, y, z, perm, octaves=5):
+    """Fractal value noise; each octave is rotated ~37 deg so lattice-aligned (flat, straight) edges don't show."""
     tot, amp, norm = 0.0, 1.0, 0.0
+    ca, sa = math.cos(0.65), math.sin(0.65)
     for o in range(octaves):
         f = 2.0 ** o
         tot = tot + amp * _vnoise3(x * f + o * 17.3, y * f - o * 9.1, z * f + o * 3.7, perm)
         norm += amp
         amp *= 0.5
+        x, y = x * ca - y * sa, x * sa + y * ca
     return tot / norm
 
 
@@ -4309,22 +4316,22 @@ def make_flame_flipbook(path, size=512, seed=11):
         return t_ * t_ * (3 - 2 * t_)
     for i in range(16):
         t = i / 15.0
-        R = 0.34 + 0.28 * t ** 0.8
-        wx = _fbm3(u * 1.7 + 3.1, v * 1.7 - t * 1.1, t * 0.9, perm, 4) - 0.5        # domain warp
-        wy = _fbm3(u * 1.7 - 7.4, v * 1.7 - t * 1.1, t * 0.9 + 5.0, perm, 4) - 0.5
-        pu, pv = u + 0.55 * wx, v + 0.55 * wy
-        turb = _fbm3(pu * 2.4, pv * 2.4 - t * 1.8, t * 1.3, perm) - 0.5
-        licks = np.maximum(0.0, v + 0.15) * 0.9 * (_fbm3(pu * 4.2, pv * 1.8 - t * 3.0, t * 2.0 + 9.0, perm) - 0.42)
-        r = np.sqrt(u * u + (v * 0.9 + 0.06) ** 2)
-        Re = R * (1.0 + 0.6 * turb) + np.maximum(0.0, licks) * R
-        a = sstep(Re, Re - 0.24 * R, r)
-        det = _fbm3(pu * 5.5, pv * 5.5 - t * 2.2, t * 1.7 + 2.0, perm)
-        a = a * (0.72 + 0.28 * det)
-        thr = 0.55 * t ** 1.8                                                          # late frames break apart
-        a = np.clip((a - thr) / (1.0 - thr), 0.0, 1.0) * (1.0 - 0.3 * t)
+        R = 0.5 + 0.22 * t ** 0.8                                      # the puff grows inside its cell
+        wx = _fbm3(u * 1.6 + 3.1, v * 1.6 - t * 1.4, t * 0.9, perm, 4) - 0.5        # domain warp: billowing lobes
+        wy = _fbm3(u * 1.6 - 7.4, v * 1.6 - t * 1.4, t * 0.9 + 5.0, perm, 4) - 0.5
+        pu, pv = u + 0.7 * wx, v + 0.7 * wy
+        r = np.sqrt(pu * pu + (pv * 0.92 + 0.16) ** 2)
+        heat = 1.0 - r / R                                             # > 0 inside the warped puff
+        heat = heat + 0.9 * (_fbm3(pu * 2.6, pv * 2.6 - t * 2.0, t * 1.3, perm) - 0.5)
+        # tongues: vertically stretched noise, stronger toward the top, so flames lick upward and taper to tips
+        streak = _fbm3(pu * 3.8, pv * 0.95 - t * 2.8, t * 2.0 + 9.0, perm) - 0.5
+        heat = heat + 2.1 * streak * np.clip(pv + 0.45, 0.0, 1.3) - 0.12 * np.clip(pv, 0.0, None)
+        det = _fbm3(pu * 6.0, pv * 6.0 - t * 2.4, t * 1.7 + 2.0, perm)
+        heat = heat + 0.25 * (det - 0.5)
+        heat = heat - 0.95 * t ** 1.6 * _fbm3(pu * 3.0 + 11.0, pv * 3.0 - t * 1.5, t + 4.0, perm)   # late frames break up
+        a = sstep(0.0, 0.32, heat) * (1.0 - 0.25 * t)
         a = a * sstep(1.0, 0.84, np.maximum(np.abs(u), np.abs(v)))                     # zero on every cell edge
-        core = np.clip(1.0 - r / np.maximum(Re * 0.95, 1e-3), 0.0, 1.0) ** 0.75
-        g = np.clip(0.42 + 0.58 * core * (1.0 - 0.45 * t) + 0.16 * (det - 0.5), 0.0, 1.0)
+        g = np.clip(0.3 + 0.7 * sstep(0.25, 1.05, heat) * (1.0 - 0.4 * t) + 0.1 * (det - 0.5), 0.0, 1.0)
         cy, cx = divmod(i, 4)
         sheet[cy * n:(cy + 1) * n, cx * n:(cx + 1) * n] = np.stack([g, g, g, a], axis=-1)
     out = sheet.reshape(size, ss, size, ss, 4).mean(axis=(1, 3))
@@ -4472,8 +4479,8 @@ def render_drake3_sheet(sets):
         W_, H_ = 400, 520
         lens = 34.0
         half = math.atan(18.0 * min(W_, H_) / max(W_, H_) / lens)
-        camloc = c + Vector((0.5, 0.86, 0.14)).normalized() * (R / math.sin(half) * 0.7)
-        target = c + Vector((0.6, 3.4, -0.6))
+        camloc = c + Vector((0.5, 0.86, 0.14)).normalized() * (R / math.sin(half) * 0.6)     # tighter: fill the card
+        target = c + Vector((0.0, 3.2, -0.35))            # panned toward the head so the snout (and breath) stay in frame
         for nm in ("idle", "alert", "roar", "breath"):
             objs, M = build(nm)
             d3_sheet_lights(objs)
@@ -4630,12 +4637,14 @@ def build_drake3(pose, mats, rig, h=0.02):
     else:
         body = rest
     jaw = sdf_obj("D3_Jaw", drake3_jaw_prims(), M, mats["skin"], h=h * 0.8, smooth_iters=5)
+    jaw["bone"] = "jaw"                                 # the game export splits jaw-bound parts into a hinged Jaw part
     d3_skin_attrs(body.data, M if posed else None, "body")
     d3_skin_attrs(jaw.data, M if posed else None, "jaw")
     objs += [body, jaw]
     log(f"drake3 SDF built in {time.time() - t0:.1f}s, body verts {len(body.data.vertices)}")
     for ob, bone in drake3_parts(mats, bvh) + d3_surface_parts(bvh, mats) + d3_head_plates(bvh, None, mats):
         ob.matrix_world = M[bone]
+        ob["bone"] = bone
         objs.append(ob)
     for side in (1, -1):
         for ob in build_wing3(side, mats, f"D3_Wing{'L' if side > 0 else 'R'}", M, bvh):
@@ -5041,6 +5050,10 @@ def attachment_points(key, spec, objs):
 # ColorMap. Max 20,000 tris per MeshPart; 1024^2 is the UV-space guideline for characters. The importer only builds a
 # SurfaceAppearance automatically for FBX, so for OBJ the maps are attached in Studio (see IMPORT.md next to the OBJ).
 D3_EXPORT = dict(name="CinderDrake", tex=1024, emissive_strength=6.0)
+# the jaw ships as its own MeshPart hinged at the jaw bone (no rig needed: a script turns it about X at its pivot).
+# It shares the Body texture set; the Body bake is done with the jaw wide open so the palate, tongue and lower teeth
+# bake cleanly instead of baking each other through the closed mouth.
+D3_JAW_OPEN = dict(bake=-40.0, breath=-28.0, roar=-40.0)
 
 # per-object triangle budgets (prefix match, first wins); the normal map carries the sculpt detail
 D3_BUDGET = [("D3_Body", 6800), ("D3_Jaw", 900), ("_ArmScute", 16), ("_Arm", 900), ("_ElbowSpur", 24), ("_ThumbClaw", 24),
@@ -5136,6 +5149,44 @@ def d3_bake_proxy(name, highs):
         h.hide_render = True
     log(name, "bake proxy verts", len(proxy.data.vertices), "materials", len(proxy.data.materials))
     return proxy
+
+
+def d3_faces_of(ob, pids):
+    """Boolean face mask of a joined low mesh: faces whose 'pid' (source high object index) is in pids."""
+    me = ob.data
+    pid = np.zeros(len(me.polygons), np.int32)
+    me.attributes["pid"].data.foreach_get("value", pid)
+    return np.isin(pid, np.array(sorted(pids), np.int32))
+
+
+def d3_move_faces(ob, pids, mat):
+    """Rigidly transform the vertices of the faces from the given source parts (the jaw opening around its hinge)."""
+    me = ob.data
+    sel = d3_faces_of(ob, pids)
+    vidx = sorted({v for p in np.nonzero(sel)[0] for v in me.polygons[int(p)].vertices})
+    co = np.zeros(len(me.vertices) * 3, np.float32)
+    me.vertices.foreach_get("co", co)
+    co = co.reshape(-1, 3)
+    R = np.array(mat.to_3x3(), np.float32)
+    T = np.array(mat.translation, np.float32)
+    co[vidx] = co[vidx] @ R.T + T
+    me.vertices.foreach_set("co", co.ravel())
+    me.update()
+
+
+def d3_split_faces(ob, pids, name):
+    """Move the faces of the given source parts into a new object (same mesh data layers: UVs, materials, sharp edges)."""
+    sel = d3_faces_of(ob, pids)
+    part = bpy.data.objects.new(name, ob.data.copy())
+    link(part)
+    for o, keep in ((part, sel), (ob, ~sel)):
+        bm = bmesh.new()
+        bm.from_mesh(o.data)
+        bm.faces.ensure_lookup_table()
+        bmesh.ops.delete(bm, geom=[f for f in bm.faces if not keep[f.index]], context="FACES")
+        bm.to_mesh(o.data)
+        bm.free()
+    return part
 
 
 def d3_export_groups(objs):
@@ -5501,10 +5552,19 @@ def export_drake3(sets):
             for nd in m_.node_tree.nodes:
                 if nd.type == "AMBIENT_OCCLUSION":
                     nd.only_local = True
+    jaw_pids = [i for i, o in enumerate(lows["Body"][1]) if o.get("bone") == "jaw"]
+    J_bake = rig.mats({"jaw": (D3_JAW_OPEN["bake"], 0, 0)})["jaw"]
+    log("jaw parts", len(jaw_pids), [o.name for o in lows["Body"][1] if o.get("bone") == "jaw"][:4], "...")
     for part in ("Body", "Wings"):
         low, highs = lows[part]
+        if part == "Body":                                # open the high-res jaw before it is merged into the bake source
+            for o in highs:
+                if o.get("bone") == "jaw":
+                    o.matrix_world = J_bake @ o.matrix_world
         highs = [d3_bake_proxy(f"{cname}_{part}_High", highs)]
         d3_unwrap(low, body_pids.get(part), arm_pids.get(part))
+        if part == "Body" and jaw_pids:                   # unwrap closed, bake open (a rigid turn keeps the UVs valid)
+            d3_move_faces(low, jaw_pids, J_bake)
         m = bpy.data.materials.new(f"{cname}_{part}_Bake")
         try:
             m.use_nodes = True
@@ -5548,6 +5608,8 @@ def export_drake3(sets):
         write_png(os.path.join(folder, f"{cname}_{part}_Normal.png"), np.round(np.clip(imgs["normal"][..., :3], 0, 1) * 255))
         write_png(os.path.join(folder, f"{cname}_{part}_Roughness.png"), np.round(np.clip(imgs["rough"][..., 0], 0, 1) * 255))
         maps[part] = True
+        if part == "Body" and jaw_pids:
+            d3_move_faces(low, jaw_pids, J_bake.inverted())          # back to the closed rest pose for export
     # export materials: colour map only in the MTL (the other maps go on the SurfaceAppearance in Studio)
     for part in ("Body", "Wings"):
         low, _ = lows[part]
@@ -5571,7 +5633,8 @@ def export_drake3(sets):
     gm.diffuse_color = hexcol("#FF7A1E")
     glow.data.materials.clear()
     glow.data.materials.append(gm)
-    exp = [lows[p][0] for p in ("Body", "Wings", "Glow")]
+    jaw_low = d3_split_faces(lows["Body"][0], jaw_pids, f"{cname}_Jaw") if jaw_pids else None
+    exp = [lows["Body"][0]] + ([jaw_low] if jaw_low else []) + [lows[p][0] for p in ("Wings", "Glow")]
     for o in bpy.context.scene.objects:
         o.select_set(False)
     for o in exp:
@@ -5592,19 +5655,31 @@ def export_drake3(sets):
            "Back1": Vector((0, 0.9, 4.0)), "Back2": Vector((0, -0.6, 3.8)), "Back3": Vector((0, -2.0, 3.8)),
            "TailTip": Vector(D3_TAIL[-1][0]), "WingTipL": d3_wing_points(1)[4][0][1], "WingTipR": d3_wing_points(-1)[4][0][1],
            "Root": Vector((0, 0, 0))}
-    report = {"model": cname, "version": "v3 (anatomy + surface/colour, 2026-10-04)", "units": "studs",
+    body_sa = {"ColorMap": f"{cname}_Body_Color.png", "NormalMap": f"{cname}_Body_Normal.png",
+               "RoughnessMap": f"{cname}_Body_Roughness.png", "EmissiveMaskContent": f"{cname}_Body_Emissive.png",
+               "EmissiveStrength": info["emissive_strength"], "EmissiveTint": [255, 255, 255], "AlphaMode": "Overlay"}
+    report = {"model": cname, "version": "v3.1 (proportions pass + hinged jaw, 2026-10-04)", "units": "studs",
               "pivot": "file origin = ground under the creature; it faces -Z (Roblox front) after import",
               "size_studs": [round(mx.x - mn.x, 2), round(mx.z - mn.z, 2), round(mx.y - mn.y, 2)],
               "parts": {o.name: {"tris": len(o.data.polygons)} for o in exp},
               "total_tris": sum(len(o.data.polygons) for o in exp),
+              "part_centres_rbx": {o.name: rbx((world_bbox([o])[0] + world_bbox([o])[1]) / 2) for o in exp},
               "surface_appearance": {
-                  f"{cname}_Body": {"ColorMap": f"{cname}_Body_Color.png", "NormalMap": f"{cname}_Body_Normal.png",
-                                     "RoughnessMap": f"{cname}_Body_Roughness.png", "EmissiveMaskContent": f"{cname}_Body_Emissive.png",
-                                     "EmissiveStrength": info["emissive_strength"], "EmissiveTint": [255, 255, 255], "AlphaMode": "Overlay"},
+                  f"{cname}_Body": body_sa,
                   f"{cname}_Wings": {"ColorMap": f"{cname}_Wings_Color.png", "NormalMap": f"{cname}_Wings_Normal.png",
                                       "RoughnessMap": f"{cname}_Wings_Roughness.png", "AlphaMode": "Overlay"}},
               "glow_part": {f"{cname}_Glow": {"Material": "Neon", "Color": [255, 122, 30]}},
               "attachments_rbx": {k: rbx(v) for k, v in att.items()}}
+    if jaw_low:
+        hinge = rig.bones["jaw"]["head"]
+        jc = (world_bbox([jaw_low])[0] + world_bbox([jaw_low])[1]) / 2
+        report["surface_appearance"][f"{cname}_Jaw"] = dict(body_sa, note="same images as the Body (one shared texture set)")
+        report["jaw"] = {"part": f"{cname}_Jaw", "hinge_rbx": rbx(hinge),
+                         "pivot_offset_from_part_centre": [round(a - b, 3) for a, b in zip(rbx(hinge), rbx(jc))],
+                         "axis": "X (the part's own X; pivot orientation stays identity)",
+                         "open_deg": {"breath": D3_JAW_OPEN["breath"], "roar": D3_JAW_OPEN["roar"]},
+                         "note": "negative = mouth opens (Blender sign; same axis in Roblox axes). Baked at "
+                                 f"{D3_JAW_OPEN['bake']} deg open, so the mouth interior is textured for any opening."}
     with open(os.path.join(folder, "build_report.json"), "w") as f:
         json.dump(report, f, indent=2)
     log("EXPORT", json.dumps(report["parts"]), "total", report["total_tris"], report["size_studs"])
@@ -5662,6 +5737,11 @@ def export_drake3(sets):
     hc = HP(0.8, 0, -0.05)
     persp_view(cam, hc + Vector((3.6, 3.0, 1.0)), hc, lens=50)
     render_to(os.path.join(folder, "preview_game_head.png"), 1200, 900, samples=128)
+    if jaw_low:                                         # the hinged jaw opened as a script would (breath angle)
+        jaw_low.matrix_world = rig.mats({"jaw": (D3_JAW_OPEN["breath"], 0, 0)})["jaw"]
+        persp_view(cam, hc + Vector((3.3, 3.4, 0.2)), hc + Vector((0, 0.2, -0.25)), lens=50)
+        render_to(os.path.join(folder, "preview_game_jaw_open.png"), 1200, 900, samples=128)
+        jaw_low.matrix_world = Matrix.Identity(4)
     persp_view(cam, c3 + Vector((-0.75, -0.7, 0.45)).normalized() * R * 2.2, c3, 45)
     render_to(os.path.join(folder, "preview_game_back34.png"), 1200, 900, samples=128)
     for o in exp:                      # wireframe-free flat check of the silhouette at game distance

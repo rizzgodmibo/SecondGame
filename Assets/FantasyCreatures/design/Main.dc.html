@@ -40,7 +40,7 @@
       <path d="M37 18 C30 30 24 36 24 48 C24 58 30 66 37 66 C44 66 50 58 50 48 C50 42 47 38 44 34 C44 40 42 44 39 46 C40 36 40 26 37 18 Z" fill="#ff7a1f"/>
       <path d="M37 38 C33 45 31 49 31 53 C31 58 34 62 37 62 C40 62 43 58 43 53 C43 50 41 47 40 46 C40 49 39 51 37 52 C38 47 38 42 37 38 Z" fill="#ffe066"/>
     </svg>
-    <div class="box"><div class="a">SHEET 01 / 03</div><div class="b">ELEMENT 1 · FIRE</div><div class="c">v3 · ANATOMY + SURFACE · 2026-10-04</div></div>
+    <div class="box"><div class="a">SHEET 01 / 03</div><div class="b">ELEMENT 1 · FIRE</div><div class="c">v3.1 · PROPORTIONS + JAW · 2026-10-04</div></div>
   </div>
 </div>
 
@@ -100,7 +100,7 @@
   <div class="body">
     <div class="cards" style="grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(2,1fr);">
       <div class="card"><span class="pill">BODY</span><img class="ci" src="renders/drake_part_head.png" alt="">
-        <div class="cl"><div class="n">Head + jaw</div><div class="m">brow plates · slit eyes</div></div></div>
+        <div class="cl"><div class="n">Head + jaw</div><div class="m">hinged jaw · slit eyes</div></div></div>
       <div class="card"><span class="pill">BODY</span><img class="ci" src="renders/drake_part_horn.png" alt="" style="object-fit:contain">
         <div class="cl"><div class="n">Horns ×4</div><div class="m">swept main pair + cheek pair</div></div></div>
       <div class="card"><span class="pill">WINGS</span><img class="ci" src="renders/drake_part_wing.png" alt="" style="object-fit:contain">
@@ -169,8 +169,8 @@
         <div><div class="t1">Ember drift</div><div class="t2"><b>spark_dot</b> · 5/s · off the throat</div></div></div>
       <div class="fx"><div class="num">3</div><div class="tex"><i class="m-VFX_flare" style="--tint:#ff6a1a"></i></div>
         <div><div class="t1">Throat furnace</div><div class="t2"><b>emissive</b> + light pulse</div></div></div>
-      <div class="fx trig"><div class="num">4</div><div class="tex"><i class="m-VFX_smoke_puff" style="--tint:#ff7a1f"></i></div>
-        <div><div class="t1">Fire breath</div><div class="t2"><b>fire puffs</b> + sparks + <b>smoke</b></div></div></div>
+      <div class="fx trig"><div class="num">4</div><div class="tex flip"><i class="m-CinderDrake_FlameFlip4x4" style="--tint:#ff8a2a"></i></div>
+        <div><div class="t1">Fire breath</div><div class="t2"><b>flames</b> + sparks + <b>smoke</b></div></div></div>
       <div class="fx"><div class="num">5</div><div class="tex"><i class="m-VFX_flare" style="--tint:#ffb43a"></i></div>
         <div><div class="t1">Ember eyes</div><div class="t2"><b>Neon</b> + bloom</div></div></div>
     </div>
@@ -214,15 +214,15 @@
   <div class="hd">Cinder Drake · design notes + build spec <small>for the Blender → Roblox pass</small></div>
   <div class="body">
     <div class="copy" style="position:absolute; left:16px; top:12px; width:300px;">
-      A grounded dark-fantasy predator that reads at phone size: <b>head low under a bony brow</b>, a lean ribbed body
+      A grounded dark-fantasy predator that reads at phone size: <b>head low under a bony brow</b>, heavy legs
       under <b>scute armour</b>, wings that own the silhouette. Charcoal, crimson and bone; the fire stays inside:
       <b>ember seams in the throat</b> and ember eyes.
     </div>
     <div class="motto" style="left:16px; bottom:16px;">HEAD LOW.<br><span>FIRE INSIDE.</span></div>
     <table class="spec" style="position:absolute; left:330px; top:10px; width:328px;">
-      <tr><td>Triangles</td><td><em>Body 16.5k · Wings 3.6k · Glow 0.2k</em> (cap 20k/mesh)</td></tr>
-      <tr><td>Textures</td><td>2 SurfaceAppearance sets · 1024² colour/normal/roughness + emissive</td></tr>
-      <tr><td>Mesh parts</td><td>Body · Wings · Glow (Neon eyes)</td></tr>
+      <tr><td>Triangles</td><td><em>Body 14.8k · Jaw 1.6k · Wings 3.6k · Glow 0.2k</em> (cap 20k/mesh)</td></tr>
+      <tr><td>Textures</td><td>2 SurfaceAppearance sets (Jaw shares Body's) · 1024² maps</td></tr>
+      <tr><td>Mesh parts</td><td>Body · hinged Jaw · Wings · Glow (Neon eyes)</td></tr>
       <tr><td>Pivot · hitbox</td><td>ground under body, front = −Z · Hull</td></tr>
       <tr><td>Export</td><td>OBJ + MTL + PNG maps · static stance, no rig</td></tr>
       <tr><td>VFX</td><td>4 attachments · 7 emitters · 2 lights (spec: VFX.md)</td></tr>
@@ -232,7 +232,7 @@
 
 <div class="foot">
   <span>BESTIARY · CREATURE DESIGN BIBLE · <b>PRACTICE SET 01</b></span>
-  <span>v3: anatomy approved by Holden · names, habitat and flavour text are placeholders</span>
+  <span>v3.1: heavier legs + hinged jaw · names, habitat and flavour text are placeholders</span>
   <span>SHEET 01 / 03 · 2026-10-04</span>
 </div>
 

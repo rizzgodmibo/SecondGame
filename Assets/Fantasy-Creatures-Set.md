@@ -12,7 +12,7 @@ OBJ export. They are for practice, not tied to a game. Files are in `Assets/Fant
 
 | Creature | Element | Body | Size (studs, W × H × L) | Game mesh tris |
 |---|---|---|---|---|
-| **Cinder Drake** (v3) | fire | winged quadruped | 8.0 × 7.6 × 14.5 | 16,490 body + 3,648 wings + 160 glow |
+| **Cinder Drake** (v3.1) | fire | winged quadruped | 8.0 × 7.6 × 14.5 | 14,759 body + 1,640 jaw + 3,648 wings + 160 glow |
 | **Mossback Golem** | earth + crystal | stone brute, knuckle-walker | 9.3 × 9.7 × 4.7 | 5,804 body + 646 crystals + 154 glow |
 | **Frostfang Wolf** | ice | swift quadruped | 2.1 × 5.1 × 8.3 | 5,664 body + 442 ice + 180 glow |
 
@@ -20,7 +20,7 @@ OBJ export. They are for practice, not tied to a game. Files are in `Assets/Fant
 - **Rebuild everything with one script.** `build_creatures.py` runs headless on Blender 5.2 with GPU/OptiX. It builds the creatures, renders every sheet image into `design/renders/`, and exports the OBJs.
   - Render: `blender -b --factory-startup -P build_creatures.py -- golem all`
   - Export: `... -- export drake golem wolf`
-- **Sheets.** They are a Claude Design canvas, **published privately** at https://claude.ai/artifact/4WGMTGvh8jcdEW5SANNFMW (version 7, 2026-10-04: drake board on v3; golem and wolf still v1).
+- **Sheets.** They are a Claude Design canvas, **published privately** at https://claude.ai/artifact/4WGMTGvh8jcdEW5SANNFMW (version 8, 2026-10-04: drake board on v3.1; golem and wolf boards still v1).
   - Local source: `design/canvas.json`, `Main.dc.html` (drake, the entry board), `MossbackGolem.dc.html`, `FrostfangWolf.dc.html`, shared `sheet.css`, `vfx/` (mask textures) and `renders/`.
   - To republish, copy them to a `project/` tree and publish to the same URL. The type wants a `data-dc-script` block in each board and no inline `url()`.
   - Full-sheet PNGs are in `design/png/` (headless Chrome). `*_v1.png` are the first 3D versions, kept for before/after.
@@ -32,12 +32,19 @@ OBJ export. They are for practice, not tied to a game. Files are in `Assets/Fant
   - **Drake v3 (anatomy pass).** Built as a grey clay review model and **approved by Holden**. See [[#Drake v3 anatomy pass (2026-10-04)]].
   - **Drake v3 surface + colour pass.** Built and shown. Holden: "fix weak points, colour plus normal and roughness map, we want this high quality". See [[#Drake v3 surface + colour pass (2026-10-04)]].
   - **Drake v3 game export.** Done: `models/CinderDrake/` holds the OBJ, seven 1024² SurfaceAppearance maps and `IMPORT.md`. See [[#Drake v3 game export: SurfaceAppearance maps (2026-10-04)]].
-  - **Drake v3 VFX + sheet update.** Done and **waiting for Holden's review**:
+  - **Drake v3 VFX + sheet update.** Done (superseded by v3.1):
     - the v3 board is republished;
     - the OBJ was re-exported with the mouth interior;
     - a data-only Roblox VFX spec (`VFX.md` + `vfx_spec.json`) is written.
     - See [[#Drake v3 VFX + sheet update (2026-10-04)]].
-  - **Golem and wolf.** Golem v2 is half done; its renders have not been reviewed. Wolf v2 has not started. Both are paused until the drake is approved.
+  - **Drake v3.1 (Holden: "fix whats weak … the legs feel a bit skinny").** **Approved by Holden** ("approved", 2026-10-04). The drake is finished for this practice set:
+    - thicker legs, feet and tail, checked against big-cat references;
+    - the jaw is now a separate hinged MeshPart, baked with the mouth open;
+    - our own flame flipbook for the breath;
+    - tighter pose cards.
+    - See [[#Drake v3.1: proportions, hinged jaw, flame flipbook (2026-10-04)]].
+  - **Golem: parked for another time** (Holden, 2026-10-04: "we can make the golem another time"). Golem v2 is half done; its renders have not been reviewed. The v1 sheet and OBJ stay as they are.
+  - **Wolf: dropped** (Holden, 2026-10-04: "lets honestly not move forward with the wolf"). The v1 sheet, board and OBJ are kept as they are, and no further work is planned.
   - **Scripts and rig.** Roblox scripts: **not yet**. Rig: **static OBJ only** (decided).
   - The OBJs have not been imported into Studio.
 
@@ -55,7 +62,7 @@ The actual game meshes with their baked textures (what Roblox will get):
 |---|---|
 | `build_creatures.py` | The whole pipeline: SDF sculpting, rig, materials, render sets (`ortho hero poses parts mats scale vfx habitat`), export |
 | `design/` | Claude Design canvas: `canvas.json`, `Main.dc.html` (Cinder Drake), `MossbackGolem.dc.html`, `FrostfangWolf.dc.html`, `sheet.css`, `vfx/`; `renders/` (81 PNGs), `png/` (full sheets, `*_v1.png` = first 3D pass) |
-| `models/<Name>/` | OBJ + MTL + baked colour PNG + `build_report.json` + `preview_front34/back34.png`. Drake v3: 7 SurfaceAppearance maps, `IMPORT.md`, `VFX.md` + `vfx_spec.json`, `preview_game_*.png` |
+| `models/<Name>/` | OBJ + MTL + baked colour PNG + `build_report.json` + `preview_front34/back34.png`. Drake v3.1: 4 parts (Body, hinged Jaw, Wings, Glow), 7 SurfaceAppearance maps, `CinderDrake_FlameFlip4x4.png`, `IMPORT.md`, `VFX.md` + `vfx_spec.json`, `preview_game_*.png` (incl. `_jaw_open`) |
 | `vfx/` | Copies of the 10 VFX textures the creatures use (8 from [[VFX-Texture-Pack]], `FrostFlake` + `Sparkle` from [[Dragons-Hoard-Set]]) |
 | `*.blend` | Saved scenes per creature and export (gitignored) |
 
@@ -102,6 +109,11 @@ The actual game meshes with their baked textures (what Roblox will get):
 
 ## Next steps: v2 "more detail, more intimidating" (planned 2026-10-04, not started)
 These are Claude's proposals; confirm them with Holden before building.
+
+**Update, later on 2026-10-04:**
+- The drake took a different route (anatomy-first v3 → v3.1, approved), so the drake list below is history.
+- The golem list waits for when the golem is picked up again. Apply [[Creature-Anatomy-And-Proportions]] before texturing.
+- The wolf list is dropped with the wolf.
 - **Drake:**
   - head: scowling brows (round cones from outer-back to inner-front over narrower slanted eyes), nasal ridge + nose horn, chin spike, three jaw-line spikes per side, a second smaller horn pair, longer and more curved main horns, crest spikes on the back of the skull
   - mouth: longer fangs visible with the mouth shut, an emissive throat glow, idle jaw slightly open
@@ -306,6 +318,36 @@ Holden: "go ahead with the VFX and sheet update". **Status: done, waiting for Ho
   - **Static-mesh limit:** the jaw can't open. The breath starts in front of the closed lips and is hidden by BreathCore's white-hot flare (ZOffset 0.8). A rig would parent BreathFX to the head/jaw.
   - **Breath aim:** the head is pitched about 25° down, so a breath along the head axis would hit the ground about 4.6 studs out. −12° keeps the roughly 6-stud jet above flat ground.
 
+## Drake v3.1: proportions, hinged jaw, flame flipbook (2026-10-04)
+Holden: "lets fix whats weak, along with things you mentioned, the legs feel a bit skinny, feel free to look up references to fix the weaknesses and proportions, then we can move on". **Status: approved by Holden ("approved", 2026-10-04).** Nothing has been built in Studio.
+
+- **Legs, feet and tail (proportions).** Researched big-cat and dragon references; the numbers and method are in [[Creature-Anatomy-And-Proportions]].
+  - **Forearm:** average thickness at its widest went from 0.49 to 0.64 studs, i.e. 0.149 × shoulder height (a lion is about 0.14).
+  - **Wrist:** 0.37 → 0.48 studs, still tapering (0.74 × the forearm top).
+  - **Hind metatarsus:** 0.31 → 0.45 studs. **Feet:** 0.68 → 0.84 studs wide.
+  - **Toes +20%, claws +10–15%, tail radii +12–20%.** Feet moved about 0.06 studs outward so the front view doesn't pinch.
+  - Before/after clay comparisons were made in the session scratchpad. The fresh clay renders are in `review/`.
+- **Hinged jaw (no rig).** `export3` now splits the jaw-bound parts into `CinderDrake_Jaw`: the jaw SDF, lower teeth, lower fangs and jaw spines.
+  - The split is done after baking, so the Jaw stays in the Body's texture layout and shares its SurfaceAppearance images.
+  - **Open-mouth bake:** the high-res jaw and the low jaw faces are turned 40° open around the rig's jaw hinge before baking and closed again afterwards. A rigid turn keeps the UVs valid, so the palate, tongue and teeth bake cleanly. This fixes the old limitation where the closed mouth baked roof and floor onto each other.
+  - **Hinge:** (0, 2.669, -3.52) from the pivot; `PivotOffset` (0, 0.333, 0.755) from the part's centre. -28° about X = breath, -40° = roar.
+  - `build_report.json` now has `jaw`, `part_centres_rbx` and a Jaw SurfaceAppearance entry. `preview_game_jaw_open.png` shows the game mesh opened.
+  - **Triangles:** Body 14,759 + Jaw 1,640 + Wings 3,648 + Glow 160 = 20,207.
+- **Own flame flipbook.** `build_creatures.py -- flameflip` → `models/CinderDrake/CinderDrake_FlameFlip4x4.png` (512², greyscale + alpha).
+  - It is procedural: a domain-warped fractal-noise "heat" field.
+    - The puff grows.
+    - Vertically stretched noise makes tongues lick upward.
+    - A late-frame erosion breaks it into wisps.
+    - Alpha is zero on every cell edge.
+  - It replaced the soft puffs in the breath: v2 read as a plume, now it reads as flame. The spec is now v3 (`BreathFlame` = flame_flip, OneShot), with smoke_puff kept as the low-end fallback.
+- **Pose cards.** The camera is about 15% closer and panned toward the head, so the drake fills the narrow cards and the snout and breath stay in frame (the far wing tip may touch the edge).
+- **Board.** Version tag v3.1, triangle and mesh-part rows, flame icon in the VFX key, a "hinged jaw" caption, shorter copy. Canvas republished (version 8).
+- **Lessons (local observations):**
+  - **Value-noise lattice lines.** Value noise sampled on axis-aligned lattices made flat, straight edges on the flame puffs. Rotating each octave about 37° (`_fbm3`) removed them.
+  - **Flame shapes.** A radial blob plus noise reads as cotton balls. Flames need a heat field: radial falloff + turbulence + vertically stretched streaks weighted toward the top + late erosion. Dark grey edges and a white core give depth once tinted.
+  - **Bone tags.** Tag every part with its bone (`ob["bone"]`) when building. The export can then find jaw-bound parts without name rules.
+  - **Leg thickness.** Thickening legs by +25–35% on the cores and the upper-half bellies kept the joints readable. No balloon look came back.
+
 ## Open questions / to verify in Studio
 - ⚠️ verify (drake VFX): the attachment markers land on the nostrils, throat and lips; the breath reaches about 6 studs (Drag semantics); the additive fire doesn't wash out on bright skies; frame time on a low-end phone with the breath running. Full list in `models/CinderDrake/VFX.md`.
 - ⚠️ verify: whether the 3D Importer turns a multi-object OBJ into one Model with three MeshParts (expected) and keeps the object names.
@@ -316,7 +358,7 @@ Holden: "go ahead with the VFX and sheet update". **Status: done, waiting for Ho
 
 ## Related
 - [[Dragons-Hoard-Set]] · [[VFX-Texture-Pack]] · [[Blender-To-Roblox-Pipeline]] · [[Blender to Roblox Asset Pipeline]] · [[VFX-Particles-Beams-Trails]]
-- [[Art Direction Feedback]] · [[AI-Assisted-Workflow]] · [[Prompt-Library]] · [[Shaders-Materials-And-Surfaces]] · [[Animation-Rigging-And-IK]]
+- [[Creature-Anatomy-And-Proportions]] · [[Art Direction Feedback]] · [[AI-Assisted-Workflow]] · [[Prompt-Library]] · [[Shaders-Materials-And-Surfaces]] · [[Animation-Rigging-And-IK]]
 
 ## Sources
 - Holden's brief, the Kingshot reference-sheet screenshot and Discord advice ("will"), Claude session 2026-10-04.

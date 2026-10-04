@@ -388,3 +388,4 @@ svg text { font-family: 'Barlow Condensed', sans-serif; }
 .fx .tex i.m-VFX_smoke_flip4x4 { -webkit-mask-image: url(vfx/VFX_smoke_flip4x4.png); mask-image: url(vfx/VFX_smoke_flip4x4.png); }
 .fx .tex i.m-VFX_smoke_puff { -webkit-mask-image: url(vfx/VFX_smoke_puff.png); mask-image: url(vfx/VFX_smoke_puff.png); }
 .fx .tex i.m-VFX_spark_dot { -webkit-mask-image: url(vfx/VFX_spark_dot.png); mask-image: url(vfx/VFX_spark_dot.png); }
+.fx .tex i.m-CinderDrake_FlameFlip4x4 { -webkit-mask-image: url(vfx/CinderDrake_FlameFlip4x4.png); mask-image: url(vfx/CinderDrake_FlameFlip4x4.png); }

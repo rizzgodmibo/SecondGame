@@ -1,16 +1,19 @@
 {
   "model": "CinderDrake",
-  "version": "v3 (anatomy + surface/colour, 2026-10-04)",
+  "version": "v3.1 (proportions pass + hinged jaw, 2026-10-04)",
   "units": "studs",
   "pivot": "file origin = ground under the creature; it faces -Z (Roblox front) after import",
   "size_studs": [
     7.98,
-    7.63,
-    14.5
+    7.64,
+    14.51
   ],
   "parts": {
     "CinderDrake_Body": {
-      "tris": 16490
+      "tris": 14759
+    },
+    "CinderDrake_Jaw": {
+      "tris": 1640
     },
     "CinderDrake_Wings": {
       "tris": 3648
@@ -19,7 +22,29 @@
       "tris": 160
     }
   },
-  "total_tris": 20298,
+  "total_tris": 20207,
+  "part_centres_rbx": {
+    "CinderDrake_Body": [
+      0.003,
+      3.641,
+      1.795
+    ],
+    "CinderDrake_Jaw": [
+      0.0,
+      2.336,
+      -4.275
+    ],
+    "CinderDrake_Wings": [
+      0.0,
+      5.453,
+      1.343
+    ],
+    "CinderDrake_Glow": [
+      -0.001,
+      2.889,
+      -4.345
+    ]
+  },
   "surface_appearance": {
     "CinderDrake_Body": {
       "ColorMap": "CinderDrake_Body_Color.png",
@@ -39,6 +64,20 @@
       "NormalMap": "CinderDrake_Wings_Normal.png",
       "RoughnessMap": "CinderDrake_Wings_Roughness.png",
       "AlphaMode": "Overlay"
+    },
+    "CinderDrake_Jaw": {
+      "ColorMap": "CinderDrake_Body_Color.png",
+      "NormalMap": "CinderDrake_Body_Normal.png",
+      "RoughnessMap": "CinderDrake_Body_Roughness.png",
+      "EmissiveMaskContent": "CinderDrake_Body_Emissive.png",
+      "EmissiveStrength": 6.0,
+      "EmissiveTint": [
+        255,
+        255,
+        255
+      ],
+      "AlphaMode": "Overlay",
+      "note": "same images as the Body (one shared texture set)"
     }
   },
   "glow_part": {
@@ -122,5 +161,24 @@
       0.0,
       -0.0
     ]
+  },
+  "jaw": {
+    "part": "CinderDrake_Jaw",
+    "hinge_rbx": [
+      0.0,
+      2.669,
+      -3.52
+    ],
+    "pivot_offset_from_part_centre": [
+      0.0,
+      0.333,
+      0.755
+    ],
+    "axis": "X (the part's own X; pivot orientation stays identity)",
+    "open_deg": {
+      "breath": -28.0,
+      "roar": -40.0
+    },
+    "note": "negative = mouth opens (Blender sign; same axis in Roblox axes). Baked at -40.0 deg open, so the mouth interior is textured for any opening."
   }
 }

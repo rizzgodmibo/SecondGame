@@ -143,6 +143,13 @@ Worked example: [[Fantasy-Creatures-Set]] (`Assets/FantasyCreatures/build_creatu
 4. **Bake** selected-to-active (cage 0.08, ray 0.3): DIFFUSE colour-only (AO nodes count) plus EMIT, combined in numpy. About 33 s per pass on an RTX 4060 Ti.
 5. **Export:** OBJ forward −Z / up Y, `path_mode="STRIP"` (the MTL names the PNG next to it). Write a `build_report.json` with tris, size and attachment points in Roblox axes relative to the file origin.
 - Result: 6.3–7.8k tris per creature. The game mesh looks almost the same as the Cycles render because the AO and colour zones are baked in.
+- **Hinged parts without a rig** (Cinder Drake v3.1 jaw, 2026-10-04):
+  1. Tag parts with their bone while building.
+  2. Bake the shared texture set with the hinged part turned open around its hinge (high-res and low faces together; a rigid turn keeps the UVs valid).
+  3. Turn it back.
+  4. Split its faces into their own MeshPart. It reuses the Body's SurfaceAppearance images.
+  5. Report the hinge and the `PivotOffset` from the part's centre, so a script can open it with `PivotTo`.
+  - The interior that the closed part hides (palate, tongue) then bakes cleanly. ⚠️ verify the turn direction and pivot in Studio.
 
 ## Related
 - [[Visuals/_Index]] · [[Shaders-Materials-And-Surfaces]] · [[Animation-Rigging-And-IK]] · [[Asset-Creation-Workflow-And-Marketplace]] · [[Art-Direction]] · [[Dragons-Hoard-Set]] · [[Blender to Roblox Asset Pipeline]] · [[Fantasy-Creatures-Set]]
