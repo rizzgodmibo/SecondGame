@@ -67,6 +67,9 @@ Snake's 140–145 ms cadence, Doodle Jump physics against period footage, a new 
 contract, SEO against official crawler docs) each converged within a day. Its origin is Anthropic's evaluator-optimizer
 pattern ([Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)).
 
+**Our trial:** the Paper Plane Toss shop, 2026-10-04: 4 rounds, blind critic wins 0/4 → 4/4, and the screenshots exposed a
+game-wide 9-slice bug. See [[Shop Gauntlet Workbench]].
+
 ## How it could apply to Holden's work (recommendations, not approvals)
 - **The X/YouTube/TikTok libraries are ready-made bars.** E.g. a shop frame judged blind against the DevionUI or Steal An Egg
   captures in [[X-Shop-And-Seasonal-UI]]; a HUD against the '+1' HUD references in [[X-HUD-And-Menus-UI]].

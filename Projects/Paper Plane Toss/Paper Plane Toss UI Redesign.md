@@ -39,4 +39,7 @@ Design v1 boards, before Holden's notes:
 
 The dialogue box was too big twice. Final: scale 0.78, centred at 70% down the screen, text size 30.
 
+2026-10-04: the shop was reworked in a blind-critic trial ([[Shop Gauntlet Workbench]]). It also found that every panel's right and
+bottom border was being cut off because the kit images are stored at max 1024 px; `UIKit.storedSlice` fixes this (uncommitted).
+
 Related: [[Paper Plane Toss]], [[Art Direction Feedback]]

@@ -306,6 +306,8 @@ Shake is applied after the default camera (priority Camera+1) and re-derived eac
 - Loud click sounds: UI SFX should sit ~6–10 dB below music peak (see [[Sound-Design]]).
 - Too much juice on low-value actions dilutes big moments — scale feedback to reward size (small/medium/large tiers).
 
+- 9-slice frame missing its right/bottom border → the uploaded image may be stored smaller than the source (seen at max 1024 px on 2026-10-04), so `SliceCenter` in source pixels points outside it. Scale the rect to the stored size. ⚠️ verify: see [[Shop Gauntlet Workbench]] Pitfalls.
+
 ## Related
 - [[Visuals/_Index]] · [[UI-Architecture]] · [[UI-Layout-And-Device-Scaling]] · [[VFX-Particles-Beams-Trails]] · [[Sound-Design]] · [[Animation-Rigging-And-IK]] · [[X-Animated-UI-Lessons-And-Tools]] (real designer examples of spring press, shine sweep, odometer counters and reveals) · [[X-Reference-Library]]
 

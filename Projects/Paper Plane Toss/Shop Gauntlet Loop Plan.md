@@ -4,11 +4,14 @@ status: draft
 updated: 2026-10-04
 confidence: medium
 ---
-# Shop Gauntlet Loop Plan (not started)
+# Shop Gauntlet Loop Plan (ran 2026-10-04)
 
 A one-off trial of the [[Gauntlet-Loop]] method on the Robux shop. **Holden's answer on 2026-10-04: "Not yet."** Nothing has been
 run and no code changed. He also said **new painted UI images are allowed** if the trial goes ahead. Trying the method once
 does not make it a standard workflow.
+
+> **Update 2026-10-04:** Holden said go and the trial ran: 4 rounds, blind wins 0/4 → 4/4, uncommitted, unpublished.
+> Results, screenshots and the fix list are in [[Shop Gauntlet Workbench]]. The plan below is kept as written.
 
 ## Target
 `SecondGame/src/client/UI/ShopPanel.luau` (586 lines; tabs Passes / Boosts / Eggs / Galaxy / Tokens / Codes), built on

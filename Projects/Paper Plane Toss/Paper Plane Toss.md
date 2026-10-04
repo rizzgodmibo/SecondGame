@@ -22,7 +22,7 @@ Holden's second Roblox game, started 2026-10-02 after [[Fish a Monster]] was par
 | 2 | Same-server ghosts | [[Deterministic Flight Sim and Ghosts]] |
 | 3–5 | Tokens, saving, levels, training pad, 12 planes | [[Paper Plane Toss Progression Numbers]] |
 | 5b | Challenges and Coach NPC, 3 leaderboards | [[Challenges Instead of Wagers]] |
-| 6 | UI redesign, sky island hub, throw lane, lighting | [[Paper Plane Toss UI Redesign]], [[Sky Island Hub and Throw Lane]], [[Shop Gauntlet Loop Plan]] (trial planned, not started) |
+| 6 | UI redesign, sky island hub, throw lane, lighting | [[Paper Plane Toss UI Redesign]], [[Sky Island Hub and Throw Lane]], [[Shop Gauntlet Loop Plan]] (trial ran 2026-10-04, published by Holden the same day; results in [[Shop Gauntlet Workbench]]) |
 | 7 | Join cutscene and Jet's tutorial | [[Join Cutscene and Tutorial]] |
 | 8 | Pets and eggs | [[Paper Plane Toss Pets and Eggs]] |
 | 9 | Rebirth | [[Paper Plane Toss Rebirth]] |

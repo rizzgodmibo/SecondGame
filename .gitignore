@@ -34,4 +34,6 @@ Assets/Reference-Captures/TikTok/*.jpg
 # reference boards): kept local only, same rule as the X captures (repo is public). Notes that embed them are tracked.
 Projects/*/attachments/Ref *
 Projects/*/attachments/shop-gauntlet/refs/
+# blind critic pairs contain copies of the refs above
+Projects/*/attachments/shop-gauntlet/blind/
 Assets/*Style Reference.png
