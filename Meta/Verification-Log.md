@@ -22,3 +22,4 @@ Append one row whenever a claim is checked against a source.
 | 2026-10-04 | Deprecated-API-Replacements | 423 deprecated engine members; GetRankInGroup(Async)/GetRoleInGroup(Async) superseded by GroupService:GetRolesInGroupAsync (multi-role) | Confirmed; vault code fixed | creator-docs `Player.yaml`, `GroupService.yaml` |
 | 2026-10-04 | Friend-And-Group-Play | Server group cache not cleared after PromptJoinAsync (client only) | Confirmed | creator-docs `GroupService.yaml` |
 | 2026-10-04 | Deprecated-API-Replacements | BodyVelocity deprecated → LinearVelocity | Confirmed | creator-docs `BodyVelocity.yaml` |
+| 2026-10-04 | AI-Assisted-Workflow / Blender-To-Roblox-Pipeline | Texture upload max 4096²; guidance ≤1024², PBR ≤1024² | Confirmed; 8K advice corrected | creator-docs texture-specifications |

@@ -45,10 +45,10 @@ For saved prompt wording, see [[Prompt-Library]].
 2. In Meshy, use the **built-in agent rather than the plain modeler**. Give it the reference picture and say:
    *"Keep it under 20k faces (or lower), keep all the details, make it low poly."*
 3. If Meshy outputs a high-poly model anyway, **remesh to the target face count**.
-4. Advice says pick 8192 (8K) texture for better quality.
-   ⚠️ verify: Roblox docs cite **4096×4096 max** texture support but recommend ≤1024×1024 for most objects.
-   An 8K texture will be downscaled on import, so its only benefit is a cleaner source for downscaling/baking.
-   Export at 1024 (or 2048 for hero props) yourself to control the result. See [[Blender-To-Roblox-Pipeline]].
+4. Advice says pick 8192 (8K) texture for better quality. **Correction (verified 2026-10-04):** Roblox accepts uploads up
+   to **4096²** only. Its guidance is **256² for 5-stud objects, 512² for 10-stud and 1024² max for characters/large props**, and PBR maps
+   are capped at 1024². 8K is only useful as a *source* in Meshy/Blender. Downscale it yourself to ≤1024² before importing,
+   because large textures on small props cause mobile memory crashes. See [[Blender-To-Roblox-Pipeline]].
 - Roblox limit (verified 2026-10-04): **an individual mesh cannot exceed 20,000 triangles.** Split bigger models
   into several MeshParts. Note that "faces" in Meshy may mean quads (1 quad = 2 triangles), so target ~10k quads
   to land at 20k triangles.

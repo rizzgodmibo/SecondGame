@@ -14,7 +14,7 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 |---|---|---|---|
 | Growth | Growth/ | 2026-10-04 | Re-verify the 2026-06-15 algorithm change details; benchmark table from real dashboards |
 | Engineering | Systems/ | 2026-10-04 | Type-check all code; Studio MCP hands-on recipes |
-| Visuals | Visuals/ | 2026-10-04 | (pending agent report) |
+| Visuals | Visuals/ | 2026-10-04 | Measure particle/triangle budgets on a real low-end phone; add a Blender export preset file |
 | Design | Design/ | 2026-10-04 | Time real top games to calibrate time-to-milestone targets; add a worked economy spreadsheet |
 | Monetisation | Monetisation/ | 2026-10-04 | Track Roblox Plus / Creator Rewards changes (2025–26 overhaul); test price heuristics |
 | Retention | Retention/ | 2026-10-04 | Build own benchmark set from Roblox Analytics 'similar experiences'; seasonal event calendar |
@@ -92,7 +92,13 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 - Analytics custom-field limits; maturity questionnaire requirements; the name of the localization setting.
 ### AI workflow
 - What "Astra 6" (image model) and "6.1 SOL" (coding model) are, and whether the benchmark claims hold.
-- Texture size: whether 8K source textures help at all given the 4096 max and the ≤1024 recommendation.
+- ~~Texture size~~ → resolved: upload max 4096², guidance ≤1024² (PBR ≤1024²). 8K is useful as source only. AI-Assisted-Workflow corrected.
+### Visuals
+- Current Avatar settings UI for locking body scale; Moon Animator 2 price; whether a client-created IKControl is visible to other players.
+- Talent Hub status for commissions; Creator Store licence scope off-platform (ads/merch); typical asset moderation turnaround.
+- Scene triangle and draw-call budgets on low-end mobile; whether `AudioPlayer:Play()` waits for loading.
+- Fusion 0.3, Vide and React-lua maintenance status; current device split (~55–65% mobile); whether `AbsoluteSize` is in pixels or points for touch targets.
+- VFX particle budgets (≤1,500 live particles on mid phones).
 ### Assets
 - Licence of Free Icon Pack v3.1 (Basic): the zip has no licence file. Find the source page.
 
