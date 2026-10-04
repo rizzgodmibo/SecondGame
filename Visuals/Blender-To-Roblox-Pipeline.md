@@ -48,6 +48,7 @@ confidence: high
 - Upload formats: `.png`, `.jpg`, `.tga`, `.bmp` (images also `.gif` via Importer). Roblox streams lower mips first and may downsample under memory pressure.
 - **Atlas** small props into shared 1024² sheets (one texture for 20 props → far fewer texture loads). Stylised trick: a **palette/gradient atlas** (e.g. 64×64 or 256×256 swatch texture) with UVs collapsed onto colour cells — near-zero texture memory, very consistent art style.
 - Vertex colours are imported (FBX/glTF) — another zero-texture colouring option; Importer "Ignore Vertex Colors" toggles it.
+- Worked palette-atlas example (local observation, 2026-10-03): [[Dragons-Hoard-Set]]. It uses a 512² atlas of 8×8 flat cells shared by 11 props, with each face's UVs projected into the middle 60% of its cell so mipmaps don't bleed. Holden's art rules forbid vertex colours, so the atlas is the colouring method there.
 
 ## PBR maps (SurfaceAppearance)
 | Map | Format | Notes |
@@ -115,9 +116,11 @@ Also: `CanCollide = false` + `CanQuery = false` + `CanTouch = false` for pure de
 - PreciseConvexDecomposition on hundreds of props → physics stalls on join.
 - DirectX normal maps (Y−) from Substance defaults → lighting looks inverted.
 - Many unique 1024² textures on small props → mobile memory crashes, long loads.
+- Overlapping coplanar faces (trim on a plank, rim on a wall top) → z-fighting stripes. Offset trims by 0.015–0.03 studs (seen in [[Dragons-Hoard-Set]]).
+- OBJ + MTL with `path_mode=COPY` puts a copy of the atlas next to every OBJ → the importer uploads one identical texture per model. Repoint every MeshPart to one `TextureID` afterwards.
 
 ## Related
-- [[Visuals/_Index]] · [[Shaders-Materials-And-Surfaces]] · [[Animation-Rigging-And-IK]] · [[Asset-Creation-Workflow-And-Marketplace]] · [[Art-Direction]]
+- [[Visuals/_Index]] · [[Shaders-Materials-And-Surfaces]] · [[Animation-Rigging-And-IK]] · [[Asset-Creation-Workflow-And-Marketplace]] · [[Art-Direction]] · [[Dragons-Hoard-Set]] · [[Blender to Roblox Asset Pipeline]]
 
 ## Sources
 - General mesh specifications (20k tris, 4 influences, watertight, rig rules) — https://create.roblox.com/docs/art/modeling/specifications

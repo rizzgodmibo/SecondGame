@@ -144,8 +144,20 @@ Server side only fires `RemoteEvent:FireAllClients("CoinBurst", position)`; clie
 - Forgetting `LockedToPart` on character auras → particles left behind when running.
 - Trail attachments too far apart → giant ribbons; keep width ≤ object size.
 
+## Worked example: HoardVFX (Dragon's Hoard set, 2026-10-03)
+`Assets/DragonsHoard/scripts/HoardVFX.luau` is a reusable client ModuleScript. It has been written but **not yet run in Studio**, so treat the patterns below as recommendations. See [[Dragons-Hoard-Set]].
+- **API:** `enable(target, preset)`, `disable(target, preset?)`, `enableDefault`/`enableAllIn` (reading a `HoardVFXPreset` attribute), `setPickupIdle`, `openChest`/`closeChest`, `placeSword`.
+- **Cleanup:** every created instance is tracked per target and prefixed `HoardVFX_`. `disable()` or `target.Destroying` removes them, so nothing leaks.
+- **Pulse glow:** a looping tween (`RepeatCount = -1`, `Reverses = true`, Sine) on `PointLight.Brightness`, plus an optional `Highlight.FillTransparency` (OutlineTransparency 1, DepthMode Occluded). The Highlight can be switched off because each one is an extra render pass.
+- **Item twinkle:** an emitter parented to the part with Shape Sphere + Volume (it hugs round props better than Box) and `ZOffset 0.4` so twinkles sit on the near surface. Rate scales with footprint (0.5–4/s).
+- **Egg particles:** Shape Sphere + **Surface**, so particles spawn on the egg's skin.
+- **Chest burst:** emitters in an Attachment at the chest mouth, `Enabled = false`, then `Emit(1)` glow flash + `Emit(24)` coin glints (gravity −18) + `Emit(30)` sparks. A PointLight flashes to 5, settles to 1.2, and fades on close.
+- **Blade shine sweep:** a `Beam` with `FaceCamera = true` between two attachments across the blade, tweened tip→guard. The appearance fades by tweening `Width0`/`Width1`, because NumberSequence transparency can't be tweened.
+- **Pickup idle:** one shared `Heartbeat` connection for all idling items, disconnected when none remain. It runs `PivotTo(base * bob * spin)`, works on anchored items only, and restores the stored pivot when switched off.
+- **Fallback textures:** `rbxasset://textures/particles/sparkles_main.dds`, `fire_main.dds` and `smoke_main.dds` are used until real Image ids are pasted in. ⚠️ verify that these still ship with the client.
+
 ## Related
-- [[Visuals/_Index]] · [[UI-Polish-And-Juice]] · [[Shaders-Materials-And-Surfaces]] · [[Lighting-And-Atmosphere]] · [[Animation-Rigging-And-IK]] · [[Remotes-And-Networking]]
+- [[Visuals/_Index]] · [[UI-Polish-And-Juice]] · [[Dragons-Hoard-Set]] · [[Shaders-Materials-And-Surfaces]] · [[Lighting-And-Atmosphere]] · [[Animation-Rigging-And-IK]] · [[Remotes-And-Networking]]
 
 ## Sources
 - Particle emitters (400/s, 100/s mobile, 20 s lifetime cap, flipbooks, fill-rate) — https://create.roblox.com/docs/effects/particle-emitters

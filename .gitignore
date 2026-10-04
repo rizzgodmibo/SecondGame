@@ -1,0 +1,8 @@
+.obsidian/workspace*.json
+.obsidian/cache
+.trash/
+
+# Dragon's Hoard: large binaries only (renders, atlas and particle PNGs are tracked as the finished product)
+Assets/DragonsHoard/**/*.blend
+Assets/DragonsHoard/**/*.blend1
+Assets/DragonsHoard/*.zip
