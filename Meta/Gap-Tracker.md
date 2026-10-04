@@ -15,7 +15,7 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 | Growth | Growth/ | 2026-10-04 | Re-verify the 2026-06-15 algorithm change details; benchmark table from real dashboards |
 | Engineering | Systems/ | 2026-10-04 | (pending agent report) |
 | Visuals | Visuals/ | 2026-10-04 | (pending agent report) |
-| Design | Design/ | 2026-10-04 | (pending agent report) |
+| Design | Design/ | 2026-10-04 | Time real top games to calibrate time-to-milestone targets; add a worked economy spreadsheet |
 | Monetisation | Monetisation/ | 2026-10-04 | Track Roblox Plus / Creator Rewards changes (2025–26 overhaul); test price heuristics |
 | Retention | Retention/ | 2026-10-04 | Build own benchmark set from Roblox Analytics 'similar experiences'; seasonal event calendar |
 | Operations | Operations/ | 2026-10-04 | Replace snippet-sourced case-study numbers with primary sources; write native Experiments (ConfigService) recipes |
@@ -73,6 +73,11 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 - Whether `GetRangeAsync` accepts a bound with sortKey only; the Open Cloud notification permission scope.
 - Whether favourites/follows still trigger update notifications.
 - Anti-alt `AccountAge` gating, the Discord mod ratio, title update-tag rules, and off-platform giveaway rules.
+### Design
+- Platform defaults: WalkSpeed 16, JumpPower 50, JumpHeight 7.2, Gravity 196.2; measure max running-jump distance in Studio.
+- Whether the 120 s join timeout still applies; clock skew between servers; how AFK time counts toward playtime; maturity labels for horror; minimum mobile button size.
+- Benchmarks: session length per genre, onboarding step completion rates, loot rarity percentages, daily free premium currency, time-to-milestone targets.
+- Third-party facts: Cookie Clicker 1.15 cost growth, Genshin pity figures, PS99 rebirth cap and update cadence, whether the reference titles are still current.
 ### AI workflow
 - What "Astra 6" (image model) and "6.1 SOL" (coding model) are, and whether the benchmark claims hold.
 - Texture size: whether 8K source textures help at all given the 4096 max and the ≤1024 recommendation.
@@ -91,6 +96,7 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 - [ ] Replace hand-rolled soft-shutdown patterns with the built-in "restart only outdated servers" + `DataModel.ServerRestartScheduled`.
 - [ ] Point A/B and feature-flag mentions everywhere to native `ConfigService` / Experiments.
 - [ ] Check `Growth/Launch-Checklist.md` against the 2026 Kids/Select eligibility rules in [[Moderation-And-Policy-Compliance]].
+- [ ] Install `luau-analyze` (or luau-lsp) in CI and type-check every ```lua block in the vault; no agent could run Luau this session.
 - [ ] Note in onboarding/UI notes: chat requires an age check (Jan 2026), so core gameplay must work without chat.
 
 ## Known infrastructure gaps
