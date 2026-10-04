@@ -55,7 +55,7 @@ File path pattern: `Free Icon Pack v3.1 (Basic)/<Category>/<Item>/<64px|256px>/<
 | VIP gamepass | Exclusive/VIP |
 | Close / confirm | UI/Close Button, UI/Checkmark Button |
 | Primary currency | Currency/Coin or Cash; premium currency → Currency/Diamond or Crystal |
-| Social links on menus | ⚠️ Roblox restricts off-platform links/logos in experiences. Check [[Moderation-And-Policy-Compliance]] before using the Discord/X/Twitter/Guilded icons |
+| Social links on menus | ❌ Don't put social links/logos in-game: social links can't be shown inside experiences, and only age-verified 16+ users can add or see them on the game page (see [[Sharing-And-Referral-Loops]], [[Moderation-And-Policy-Compliance]]). Use the Discord/X icons for off-platform material (thumbnails, Discord server) only |
 
 ## How to import
 1. Unzip, then pick the variant family and size (256px).

@@ -33,7 +33,7 @@ Two coexisting audio systems: legacy **`Sound` + `SoundGroup`** (simple, still f
 | `AudioEmitter` | Virtual speaker in 3D | `DistanceAttenuation` curve (`SetDistanceAttenuation({[distance]=volume})`), `AngleAttenuation`, `AudioInteractionGroup`, `AcousticSimulationEnabled` |
 | `AudioListener` | Virtual microphone | `AudioInteractionGroup`, attenuation curves; auto-created by `SoundService.DefaultListenerLocation` (`Default`/`None`/`Character`/`Camera`) |
 | `AudioDeviceOutput` | Player's speakers | `Player` (nil = local) |
-| Effects | `AudioEqualizer`, `AudioReverb`, `AudioCompressor` (sidechain ducking), `AudioFilter` (`FilterType` Lowpass/Highpass/Peak…), `AudioEcho`, `AudioChorus`, `AudioDistortion`, `AudioFlanger`, `AudioPitchShifter`, `AudioTremolo`, `AudioLimiter` ⚠️ verify full effect list on the audio effects page | `Bypass` on each |
+| Effects | `AudioEqualizer`, `AudioReverb`, `AudioCompressor` (sidechain ducking), `AudioFilter` (`FilterType` Lowpass/Highpass/Peak…), `AudioEcho`, `AudioChorus`, `AudioDistortion`, `AudioFlanger`, `AudioPitchShifter`, `AudioTremolo`, `AudioLimiter`, `AudioGate`, plus `AudioChannelMixer`/`AudioChannelSplitter`, `AudioRecorder` (verified against API class list 2026-10-04) | `Bypass` on each |
 | `AudioAnalyzer` | Metering | `RmsLevel`, `PeakLevel`, spectrum |
 | `AudioTextToSpeech` / `AudioSpeechToText` | TTS / STT | see docs |
 

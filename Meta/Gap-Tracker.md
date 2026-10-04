@@ -17,7 +17,7 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 | Visuals | Visuals/ | 2026-10-04 | (pending agent report) |
 | Design | Design/ | 2026-10-04 | (pending agent report) |
 | Monetisation | Monetisation/ | 2026-10-04 | Track Roblox Plus / Creator Rewards changes (2025–26 overhaul); test price heuristics |
-| Retention | Retention/ | 2026-10-04 | (pending agent report) |
+| Retention | Retention/ | 2026-10-04 | Build own benchmark set from Roblox Analytics 'similar experiences'; seasonal event calendar |
 | Operations | Operations/ | 2026-10-04 | Replace snippet-sourced case-study numbers with primary sources; write native Experiments (ConfigService) recipes |
 | Reference | Reference/ | 2026-10-04 | Refresh icon/thumbnail gallery monthly (CDN URLs expire) |
 | AI workflow | Meta/ | 2026-10-04 | Verify "Astra 6" and "6.1 SOL"; write Claude↔Codex handoff protocol if a 2nd agent joins |
@@ -63,11 +63,35 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 - Current list of allowed off-platform links (Community Standards).
 - All case-study figures in [[Post-Mortems-Real-Games]] (from search snippets); BedWars ">90% decline".
 - Contractor rates and revenue-share norms; legal rules for paying minors; DevEx tax forms.
+### Retention
+- GameAnalytics 2026/2025 benchmark figures (from snippets); the DevForum 2023 D1 p50/p90 example.
+- Which timezone the Roblox Analytics D1 day boundary uses (assumed UTC).
+- ProfileStore method names (`StartSessionAsync`, `Reconcile`, `EndSession`); check with the Monetisation items.
+- Whether paid streak restores are allowed; whether a season pass can be a Subscription; the ~100 R$/month private-server price.
+- Whether the server-side `IsInGroupAsync` cache refreshes after `PromptJoinAsync`.
+- The Game Settings name for "leave slots for friends".
+- Whether `GetRangeAsync` accepts a bound with sortKey only; the Open Cloud notification permission scope.
+- Whether favourites/follows still trigger update notifications.
+- Anti-alt `AccountAge` gating, the Discord mod ratio, title update-tag rules, and off-platform giveaway rules.
 ### AI workflow
 - What "Astra 6" (image model) and "6.1 SOL" (coding model) are, and whether the benchmark claims hold.
 - Texture size: whether 8K source textures help at all given the 4096 max and the ≤1024 recommendation.
 ### Assets
 - Licence of Free Icon Pack v3.1 (Basic): the zip has no licence file. Find the source page.
+
+## Cross-vault follow-ups
+- [ ] Sweep ALL code in the vault for deprecated APIs and replace them:
+  - `IsInGroup` → `IsInGroupAsync`
+  - `IsFriendsWith` / `GetFriendsOnline` → their `…Async` versions
+  - `ReserveServer` → `ReserveServerAsync`
+  - `PromptLinkSharing` → `PromptLinkSharingAsync`
+  - deep links → share links
+
+  Then write `Systems/Deprecated-API-Replacements.md`.
+- [ ] Replace hand-rolled soft-shutdown patterns with the built-in "restart only outdated servers" + `DataModel.ServerRestartScheduled`.
+- [ ] Point A/B and feature-flag mentions everywhere to native `ConfigService` / Experiments.
+- [ ] Check `Growth/Launch-Checklist.md` against the 2026 Kids/Select eligibility rules in [[Moderation-And-Policy-Compliance]].
+- [ ] Note in onboarding/UI notes: chat requires an age check (Jan 2026), so core gameplay must work without chat.
 
 ## Known infrastructure gaps
 - create.roblox.com and devforum.roblox.com are **blocked by the cloud network proxy**. Agents use the official
