@@ -10,7 +10,7 @@ Roblox VFX are built from `ParticleEmitter`, `Beam`, `Trail`, `Attachment`s, plu
 
 ## TL;DR
 - **Bursts, not streams**: for hits/pickups/level-ups, keep emitters `Enabled = false` and call `emitter:Emit(n)` on the **client**. Stream emitters (`Rate`) only for ambient loops (fire, aura, portal).
-- **Hard limits**: one emitter tops out at **400 particles/s (100/s on mobile)**; particle **Lifetime is capped at 20 s**. Fill-rate (screen pixels covered × overlap) is the real GPU cost — big, overlapping, transparent particles kill mobile.
+- **Hard limits**: one emitter tops out at **400 particles/s (100/s on mobile)**; particle **Lifetime is capped at 20 s**. Studio *accepts* Rate 450 and Lifetime 25 when set (observed 2026-10-04), so lint for them with [[Roblox VFX Review Skill]]. Fill-rate (screen pixels covered × overlap) is the real GPU cost — big, overlapping, transparent particles kill mobile.
 - **Budget per effect**: small hit ≤ 30 particles total; big ability ≤ 150; ambient emitter Rate ≤ 20. Aim ≤ ~1,500 live particles on screen at once for mid phones (⚠️ verify on your low-end test device with MicroProfiler).
 - **Play VFX on clients** (server sends a RemoteEvent with position/type) — server-created particles replicate as instances, cost bandwidth, and lag.
 - Use **flipbooks** (2×2/4×4/8×8 or Custom, up to 1024×1024 sheet) for animated smoke/explosions; clients auto-disable flipbooks when low on memory.
@@ -71,6 +71,34 @@ Methods: `Emit(count)`, `Clear()`.
 ## Attachments
 - Effects reference Attachments, not parts → one invisible anchor part (or character part) can host many effects. Name them (`HitPoint`, `TrailTop`) and import from Blender with the `_Att` suffix (Importer converts objects named `*_Att` to Attachments).
 - `Attachment.WorldCFrame` for spawning effects at runtime positions.
+- **Emitters inside an Attachment spawn from one point** (docs: "particles spawn from the attachment's position"). `Shape` doesn't spread them; aim the emitter by rotating the Attachment.
+  - A ParticleEmitter's `EmissionDirection` face is read in the attachment's frame. With Orientation (−12, 0, 0), `Front` points 12° below the part's forward.
+  - For an emission *area*, parent the emitter to an invisible, sized part instead. Verified from the creator-docs source, 2026-10-04.
+- **Attachment.Position is relative to the parent part's CFrame.** For an imported MeshPart that is the centre of its bounding box, not the imported pivot. Convert Blender/file coordinates with `position = filePoint − bboxCentre`. ⚠️ verify on the first import with `Visible = true`.
+
+### More verified ParticleEmitter facts (creator-docs `ParticleEmitter.yaml`, fetched 2026-10-04)
+- `Acceleration` is in **global axes** (studs/s²), whatever the emitter's orientation.
+- `FlipbookFramerate` maxes out at **30 fps**. `OneShot` ignores it and spreads the frames over each particle's lifetime.
+- `Drag` is documented as "the rate in seconds at which individual particles will lose half their speed via exponential decay". Don't hand-calculate reach from that wording; tune `Speed`/`Drag` in Studio.
+- `Brightness` only scales emitted light when `LightInfluence` is 0.
+
+## Worked example: Cinder Drake VFX spec (2026-10-04)
+`Assets/FantasyCreatures/models/CinderDrake/VFX.md` + `vfx_spec.json` describe a static boss creature's VFX as data, with no scripts. **Not built in Studio yet**, so treat it as a recommendation. See [[Fantasy-Creatures-Set]].
+- **Ambient, always on:** nostril smoke (smoke_puff, Rate 2 per nostril), ember drift (spark_dot, Rate 5) and a throat PointLight (Range 6, no shadows).
+- **Triggered:** fire breath, four emitters toggled together (`Enabled` true for the length of the breath):
+  - BreathFlame: **smoke_puff tinted fire colours**, LightEmission 1, Rate 60, life 0.45–0.6 s, size 0.55 → 2.6;
+  - BreathCore: Hoard `Glow.png`, white-hot, ZOffset 0.8, hides the static closed jaw;
+  - BreathSparks;
+  - BreathSmoke: smoke flipbook in **OneShot**, starts at Transparency 1 so it first shows past the flames;
+  - plus a PointLight (Range 12).
+  - Total 124 particles/s, about 66 live.
+- **Why spec v2 dropped the pack's fire flipbook:** its frames are torch flames cut flat at the base, so a jet of flying, rotating flame particles shows straight edges. The smoke flipbook fades over its 16 frames, so Loop would pop. See [[VFX-Texture-Pack]] → Pitfalls.
+- **A JSON layout that works for any creature:**
+  - `textures` (key → file, image_id);
+  - `attachments` (Position in part space, a pivot-space fallback, Orientation);
+  - `emitters` (props with NumberSequence = `[[t, v], …]` and ColorSequence = `[[t, "#hex"], …]`);
+  - `lights`, `triggers`, `budget` and `verify`.
+  - A future setup script can build every instance from it.
 
 ## Burst helper (client)
 

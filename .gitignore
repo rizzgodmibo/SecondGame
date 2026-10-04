@@ -1,3 +1,4 @@
+.mcp.json
 .obsidian/workspace*.json
 .obsidian/cache
 .trash/
@@ -6,3 +7,31 @@
 Assets/DragonsHoard/**/*.blend
 Assets/DragonsHoard/**/*.blend1
 Assets/DragonsHoard/*.zip
+
+# Fantasy Creatures: Blender scenes and zip (rebuild with build_creatures.py); renders, sheets and exports are tracked
+Assets/FantasyCreatures/**/*.blend
+Assets/FantasyCreatures/**/*.blend1
+Assets/FantasyCreatures/*.zip
+Assets/FantasyCreatures/review/*.obj
+Assets/FantasyCreatures/review/*_fast.png
+
+# X/Twitter reference captures: third-party artwork, kept local only (repo is public). Notes, manifest and fetch script are tracked.
+Assets/Reference-Captures/X/**/*.jpg
+Assets/Reference-Captures/X/**/*.png
+Assets/Reference-Captures/X/**/*.mp4
+Assets/Reference-Captures/X/**/post.json
+
+# YouTube video reference frames: third-party content, kept local only (repo is public). The breakdown note is tracked.
+Assets/Reference-Captures/SyphoDev-AI-Workflow/**/*.jpg
+
+# YouTube reference thumbnails (third-party, local only)
+Assets/Reference-Captures/YouTube/*.jpg
+
+# TikTok reference thumbnails (third-party, local only)
+Assets/Reference-Captures/TikTok/*.jpg
+
+# Third-party reference media (other games' screenshots, other designers' posts, tutorial videos, style
+# reference boards): kept local only, same rule as the X captures (repo is public). Notes that embed them are tracked.
+Projects/*/attachments/Ref *
+Projects/*/attachments/shop-gauntlet/refs/
+Assets/*Style Reference.png

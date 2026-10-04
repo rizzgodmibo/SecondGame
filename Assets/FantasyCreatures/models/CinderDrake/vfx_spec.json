@@ -1,0 +1,269 @@
+{
+  "model": "CinderDrake",
+  "spec": "VFX spec v2, 2026-10-04 (matches the v3 sheet VFX key; v2 = the breath uses soft puffs + a glow core, and the smoke flipbook is OneShot)",
+  "status": "Data only, no scripts (Holden: 'Roblox scripts + zip: Not yet'). Not yet built or tested in Studio; every value is a starting point to tune.",
+  "how_to_read": {
+    "Vector3": "[x, y, z] in studs",
+    "NumberRange": "[min, max]",
+    "NumberSequence": "[[time 0-1, value], ...], envelope 0",
+    "ColorSequence": "[[time 0-1, '#RRGGBB'], ...]",
+    "Color3": "'#RRGGBB'; rgb given alongside for typing into Studio",
+    "enums": "the Enum item name, e.g. 'Front' = Enum.NormalId.Front",
+    "texture": "a key into 'textures'; use that texture's uploaded Image id, or its placeholder until then",
+    "unlisted": "every property not listed keeps its Studio default"
+  },
+  "host_part": "CinderDrake_Body",
+  "frames": {
+    "position": "Attachment.Position, relative to the CinderDrake_Body MeshPart's own centre (= centre of its bounding box). Type these into Studio.",
+    "pivot_position": "the same point relative to the model pivot (file origin, ground under the drake, front = -Z). Use these if the importer centres the part differently.",
+    "body_bbox_centre_from_pivot": [0.003, 3.647, 1.789],
+    "body_bbox_size": [6.211, 7.317, 14.496]
+  },
+  "textures": {
+    "smoke_puff": {"file": "Assets/VFX/TexturePack/VFX_smoke_puff.png", "size": "256x256", "layout": "None", "image_id": null,
+                   "placeholder": "rbxasset://textures/particles/explosion01_smoke_main.dds",
+                   "used_by": ["NostrilSmoke", "BreathFlame (tinted fire colours, additive)"]},
+    "spark_dot": {"file": "Assets/VFX/TexturePack/VFX_spark_dot.png", "size": "128x128", "layout": "None", "image_id": null,
+                  "placeholder": "rbxasset://textures/particles/sparkles_main.dds", "used_by": ["EmberDrift", "BreathSparks"]},
+    "glow": {"file": "Assets/DragonsHoard/vfx/Glow.png", "size": "128x128", "layout": "None", "image_id": null,
+             "placeholder": "rbxasset://textures/particles/explosion01_core_main.dds", "used_by": ["BreathCore"]},
+    "smoke_flip": {"file": "Assets/VFX/TexturePack/VFX_smoke_flip4x4.png", "size": "1024x1024", "layout": "Grid4x4", "image_id": null,
+                   "placeholder": "rbxasset://textures/particles/smoke_main.dds (single image: FlipbookLayout None until uploaded)",
+                   "used_by": ["BreathSmoke"], "low_end_fallback": "smoke_puff with no flipbook (drops the only 1024² texture)"}
+  },
+  "texture_notes": {
+    "VFX_fire_flip4x4.png": "Not used. Its 16 frames are torch flames whose base is cut flat (and 3 frames have flame tips cut flat at the top). Flying, rotating particles show those straight edges; the v1 preview stacked them into a hard slab. Keep it for anchored flames: torches and burning ground, low Speed, upward Acceleration, Rotation 0.",
+    "VFX_smoke_flip4x4.png": "The frames fade by themselves (centre alpha 0.95 in frame 1 down to about 0 in frames 14-16), so it must be FlipbookMode OneShot with FlipbookStartRandom off. Loop or a random start would pop back to full opacity."
+  },
+  "attachments": {
+    "NostrilL": {"position": [0.12, -1.119, -7.194], "pivot_position": [0.123, 2.528, -5.405], "orientation": [0, 0, 0],
+                 "note": "on the nostril surface; same point as build_report NostrilL"},
+    "NostrilR": {"position": [-0.126, -1.119, -7.194], "pivot_position": [-0.123, 2.528, -5.405], "orientation": [0, 0, 0]},
+    "ThroatFX": {"position": [-0.003, -1.247, -4.139], "pivot_position": [0.0, 2.4, -2.35], "orientation": [0, 0, 0],
+                 "note": "0.11 studs below the throat underside, outside the mesh, so the light reaches the ground and the embers start in the open"},
+    "BreathFX": {"position": [-0.003, -1.497, -7.289], "pivot_position": [0.0, 2.15, -5.5], "orientation": [-12, 0, 0],
+                 "note": "0.1 studs in front of the closed lips. Tilted 12° down, so its Front face points along the breath; the jet would meet flat ground about 10 studs out (the flames end at about 6)"}
+  },
+  "emitters": [
+    {
+      "name": "NostrilSmoke",
+      "class": "ParticleEmitter",
+      "attachments": ["NostrilL", "NostrilR"],
+      "mode": "ambient",
+      "sheet_key": "Nostril smoke",
+      "props": {
+        "Texture": "smoke_puff",
+        "Enabled": true,
+        "Rate": 2,
+        "Lifetime": [1.4, 2.0],
+        "Speed": [0.3, 0.6],
+        "EmissionDirection": "Front",
+        "SpreadAngle": [20, 20],
+        "Drag": 2,
+        "Acceleration": [0, 1.0, 0],
+        "Size": [[0, 0.18], [0.5, 0.5], [1, 0.85]],
+        "Color": [[0, "#C9C0BD"], [1, "#8A817E"]],
+        "Transparency": [[0, 0.45], [0.4, 0.65], [1, 1]],
+        "LightEmission": 0,
+        "LightInfluence": 1,
+        "Rotation": [0, 360],
+        "RotSpeed": [-25, 25],
+        "ZOffset": 0.1
+      }
+    },
+    {
+      "name": "EmberDrift",
+      "class": "ParticleEmitter",
+      "attachments": ["ThroatFX"],
+      "mode": "ambient",
+      "sheet_key": "Ember drift",
+      "props": {
+        "Texture": "spark_dot",
+        "Enabled": true,
+        "Rate": 5,
+        "Lifetime": [2.0, 3.0],
+        "Speed": [0.6, 1.4],
+        "EmissionDirection": "Bottom",
+        "SpreadAngle": [70, 70],
+        "Drag": 1,
+        "Acceleration": [0, 1.5, 0],
+        "Size": [[0, 0.12], [0.75, 0.09], [1, 0]],
+        "Color": [[0, "#FFD27A"], [0.5, "#FF8A1E"], [1, "#B5260A"]],
+        "Transparency": [[0, 0], [0.7, 0.15], [1, 1]],
+        "LightEmission": 1,
+        "LightInfluence": 0,
+        "Brightness": 2,
+        "ZOffset": 0.2,
+        "WindAffectsDrag": true
+      },
+      "why": "sparks leave the throat downward and sideways, then curl up past the sides of the neck (an emitter on an Attachment spawns from a single point)"
+    },
+    {
+      "name": "BreathFlame",
+      "class": "ParticleEmitter",
+      "attachments": ["BreathFX"],
+      "mode": "trigger",
+      "sheet_key": "Fire breath",
+      "props": {
+        "Texture": "smoke_puff",
+        "Enabled": false,
+        "Rate": 60,
+        "Lifetime": [0.45, 0.6],
+        "Speed": [11, 14],
+        "EmissionDirection": "Front",
+        "SpreadAngle": [8, 8],
+        "Drag": 1.5,
+        "Acceleration": [0, 3, 0],
+        "Size": [[0, 0.55], [0.35, 1.5], [1, 2.6]],
+        "Color": [[0, "#FFE7A0"], [0.35, "#FF9A2A"], [1, "#C2300C"]],
+        "Transparency": [[0, 0.15], [0.6, 0.3], [1, 1]],
+        "LightEmission": 1,
+        "LightInfluence": 0,
+        "Brightness": 2.5,
+        "Rotation": [0, 360],
+        "RotSpeed": [-90, 90],
+        "ZOffset": 0.4
+      },
+      "why": "main jet: soft puffs tinted hot yellow at the mouth, then orange, then dark red, with additive blending. No hard edges whichever way they rotate. They grow from 0.55 to 2.6 studs and reach about 6 studs, like the sheet"
+    },
+    {
+      "name": "BreathCore",
+      "class": "ParticleEmitter",
+      "attachments": ["BreathFX"],
+      "mode": "trigger",
+      "sheet_key": "Fire breath",
+      "props": {
+        "Texture": "glow",
+        "Enabled": false,
+        "Rate": 30,
+        "Lifetime": [0.12, 0.2],
+        "Speed": [5, 7],
+        "EmissionDirection": "Front",
+        "SpreadAngle": [5, 5],
+        "Size": [[0, 0.5], [1, 1.2]],
+        "Color": [[0, "#FFF4CC"], [1, "#FFC860"]],
+        "Transparency": [[0, 0], [0.7, 0.2], [1, 1]],
+        "LightEmission": 1,
+        "LightInfluence": 0,
+        "Brightness": 4,
+        "ZOffset": 0.8
+      },
+      "why": "white-hot glow at the lips; the higher ZOffset draws it over the snout and hides that the static jaw is closed"
+    },
+    {
+      "name": "BreathSparks",
+      "class": "ParticleEmitter",
+      "attachments": ["BreathFX"],
+      "mode": "trigger",
+      "sheet_key": "Fire breath",
+      "props": {
+        "Texture": "spark_dot",
+        "Enabled": false,
+        "Rate": 24,
+        "Lifetime": [0.5, 0.9],
+        "Speed": [12, 18],
+        "EmissionDirection": "Front",
+        "SpreadAngle": [16, 16],
+        "Drag": 1,
+        "Acceleration": [0, 2.5, 0],
+        "Size": [[0, 0.14], [1, 0]],
+        "Color": [[0, "#FFE2A0"], [0.5, "#FFB347"], [1, "#FF6A1A"]],
+        "Transparency": [[0, 0], [0.8, 0.1], [1, 1]],
+        "LightEmission": 1,
+        "LightInfluence": 0,
+        "Brightness": 3,
+        "ZOffset": 0.4
+      }
+    },
+    {
+      "name": "BreathSmoke",
+      "class": "ParticleEmitter",
+      "attachments": ["BreathFX"],
+      "mode": "trigger",
+      "sheet_key": "Fire breath",
+      "props": {
+        "Texture": "smoke_flip",
+        "Enabled": false,
+        "Rate": 10,
+        "Lifetime": [1.0, 1.5],
+        "Speed": [9, 12],
+        "EmissionDirection": "Front",
+        "SpreadAngle": [12, 12],
+        "Drag": 2,
+        "Acceleration": [0, 2.5, 0],
+        "Size": [[0, 1.0], [1, 3.2]],
+        "Color": [[0, "#4A4240"], [1, "#2B2726"]],
+        "Transparency": [[0, 1], [0.2, 0.45], [1, 0.6]],
+        "LightEmission": 0,
+        "LightInfluence": 1,
+        "Rotation": [0, 360],
+        "RotSpeed": [-40, 40],
+        "FlipbookLayout": "Grid4x4",
+        "FlipbookMode": "OneShot",
+        "FlipbookStartRandom": false
+      },
+      "why": "starts invisible, so the dark smoke first shows past the flames. The OneShot flipbook dissipates it over its lifetime, so the Transparency curve only holds it at 0.45-0.6"
+    }
+  ],
+  "lights": [
+    {
+      "name": "ThroatLight",
+      "class": "PointLight",
+      "attachment": "ThroatFX",
+      "mode": "ambient",
+      "sheet_key": "Throat furnace",
+      "props": {"Enabled": true, "Color": "#FF6A1A", "rgb": [255, 106, 26], "Brightness": 1.2, "Range": 6, "Shadows": false},
+      "animate_later": "a slow sine pulse of Brightness 0.8 to 1.6, about 2.4 s per cycle (needs a client script; the light works without it)"
+    },
+    {
+      "name": "BreathLight",
+      "class": "PointLight",
+      "attachment": "BreathFX",
+      "mode": "trigger",
+      "sheet_key": "Fire breath",
+      "props": {"Enabled": false, "Color": "#FF8A30", "rgb": [255, 138, 48], "Brightness": 3, "Range": 12, "Shadows": false}
+    }
+  ],
+  "material_only": {
+    "Ember eyes": "CinderDrake_Glow: Material Neon, Color 255,122,30, plus the BloomEffect from IMPORT.md. No emitter.",
+    "Throat and chest seams": "Body SurfaceAppearance EmissiveMaskContent (EmissiveStrength 6), already in the export"
+  },
+  "triggers": {
+    "FireBreath": "Set Enabled = true on BreathFlame, BreathCore, BreathSparks, BreathSmoke and BreathLight for as long as the breath lasts, then false; particles already emitted finish their lifetime. How long the breath lasts and when it fires belong to the attack design, which isn't decided yet. When scripts are approved, run this on clients (the server sends one RemoteEvent) as in Visuals/VFX-Particles-Beams-Trails."
+  },
+  "budget": {
+    "ambient": "3 emitters (one definition on 3 attachments, 2 + 2 + 5 = 9 particles/s), about 19 live particles, 1 light",
+    "fire_breath": "4 emitters, 124 particles/s in total (largest 60/s; mobile cap 100/s per emitter), about 66 live particles, 1 light",
+    "vault_targets": "ambient emitter Rate <= 20; big ability <= 150 live particles; lights Shadows off, Range <= 16",
+    "textures": "4 unique: smoke_flip 1024², smoke_puff 256², spark_dot 128², Glow 128²"
+  },
+  "lint": {
+    "method": "roblox-vfx-review lint rules, checked by hand against these spec values on 2026-10-04. The VFXCheck lint and phase freeze were NOT run, because nothing has been built in Studio.",
+    "no-texture": "pass once the Image ids are filled in; until then each texture lists a built-in placeholder",
+    "rate-cap": "pass (largest is 60/s)",
+    "lifetime-cap": "pass (longest is 3 s)",
+    "ambient-rate": "pass (largest ambient emitter is 5/s)",
+    "stream-in-burst": "WARN expected: the breath is channelled (Enabled while breathing), not an Emit() burst. Tag it VFXKind = ability and accept the warning",
+    "invisible": "pass",
+    "flipbook": "pass, as long as BreathSmoke uses Grid4x4 only with the uploaded smoke_flip and None with the placeholder",
+    "brightness": "pass (highest is 4)",
+    "phase-gap": "not applicable to streams",
+    "live-estimate": "pass (about 85 live with ambient and breath together)"
+  },
+  "limits_of_static_mesh": [
+    "The jaw can't open on a static OBJ; the fire starts just in front of the closed lips, and BreathCore covers that. A rigged drake would parent BreathFX to the head/jaw bone.",
+    "Nothing moves, so LockedToPart and VelocityInheritance stay at their defaults."
+  ],
+  "verify": [
+    "After import, set each Attachment's Visible = true and check that the green markers sit at the nostrils, under the throat and in front of the lips. If they don't, use pivot_position: Attachment.WorldPosition = model:GetPivot() * pivot_position.",
+    "Drag is documented as 'the rate in seconds at which individual particles will lose half their speed via exponential decay'; check the reach of the jet and the smoke in Studio and tune Speed/Drag.",
+    "Look at the breath against both a bright sky and a dark cave (additive fire washes out on bright skies; lower Brightness or LightEmission 0.5 if so).",
+    "Run a roblox-vfx-review phase freeze (start / middle / end) once it's built.",
+    "Check frame time on a low-end phone with the breath running (MicroProfiler / Shift+F2)."
+  ],
+  "sources": [
+    "ParticleEmitter API (creator-docs GitHub source ParticleEmitter.yaml, fetched 2026-10-04): an emitter parented to an Attachment spawns from the attachment's position, so rotate the attachment instead of relying on EmissionDirection; Acceleration is global-axis; FlipbookFramerate max 30; OneShot ignores FlipbookFramerate.",
+    "Vault: Visuals/VFX-Particles-Beams-Trails (400/s per emitter, 100/s on mobile, 20 s Lifetime cap, budgets), Assets/VFX-Texture-Pack (texture sizes). Texture alpha measured from the PNGs on 2026-10-04.",
+    "roblox-vfx-review skill: lint rules, VFXLibrary blocks and placeholders."
+  ]
+}

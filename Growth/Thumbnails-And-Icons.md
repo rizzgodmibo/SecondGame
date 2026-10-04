@@ -11,7 +11,7 @@ confidence: medium
 - Turn on **thumbnail personalization** and keep **2–5 thumbnails active** at all times. Roblox reported **+8.5% average QPTR** in testing (some games +50%), and over 8,000 games were using it by Feb 2025 with about **+12% avg** QPTR. Always include your current winner when starting a new test.
 - Click-through only counts if players stay. Since June 2026, RFY ranks on **play-through rate plus first-play bounce rate**, so a misleading thumbnail costs you twice. The rule is "true and exciting": show real gameplay, the real hook and real characters.
 - Small-size rules: **1 focal subject, ≤3 colours dominant, strong value contrast, a big readable face or emotion, ≤3 words of text (or none on the icon)**, and nothing important in the **bottom strip** (player-count overlay).
-- Refresh the thumbnail set **with every major update**. Do not change thumbnails between updates. Upload an **authentic gameplay video**: it autoplays on Home hover/scroll (2026) and plays first on the details page.
+- Refresh the thumbnail set **with every major update**. Roblox recommends leaving the set stable between updates; this is guidance, not a prohibition on correcting inaccurate assets. Upload an **authentic gameplay video**: it autoplays on Home hover/scroll (2026) and plays first on the details page.
 
 ## Details
 
@@ -30,7 +30,7 @@ confidence: medium
 - The table shows Impressions, Qualified Plays, Avg Playtime, **QPTR** and Winning Segment, and populates "after a few hours".
 - **2025 update ("remembers winners")**: a new test that includes the existing winner keeps most traffic on that winner, while challengers get enough impressions to be measured. Roblox reported +0.19% QPTR and 21% fewer impressions wasted on losers. **Always include the incumbent winner.**
 - Roblox advice: keep multiple active rather than choosing one winner, because preferences drift and a loser can become #2 later. Test new sets at each major update, then leave them alone until the next one.
-- Note: personalization still optimises on QPTR even though RFY ranking moved to PTR and bounce in June 2026. ⚠️ verify: whether the personalization metric has since changed to PTR.
+- **Verified 2026-10-04:** the live Thumbnails documentation still names QPTR as the personalization objective. Do not infer thumbnail allocation changes from Home ranking changes; these are different systems. This check does not verify every historical statistic or policy claim in this note.
 
 ### Video policy (official, rejected if broken)
 | Allowed | Not allowed |
@@ -50,19 +50,19 @@ confidence: medium
 | **Value contrast first, hue second** | Dark subject on light background or the reverse. Add a rim light or outline (white or black 4–8 px stroke) to separate the subject from the background. |
 | **Saturated, genre-coded palette** | Bright and high saturation for fantasy/simulator; muted for somber; heavy contrast for horror (official examples). Match [[Art-Direction]]. |
 | **Text: 0 words on the icon, ≤3 big words on the thumbnail** | Text must survive localisation and size. Never use "FREE", "ROBUX", "GIVEAWAY" (giveaway-led metadata gets reduced exposure). Update badges ("NEW WORLD!") are fine if true. |
-| **Bottom ~15% clear** | Official: player count and metadata overlay the bottom. |
+| **Keep bottom clear** | Metadata can obscure essential elements. A 15% margin is a design heuristic, not a documented platform safe area; inspect actual previews. |
 | **Stand out from the sort's neighbours** | Look at the current Home and Charts row for your genre. If everyone uses yellow, use blue. Unique imagery is also an official requirement (copied visuals trigger "non-unique" de-prioritisation). |
 | **Icon consistency for brand** | Keep a recognisable icon character or logo across updates so returning users find you in Continue. Swap seasonal variants (Halloween hat, etc.). |
-| **Promise = first 60 s** | What the thumbnail shows must be reachable within the first minute. See [[Onboarding-And-First-60-Seconds]]. |
+| **Deliver the promise early (recommendation)** | Introduce the advertised hook early. Progression imagery need not be reachable within one minute; avoid implying immediate access when it requires progression. See [[Onboarding-And-First-60-Seconds]]. |
 
 ### Iteration process (repeat each major update)
 1. **Brief**: the update's hook in one sentence, and the target segment (new players vs returning).
 2. **Produce 4–5 variants** that differ by *concept* (character vs environment vs action moment vs social/group shot), not small tweaks. Use real in-game renders plus paint-over. Keep it honest.
 3. **Downscale test**: 150 px icon / 320 px thumbnail; glance test with 3–5 target-age testers.
-4. **Activate 4–5 including the incumbent winner** in personalization. Let it run **≥3–7 days** so it covers a weekend, because Saturday traffic differs. ⚠️ verify: Roblox gives no minimum sample. Practitioner rule is ≥ about 1,000 impressions per variant before judging.
-5. **Read QPTR *and* Avg Playtime per thumbnail.** A thumbnail with high QPTR but low playtime is mis-selling.
-6. Retire variants that sit at the bottom on **both** metrics. Keep 2–3 survivors and add challengers next update.
-7. Reuse winners as **Ads Manager creatives** (≤10 per campaign) and compare CTR there for faster signal. See [[Sponsored-Ads-And-Paid-Acquisition]].
+4. **Choose a stable review window before activation**, including comparable traffic periods. The inspected Thumbnails page specifies neither a universal minimum sample nor test duration. Treat 1,000 impressions and 3–7 days as unvalidated planning guesses, never significance thresholds. Choose evidence requirements around baseline rate, useful effect size and available traffic; see [[AB-Testing]].
+5. **Read QPTR and Avg Playtime together.** QPTR uses Home recommendation qualified plays divided by impressions; Avg Playtime is minutes per qualified play. Low playtime is a diagnostic clue, not proof of mis-selling. Investigate expectation mismatch, audience mix, loading failures and onboarding. This conditional average does not describe every joining player.
+6. **Review before retiring a variant.** Adaptive allocation and different audiences make aggregate differences insufficient evidence of causal creative lift. Preserve potentially useful segment coverage; if evidence is sparse, record inconclusive instead of naming a loser. Recommendation: retire inaccurate assets promptly and document the intervention.
+7. Treat reuse in paid ads as a separate hypothesis: paid CTR cannot establish a Home QPTR winner. Keep placement, audience, attribution and metric definitions separate. See [[Sponsored-Ads-And-Paid-Acquisition]] and [[Roblox Acquisition Experiments and Ad Measurement]].
 8. Log the results in the project notes. For general method see [[AB-Testing]].
 
 ### Policy limits
@@ -71,9 +71,17 @@ confidence: medium
 - No misleading imagery (mismatched metadata gets reduced exposure). Example from the docs: a dinosaur thumbnail on an obby with no dinosaurs.
 - Content shown must fit the game's maturity label. See also the content-maturity docs.
 
+### Evidence acceptance checks (maintenance procedure, 2026-10-04)
+These are proposed checks, not completed analytics tests. No Creator Hub account data, campaign or player experiment was accessed in this pass.
+- [ ] Record asset IDs, build/version, active set, dates/timezone and concurrent game or acquisition changes.
+- [ ] Preserve counts and metric definitions alongside rates; distinguish new/returning audiences where the report supports them.
+- [ ] Record whether the decision is an operational choice, an association or a causal experiment result. Do not claim incremental lift from adaptive aggregate rankings alone.
+- [ ] Record low-traffic results as inconclusive, with the next review condition; do not manufacture a universal success threshold.
+- [ ] Check the advertised gameplay against the actual build and phone previews. Link evidence and record remaining corrections.
+
 ## Checklist
 - [ ] Icon 512×512, readable at 150 px, no text or one short logo word, unique silhouette.
-- [ ] 4–5 home thumbnails at 1920×1080, <3 MB, with nothing critical in the bottom 15%.
+- [ ] 4–5 home thumbnails at 1920×1080, <3 MB, with essential elements clear of overlays in actual previews.
 - [ ] Personalization started; incumbent winner included.
 - [ ] Authentic gameplay video uploaded (no voice, no lyrics, no claims).
 - [ ] Details page: 5–10 media items covering core loop, social, progression and update.
@@ -85,6 +93,7 @@ confidence: medium
 - Choosing one "winner" and deactivating the rest. You lose adaptation to segment and seasonal shifts.
 - Restarting tests mid-update cycle or every day. The data never settles.
 - Using AI-generated art that looks nothing like the game. This breaks the "authentic" rule and causes bounce.
+- Using AI-generated art at all is now a reputational risk: on X, posts rejecting AI thumbnails reach 46k+ likes, and studios advertise "artists contractually bound not to use generative AI" (captured 2026-10-04 in [[X-Thumbnails-And-Icons]]). This is community sentiment, not measured CTR. Test against in-engine renders or human art.
 - Spending the video quota (3/month) on uploads that get rejected.
 
 ## Related
@@ -92,7 +101,7 @@ confidence: medium
 - [[Art-Direction]] · [[AB-Testing]] · [[Onboarding-And-First-60-Seconds]] · [[Sponsored-Ads-And-Paid-Acquisition]]
 
 ## Sources
-- Roblox Creator Docs, *Thumbnails*: https://create.roblox.com/docs/production/publishing/thumbnails (GitHub mirror, 2026-10-02)
+- Roblox Creator Docs, *Thumbnails*: https://create.roblox.com/docs/production/publishing/thumbnails (live page inspected 2026-10-04: personalization objective, metric definitions, update guidance and overlay placement; other sections not fully reverified)
 - Roblox Creator Docs, *Icons*: https://create.roblox.com/docs/production/publishing/experience-icons (2026-10-02)
 - Roblox Creator Docs, *Discovery* and *Discovery FAQ* (reuse of thumbnails; reduced exposure): https://create.roblox.com/docs/discovery
 - DevForum, "[Live now] Personalize your thumbnails to attract more users" (2024-11): https://devforum.roblox.com/t/3257233

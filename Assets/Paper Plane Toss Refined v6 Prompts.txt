@@ -1,0 +1,73 @@
+---
+title: Paper Plane Toss Refined Artwork Prompts
+date: 2026-10-04
+tags: [roblox, art, prompts]
+source: codex
+project: Paper Plane Toss
+status: draft
+updated: 2026-10-04
+confidence: high
+---
+# Paper Plane Toss Refined Artwork Prompts
+
+Built-in image_gen edit mode. New candidates for Holden's review; no publication or measured performance. Related vault note: [[Paper Plane Toss Thumbnails and Game Icon]]. Original attachments preserved as Before files.
+
+## Square icon
+
+Use case: style-transfer / ads-marketing.
+Create ONE substantially refined SQUARE Roblox discovery icon for Paper Plane Toss. Input 1 is the EXACT icon to improve; inputs 2 and 3 are stylistic references only. Keep the identity of the orange bacon-haired, white plastic Roblox avatar in black jacket, blue shirt, dark green trousers, the WHITE folded paper plane, +1 hook and smooth pastel sky-island world from input 1. Adopt the sophisticated three-dimensional rendering, expressive face decal, dynamic camera, substantial clean white contours and layered action of references 2/3. Do not copy their objects or setting.
+
+Art direction: premium dimensional Roblox promotional render, crisp shaped highlights on sculpted orange hair, real bevelled plastic block limbs, deep clean occlusion, graphic black face decals, beautifully lit paper folds. No flat vector look, no painterly mush, no photoreal human hands. Replace the passive smile with a lively confident delighted grin, focused expressive eyes and brows, looking along the throw. Preserve recognizably blocky Roblox proportions.
+
+Composition: deliberately compose for 150px square viewing. The avatar leans into a powerful throw from the left, face larger than before, legs partially cropped to free space for the action. A LARGE but balanced white paper dart with crisp pale cyan shaded folds rushes toward upper right, with a little foreshortening, fully inside the square. Avatar face and plane form one tightly grouped diagonal, neither hides the other. One bold yellow '+1' with black keyline and neat white outer contour in the upper right clear sky. No other text and remove the tiny duplicate +1. One foreground cloud puff below the plane with one unmistakable white arc connecting the throwing hand down onto this puff and up behind the plane; a few clean tapered cloud wisps communicate impact, not water splashes. Keep the trajectory readable and continuous, never forked or a bundle of laser beams.
+
+Maintain authentic setting: small curved smooth pastel mint/lime grass launch ledge at lower left, faceted tan underside, softly faceted rounded green trees; a subdued distant pink tree island and continuous white cloud lane receding to a tiny rainbow arch. Retain saturated azure sky. Keep most scenery slightly softer and quieter than the face and plane; reduce cliff area and decorative flowers. Strong warm orange vs cyan/blue separation, controlled white rim outlines on avatar and plane, sunlight with restrained bloom. No Minecraft cubes, voxel terrain, studs, square trees, snow, gems, coins, chests, sleds, monsters, extra planes, logos or watermark. Output only the finished square image, edge to edge, opaque background, no comparison layout.
+
+## How Far
+
+Use case: style-transfer / ads-marketing.
+Refine input 1 into ONE finished LANDSCAPE 16:9 Roblox game thumbnail for Paper Plane Toss, ideally 1920x1080. Inputs 2 and 3 are art quality and dynamic rendering references only. Preserve input 1's premise and specific assets: bacon-haired Roblox avatar throws a golden folded paper plane with red wing tips and two white outlined stars across bounce clouds, smooth pastel green sky islands, distant cloud lane and tiny rainbow arch, and exact headline "HOW FAR?". This is a substantive refinement of its visual storytelling, not a new game.
+
+Adopt the references' three-dimensional depth, dramatically expressive face decals, confident deliberate plastic highlights, larger faces, clean white cutout edge contours, camera tilt and layered foreground depth. DO NOT import their snow, sled, coins, crystals, chests, pumpkins, or extra characters. The game is tossing PAPER planes off clouds, not riding them.
+
+Composition: dynamic wide-angle three-quarter perspective. Enlarge the orange-haired avatar's expressive head/upper torso on left, leaning into a powerful throw, black jacket / blue printed shirt / dark green trousers maintained. Face has raised brows, clear large excited eyes and delighted open grin as he looks toward his amazing throw. NOT the original passive smile; not screaming fear. A spectacular but clearly PAPER folded gold/red plane dominates the upper right with angular thin folded wings, increasing perspective and crisp edges, fully within frame with breathing room at the tip. Reduce the headline to roughly the top fifth rather than the huge top third, using familiar gold 3D letters with plum shading and clean white edge. Exact legible text "HOW FAR?" once. Let plane, face and headline have separate uncluttered silhouettes.
+
+A single golden flight arc leaves the throwing hand, descends onto one large cloud at lower middle, rebounds onto a second smaller cloud mid-right, then rises cleanly behind the airborne plane at upper-right. Trace one coherent left-to-right route with two bounces; no disconnected line, extra path or straight hand-to-plane laser. Clouds have sculpted rounded volume and a few stylized airy impact puffs; never water. Gold glow concentrated at bounce points and plane rim, avoid blanket bloom. Flight lane recedes beneath them in perspective. Bottom edge carries only scenery, keeping face, plane, text away from overlays.
+
+Environment from input 1 stays true: smooth organic pastel grass, faceted warm beige floating island undersides, rounded layered green/pink tree canopies, vines, subtle distant rainbow arch. Fewer sharper foreground shapes, quiet slightly defocused distant islands, strong sky separation. No cubes, studs, Minecraft turf, cubic trees, realistic skin, malformed hands, duplicate limbs, additional text, logo or watermark. Render like polished dimensional Roblox advertising art with rich controlled color and crisp contact shadows, not flat vector art. Output only the finished 16:9 banner, opaque, no montage.
+
+## Noob Pro initial edit
+
+Use case: style-transfer / ads-marketing.
+Refine input 1 into ONE finished LANDSCAPE 16:9 Roblox Paper Plane Toss progression thumbnail, ideally 1920x1080. Input 1 is the edit target. Inputs 2 and 3 are references for expressive three-dimensional Roblox rendering, purposeful depth, thick clean white contours and dynamic character poses only. Preserve this game's sky setting and two-panel before/progression premise. Do not reproduce the references' content.
+
+Maintain the diagonal divider: left about 38% of composition, right about 62%. Exact text only: "NOOB" at top left in cream dimensional letters, "PRO" at top right in gold dimensional letters, "+1" near the starter bounce, "+10K" near the pro bounce. Dark plum shadows/keys and neat white outer edges unify the set. Headers slightly smaller than original so expressive faces and physical paper planes dominate. Keep all four text elements correctly spelled and comfortably inside frame.
+
+LEFT: same orange bacon hair, white Roblox plastic skin, black jacket, printed blue shirt, dark green pants. Show disappointed bemused face with worried eyebrows, eyes tracking the little white starter paper plane, a small wobbly frown. Real black face-decal expression, not generic emoji floating over head. An anatomically coherent block hand releases the small thin folded white plane; short clean white bounce arc reaches a single cloud puff and '+1'. Keep the white plane immediately recognizable even at 300px-wide thumbnail size.
+
+RIGHT: same avatar identity, now with the reference banner's confident mischievous broad grin and determined expressive brows, bigger three-quarter head, forceful throwing follow-through. His white block hand extends toward the action, clean articulation, no realistic fingers or extra limbs. Hero golden folded paper plane with red tips and two outlined star motifs in upper right, crisp thin folded wings with dramatic foreshortening and warm rendered highlights. It has just bounced off cloud puffs, not a metallic jet. One readable gold path from the hand down to a cloud puff, then a smaller farther cloud, then up behind the airborne plane; no competing straight laser from hand to plane, no crossing or reversing trail. Put '+10K' by a cloud with open blue around it. Purple/blue accent rays quietly support the plane, with a few tiny sparkles, avoiding blown-out glow.
+
+All environment retains input 1's smooth pastel organic grass islands with tan low-poly undersides, rounded layered green/pink trees and hanging vines, distant continuous white cloud lane and small rainbow arch. Keep scenery simple and slightly softer than subjects, fewer duplicate islands. Strong cyan sky contrasts with orange hair and yellow plane. Match references' polished dimensional plastic lighting, crisp edges, dark contact shading and white contour around character silhouettes, not just their color scheme. No block grass, voxel cubes, studs, square trees; no snow, crystals, coins, sleds, chests, new mechanics or extra characters. No logo/watermark. Finished opaque 16:9 image only; do not output comparison sheet.
+
+## Noob Pro trajectory cleanup
+
+Precise cleanup of this Paper Plane Toss 16:9 thumbnail. Keep the entire image's characters, faces, clothes, hairstyle, gold/red star paper plane, typography NOOB PRO +1 +10K, divider, lighting and smooth pastel island environment exactly as they are. Change ONLY the right panel's GOLD FLIGHT TRAIL and its cloud bounce.
+
+The current gold streaks incorrectly imply a direct hand-to-plane laser and multiple disconnected routes. Erase ALL existing gold motion streaks and arcs in the pro panel, including the straight streak bundle immediately behind the plane. Keep the plane's thin white edge and small star sparkles. Remove the far lower-right second bounce cloud and its arc, revealing quiet blue sky/cloud-lane background.
+
+Draw ONE clear, graceful continuous golden motion curve from the avatar's extended hand at about (66% width,45% height), arcing right/down to touch the top of the single existing foreground cloud at about (77% width,68% height), then sharply bouncing UP and RIGHT into the trailing lower edge of the gold plane at about (85% width, forty percent height). The bounce point must visibly meet that cloud. This is one route with one bounce, no branch or duplicate route, no direct hand-to-plane streak. Use one thin bright white-gold core with restrained gold edging and a small tidy airy impact puff at contact. Keep '+10K' clear to the right of the contact cloud. Preserve all other pixels as closely as possible. No new objects or words. Output the finished landscape image only.
+
+## Input provenance
+
+- Icon target: C:/Users/holde/Downloads/ChatGPT Image Oct 3, 2026, 07_10_11 PM.png
+- How Far target: C:/Users/holde/Downloads/exec-1107a03d-ec85-43d3-8f92-8abd8af5445d.png
+- Noob Pro target: C:/Users/holde/Downloads/exec-623f2324-e2ed-463b-9b1b-5336c2663b02.png
+- Square rendering reference: C:/Users/holde/AppData/Local/Temp/codex-clipboard-fb920d96-771a-4d6e-9046-2d19b56c9973.png
+- Wide rendering reference: C:/Users/holde/AppData/Local/Temp/codex-clipboard-ee13c31a-81a7-47b3-9b05-b5a56147c36d.png
+- Cleanup target: C:/Users/holde/.codex/generated_images/01a10361-ec6f-7991-a447-d1fe937dad2a/exec-17d68fc0-cf1a-4e24-b653-3ed3f89758c0.png
+
+## Sources
+
+- [Roblox icon guidance](https://create.roblox.com/docs/production/publishing/experience-icons)
+- [Roblox thumbnail guidance](https://create.roblox.com/docs/production/publishing/thumbnails)
+

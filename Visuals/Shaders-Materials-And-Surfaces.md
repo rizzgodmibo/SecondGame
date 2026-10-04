@@ -40,6 +40,11 @@ confidence: medium
 - `AlphaMode`: `Overlay` (default; transparent areas show `MeshPart.Color` — use for one mesh in many colours), `Transparency` (real cut-out/blend: leaves, hair cards, lace), `TintMask` (alpha marks where `SurfaceAppearance.Color` tints — recolourable cosmetics), `Opaque` (ignore alpha).
 - PBR map budgets (Roblox guideline): 256² per 2×2×2-stud object, 512² for 4×4×4, **1024² max** for 8×8×8 (characters). See [[Blender-To-Roblox-Pipeline]].
 - Image formats for maps: Albedo RGB 24-bit; Normal RGB 24-bit **OpenGL (Y+)**; Roughness/Metalness/Emissive single-channel 8-bit greyscale.
+- **Emissive masks** went live for published experiences on **2026-02-12**. They use the Neon pipeline, so they work on all devices, and the red channel of an RGB mask is read.
+  - The glow colour comes from the **ColorMap**: final ≈ `(EmissiveMask × EmissiveStrength × EmissiveTint + light) × ColorMap`. The Studio inspector slider for EmissiveStrength runs 0–40.
+  - **Practical rule:** glowing texels must be painted in the glow colour *in the ColorMap*. A dark albedo under a white mask does not glow. Leave EmissiveTint white and drive the brightness with EmissiveStrength.
+  - Used this way for [[Fantasy-Creatures-Set]] (Cinder Drake throat embers).
+  - ⚠️ verify: the formula is quoted from the Studio Beta thread, not from the docs page. Check it in Studio on a test mesh.
 
 ## Built-in material notes
 - `Neon`: unlit, glows with Bloom; cheap; overuse makes scenes noisy and thumbnails blown-out.

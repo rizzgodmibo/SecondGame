@@ -34,7 +34,7 @@ confidence: high
 
 ## Open verification items (folder-wide)
 - ⚠️ verify: whether "Deep play-through rate" (early 2026) is still an RFY signal after the 2026-06-15 signal list.
-- ⚠️ verify: thumbnail personalization still optimising QPTR (vs PTR) after June 2026.
+- Resolved 2026-10-04: thumbnail personalization objective checked against the live primary source; see [[Thumbnails-And-Icons]] for scope and remaining evidence limits.
 - ⚠️ verify: CPP ranges (community data conflicts: ~$0.01 vs ~$0.45 per play).
 - ⚠️ verify: launch-time-of-day and seasonal uplift heuristics against your own hourly CCU.
 

@@ -1,0 +1,112 @@
+{
+  "model": "FrostfangWolf",
+  "units": "studs",
+  "pivot": "file origin = ground under the creature, front faces -Z",
+  "bbox_min_rbx": [
+    -1.033,
+    -0.004,
+    -3.815
+  ],
+  "bbox_max_rbx": [
+    1.032,
+    5.08,
+    4.467
+  ],
+  "size_studs": [
+    2.07,
+    5.08,
+    8.28
+  ],
+  "parts": {
+    "FrostfangWolf_Body": {
+      "tris": 5664,
+      "material": "SmoothPlastic"
+    },
+    "FrostfangWolf_Ice": {
+      "tris": 442,
+      "material": "Glass"
+    },
+    "FrostfangWolf_Glow": {
+      "tris": 180,
+      "material": "Neon"
+    }
+  },
+  "attachments": {
+    "Mouth": [
+      0.0,
+      3.68,
+      -3.8
+    ],
+    "EyeL": [
+      0.34,
+      4.06,
+      -3.02
+    ],
+    "EyeR": [
+      -0.34,
+      4.06,
+      -3.02
+    ],
+    "Spine1": [
+      -0.007,
+      4.223,
+      -0.824
+    ],
+    "Spine2": [
+      -0.004,
+      4.317,
+      -0.239
+    ],
+    "Spine3": [
+      0.004,
+      4.156,
+      0.22
+    ],
+    "Spine4": [
+      0.002,
+      3.972,
+      0.68
+    ],
+    "Spine5": [
+      -0.003,
+      3.78,
+      1.126
+    ],
+    "PawFL": [
+      0.6,
+      0.04,
+      -1.25
+    ],
+    "PawFR": [
+      -0.6,
+      0.04,
+      -1.25
+    ],
+    "PawBL": [
+      0.62,
+      0.04,
+      1.4
+    ],
+    "PawBR": [
+      -0.62,
+      0.04,
+      1.4
+    ],
+    "TailTip": [
+      0.003,
+      1.862,
+      4.116
+    ],
+    "Chest": [
+      0.0,
+      2.8,
+      -1.6
+    ],
+    "Root": [
+      0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  "texture": "FrostfangWolf_Color.png"
+}

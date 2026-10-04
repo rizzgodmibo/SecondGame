@@ -18,6 +18,7 @@ confidence: high
 | [[Progression-Curves]] | Linear/polynomial/exponential/geometric/logistic curves with formulas and worked tables, TTN targets, and a `--!strict` big-number formatter (K…Vg). |
 | [[Reward-Schedules]] | FR/VR/FI/VI schedules, loot-table math, pity systems, near-miss ethics, Roblox paid-random-item rules, and weighted loot code with luck and pity. |
 | [[Difficulty-And-Mastery]] | Flow and sawtooth difficulty, skill floor/ceiling, obby gap tiers, combat knobs, consented adaptive difficulty, and an assist-offer script. |
+| [[Roblox Map Audit Skill]] | Claude Code skill: raycast audit of a map with real movement numbers (reachability, pits, floating parts, sight lines, overlaps, rings) |
 | [[Prestige-And-Rebirth]] | When to unlock rebirth, multiplier models, the run-length law (g/m), optimal reset point, and the reset-vs-persist table. |
 | [[Idle-And-Offline-Earning]] | Server-time offline gains (cap/efficiency/min), timestamp-based growth, exploit table, and return-incentive design, with code. |
 | [[Economy-Design-Sinks-And-Faucets]] | Currency architecture, faucet/sink catalogues, spreadsheet model with sink ratio, inflation signals, and safe trading (GUIDs, atomic commits, PolicyService). |

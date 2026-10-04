@@ -29,7 +29,7 @@ Check [[Gap-Tracker]] for what is due next.
 - [[Retention/_Index|Retention]] — D1/D7/D30, dailies, events, social, community
 - [[Operations/_Index|Operations]] — analytics, A/B, live-ops, scaling, policy, post-mortems
 - [[Reference/_Index|Reference]] — real-game icons, thumbnails, videos, UI and VFX breakdowns
-- `Assets/` — owner-supplied icon packs and reference captures ([[Free-Icon-Pack-v3.1-Basic]], [[Dragons-Hoard-Set]], [[VFX-Texture-Pack]])
+- `Assets/` — owner-supplied icon packs and reference captures ([[Free-Icon-Pack-v3.1-Basic]], [[Dragons-Hoard-Set]], [[VFX-Texture-Pack]], [[Fantasy-Creatures-Set]])
 - `Projects/` — per-game specs (use [[Project-Template]])
 - `Inbox/` — untriaged findings
-- `Meta/` — [[Gap-Tracker]], [[Verification-Log]], [[Sources]], [[Prompt-Library]] (reusable prompts for asking Claude), [[AI-Assisted-Workflow]] (how to drive AI tools well)
+- `Meta/` — [[Gap-Tracker]], [[Verification-Log]], [[Sources]], [[Prompt-Library]] (reusable prompts for asking Claude), [[AI-Assisted-Workflow]] (how to drive AI tools well), [[Gauntlet-Loop]] (builder/critic quality loop)

@@ -30,4 +30,4 @@ confidence: medium
 When numbers are bad, fix in funnel order: **impressions → CTR → play-through → session length → D1 → D7 → payer conversion → ARPPU**. See [[Bad-Launch-Response]].
 
 ## Related
-- [[Home]] · [[Gap-Tracker]]
+- [[Home]] · [[Gap-Tracker]] · [[Roblox Game Manager Skill]] (Claude Code skill that runs this playbook phase by phase, with gates and evidence)

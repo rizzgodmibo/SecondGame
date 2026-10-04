@@ -1,0 +1,126 @@
+{
+  "model": "CinderDrake",
+  "version": "v3 (anatomy + surface/colour, 2026-10-04)",
+  "units": "studs",
+  "pivot": "file origin = ground under the creature; it faces -Z (Roblox front) after import",
+  "size_studs": [
+    7.98,
+    7.63,
+    14.5
+  ],
+  "parts": {
+    "CinderDrake_Body": {
+      "tris": 16490
+    },
+    "CinderDrake_Wings": {
+      "tris": 3648
+    },
+    "CinderDrake_Glow": {
+      "tris": 160
+    }
+  },
+  "total_tris": 20298,
+  "surface_appearance": {
+    "CinderDrake_Body": {
+      "ColorMap": "CinderDrake_Body_Color.png",
+      "NormalMap": "CinderDrake_Body_Normal.png",
+      "RoughnessMap": "CinderDrake_Body_Roughness.png",
+      "EmissiveMaskContent": "CinderDrake_Body_Emissive.png",
+      "EmissiveStrength": 6.0,
+      "EmissiveTint": [
+        255,
+        255,
+        255
+      ],
+      "AlphaMode": "Overlay"
+    },
+    "CinderDrake_Wings": {
+      "ColorMap": "CinderDrake_Wings_Color.png",
+      "NormalMap": "CinderDrake_Wings_Normal.png",
+      "RoughnessMap": "CinderDrake_Wings_Roughness.png",
+      "AlphaMode": "Overlay"
+    }
+  },
+  "glow_part": {
+    "CinderDrake_Glow": {
+      "Material": "Neon",
+      "Color": [
+        255,
+        122,
+        30
+      ]
+    }
+  },
+  "attachments_rbx": {
+    "Mouth": [
+      0.0,
+      2.182,
+      -5.128
+    ],
+    "NostrilL": [
+      0.123,
+      2.528,
+      -5.405
+    ],
+    "NostrilR": [
+      -0.123,
+      2.528,
+      -5.405
+    ],
+    "EyeL": [
+      0.375,
+      2.89,
+      -4.345
+    ],
+    "EyeR": [
+      -0.375,
+      2.89,
+      -4.345
+    ],
+    "Throat": [
+      0.0,
+      2.6,
+      -2.3
+    ],
+    "Chest": [
+      0.0,
+      2.2,
+      -1.95
+    ],
+    "Back1": [
+      0.0,
+      4.0,
+      -0.9
+    ],
+    "Back2": [
+      0.0,
+      3.8,
+      0.6
+    ],
+    "Back3": [
+      0.0,
+      3.8,
+      2.0
+    ],
+    "TailTip": [
+      0.0,
+      0.58,
+      9.0
+    ],
+    "WingTipL": [
+      3.95,
+      7.6,
+      1.75
+    ],
+    "WingTipR": [
+      -3.95,
+      7.6,
+      1.75
+    ],
+    "Root": [
+      0.0,
+      0.0,
+      -0.0
+    ]
+  }
+}

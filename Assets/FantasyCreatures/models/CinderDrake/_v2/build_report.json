@@ -1,0 +1,78 @@
+{
+  "model": "CinderDrake",
+  "units": "studs",
+  "pivot": "file origin = ground under the creature, front faces -Z",
+  "bbox_min_rbx": [
+    -2.102,
+    -0.093,
+    -5.446
+  ],
+  "bbox_max_rbx": [
+    2.1,
+    6.517,
+    5.6
+  ],
+  "size_studs": [
+    4.2,
+    6.61,
+    11.05
+  ],
+  "parts": {
+    "CinderDrake_Body": {
+      "tris": 10396,
+      "material": "SmoothPlastic"
+    },
+    "CinderDrake_Glow": {
+      "tris": 340,
+      "material": "Neon"
+    }
+  },
+  "attachments": {
+    "Mouth": [
+      0.0,
+      4.62,
+      -4.894
+    ],
+    "NostrilL": [
+      0.208,
+      5.036,
+      -4.873
+    ],
+    "NostrilR": [
+      -0.208,
+      5.036,
+      -4.873
+    ],
+    "TailTip": [
+      0.0,
+      2.75,
+      5.2
+    ],
+    "Back1": [
+      0.0,
+      3.9,
+      -0.9
+    ],
+    "Back2": [
+      0.0,
+      3.75,
+      0.3
+    ],
+    "Back3": [
+      0.0,
+      3.7,
+      1.5
+    ],
+    "Chest": [
+      0.0,
+      2.9,
+      -1.7
+    ],
+    "Root": [
+      0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  "texture": "CinderDrake_Color.png"
+}

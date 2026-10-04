@@ -195,6 +195,30 @@ Client side: wrap `InvokeServer` in `pcall` — it errors if the server handler 
 | Plain RemoteEvents + Guard | none | – | Small/casual games; fine up to moderate traffic |
 Generated serializers validate **types** but not **game rules** — still rate-limit and check state.
 
+### Mutation contract review (2026-10-04)
+**Verified platform guidance:** server validation must cover permission, structure and values. NaN and infinity remain numbers; reject them before arithmetic. Client-triggered effects also need validation before relay. Source: Roblox's client-server boundary guide below.
+
+**Local documentation observation:** the shop excerpt above prints a purchase and leaves spending/granting as comments. It is not a complete transaction implementation. These snippets have not been type-checked or run in this maintenance pass.
+
+**Recommended procedure (engineering synthesis, not a Roblox API guarantee):**
+1. For each action, document caller identity, payload bounds, allowed target IDs, prerequisites, authoritative state owner, mutation and reply. A valid Instance class/ancestor is not proof of ownership or permission.
+2. Bound work before doing expensive traversal or service calls. Configure finite positive limiter parameters and costs on the server; never take the token cost from the payload. Clean up per-player bookkeeping and bound diagnostic output.
+3. For balances and inventory, validate and commit together through the state owner. If work yields between checking and committing, revalidate the prerequisites afterwards or serialize competing operations. Rate limiting does not prevent overlapping requests.
+4. Define retry semantics per action. A repeatable purchase may legitimately happen twice; a one-time reward must transition eligibility once. Scope any request identifier to player and action, bound its retained history, and state whether protection survives rejoin/server failure. An in-memory identifier is not durable receipt handling; see [[ProcessReceipt-Handling]].
+5. Send success only after the authoritative mutation succeeds. Define recovery for partial failure before implementation; spending and granting as unrelated calls can leave a player charged without an item. Do not claim cross-profile atomicity from a single-profile update.
+
+**Acceptance cases to execute when game implementation is authorized — not test results:**
+| Case | Required evidence |
+|---|---|
+| Wrong type, NaN, infinity, oversized text/table, unknown item, wrong owner | Rejected with no balance, inventory, save or broadcast side effect |
+| Minimum/maximum legal input and normal mobile tapping | Expected result with the intended limiter configuration |
+| Two requests competing for the last affordable purchase | State invariant holds; no negative balance or unmatched grant |
+| Retry after lost acknowledgement; duplicate one-time claim | Documented retry behavior, no duplicate one-time reward |
+| Profile ends/player leaves while prerequisite work yields | No mutation through invalid session; no stale success reply |
+| Burst across several actions, malformed input flood | Bounded work/logging and recovered limiter state; record observed cost |
+
+**Helper caveats:** Guard.number only rejects infinity via bounds when those bounds are finite. Guard.vector3 needs a finite non-negative magnitude bound; zero-length directions must be rejected before normalization. The sample limiter and strike counter need lifecycle/configuration review before reuse. Keep these as open implementation checks rather than claiming the existing excerpt is production-hardened.
+
 ## Checklist
 - [ ] All remotes created by server code (or generated) in one place (`ReplicatedStorage.Remotes` or lib).
 - [ ] Every server handler: limiter → type guard → state check → act.
@@ -223,3 +247,5 @@ Generated serializers validate **types** but not **game rules** — still rate-l
 - https://create.roblox.com/docs/reference/engine/classes/RemoteEvent ("approximately 500 requests per second, per client … shared among all remote events of the same type", read 2026-10-04)
 - https://create.roblox.com/docs/reference/engine/classes/UnreliableRemoteEvent (1,000-byte payload limit, read 2026-10-04)
 - https://github.com/1Axen/blink, https://github.com/red-blox/zap, https://github.com/ffrostfall/ByteNet (tags checked 2026-10-04)
+
+- https://create.roblox.com/docs/scripting/security/client-server-boundary (live primary page inspected 2026-10-04: numeric/context validation, server rate limits and relayed effects; mutation procedure above is engineering synthesis)

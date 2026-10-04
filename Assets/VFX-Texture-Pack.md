@@ -7,7 +7,7 @@ game: none
 source: me
 tags: [assets/vfx, visuals/vfx, textures, particles, impact-frames]
 status: draft
-updated: 2026-10-03
+updated: 2026-10-04
 confidence: high
 ---
 
@@ -73,12 +73,23 @@ Roblox can't play MP4 files, so those are reference previews only. Use the still
 ## Usage notes
 - **Flipbooks:** set ParticleEmitter `FlipbookLayout` to Grid4x4 and `FlipbookMode` to OneShot or Loop.
 - **Strips** suit `Beam.Texture` with `TextureMode = Wrap` or `Stretch`, and soft trails suit `Trail.Texture`.
-- Link game-specific VFX systems here with [[wikilinks]] once they exist.
+- Link game-specific VFX systems here with [[wikilinks]] once they exist. [[Roblox VFX Review Skill]] maps every texture here to a building block (`VFXLibrary.luau`); write uploaded ids there too.
+- **Used by:** the Cinder Drake VFX spec v2 in [[Fantasy-Creatures-Set]] (`models/CinderDrake/VFX.md`, 2026-10-04). It uses:
+  - smoke_flip4x4 (breath smoke, OneShot);
+  - smoke_puff (nostril smoke, and the breath flames tinted fire colours with additive blending);
+  - spark_dot (embers and breath sparks);
+  - plus `Glow.png` from [[Dragons-Hoard-Set]] for the breath core.
+  - It doesn't use fire_flip4x4 (see Pitfalls). Upload those textures once and record their Image ids in the tables above.
 
 ## Pitfalls
 - **Use the Image id, not the Decal id.** Uploading as a Decal in Creator Hub gives a Decal id. `ParticleEmitter.Texture` needs the underlying Image id; Asset Manager bulk import gives that directly. ⚠️ verify the current Creator Hub upload flow.
 - **The 1920x1080 impact backgrounds are larger than needed.** On mobile, prefer the 1024x576 versions.
 - **The 1024² flipbooks cost the most texture memory in the pack.** Don't run all three on screen at once on low-end phones.
+- **`VFX_fire_flip4x4` is a torch-flame sheet.** Every frame's flame base is cut flat, and three frames also have detached tips cut flat at the top. Measured from the PNG, 2026-10-04.
+  - Use it for **anchored** flames: torches, braziers and burning ground, with low Speed, upward Acceleration and Rotation 0.
+  - Flying or rotating particles (fire jets, fireball bursts with SpreadAngle 180) show the straight edges. In the drake breath preview they stacked into a hard-edged slab.
+  - For flying fire, use soft round sprites (smoke_puff, Hoard `Glow.png`) tinted hot-to-cool with LightEmission 1.
+- **`VFX_smoke_flip4x4` fades by itself.** Each frame's centre alpha drops from 0.95 in frame 1 to about 0 by frames 14–16. Use FlipbookMode **OneShot** with FlipbookStartRandom off; Loop or a random start pops back to full opacity mid-life. Measured from the PNG, 2026-10-04.
 
 ## Related
 - [[VFX-Particles-Beams-Trails]] · [[Dragons-Hoard-Set]] (its own particle PNGs: sparkle, ember, frost flake, bubble, glow, coin glint, shine) · [[Free-Icon-Pack-v3.1-Basic]] · [[Icon-And-Thumbnail-Gallery]]

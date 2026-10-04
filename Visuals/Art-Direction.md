@@ -41,6 +41,7 @@ Low-cost style tactics: palette-atlas texturing (one 256² swatch for everything
 3. Keep accents ≥ 30% more saturated than world colours.
 4. Store as `StyleSheet` tokens for UI ([[UI-Architecture]]) and as a palette texture/material list for 3D.
 5. Validate in-engine under game lighting, not in Photoshop.
+6. Build shade ramps by hue-shifting, not just darkening: each darker step moves the hue toward blue/purple, raises saturation and lowers brightness; lighter steps do the reverse. RhosGFX example: H129 S37 B94 / H165 S91 B78 / H179 S99 B62 (see [[X-Game-Feel-And-Showcases]]; a community designer rule, not a platform fact).
 
 Example simulator palette (hex): grass `#5BC65B`, path `#E8D3A2`, rock `#8A8FA3`, sky tint `#8FD3FF`, accent/coin `#FFD23F`, CTA `#2ECC71`, premium `#B66DFF`, danger `#FF4D4D`, panel `#1E2235` @ 20% transparency.
 
@@ -89,7 +90,7 @@ When entering a genre, screenshot the top 10 games' thumbnails and in-game views
 - Changing art style mid-life without a full pass — old areas look abandoned.
 
 ## Related
-- [[Visuals/_Index]] · [[Thumbnails-And-Icons]] · [[Lighting-And-Atmosphere]] · [[UI-Architecture]] · [[UI-Polish-And-Juice]] · [[Blender-To-Roblox-Pipeline]] · [[Shaders-Materials-And-Surfaces]] · [[Asset-Creation-Workflow-And-Marketplace]] · [[Genre-Playbooks]]
+- [[Visuals/_Index]] · [[Thumbnails-And-Icons]] · [[Lighting-And-Atmosphere]] · [[UI-Architecture]] · [[UI-Polish-And-Juice]] · [[Blender-To-Roblox-Pipeline]] · [[Shaders-Materials-And-Surfaces]] · [[Asset-Creation-Workflow-And-Marketplace]] · [[Genre-Playbooks]] · [[X-Reference-Library]]
 
 ## Sources
 - Roblox accessibility (colour non-reliance, contrast) — https://create.roblox.com/docs/production/publishing/accessibility

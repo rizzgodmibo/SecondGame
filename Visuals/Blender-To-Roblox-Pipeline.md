@@ -60,6 +60,19 @@ confidence: high
 | Emissive mask | 8-bit greyscale | With `EmissiveStrength`/`EmissiveTint` |
 
 Budget: 64–128² (1×1×1 stud items), 256² (2×2×2), 512² (4×4×4), **1024² max** (8×8×8 / characters); non-albedo maps for rigid accessories ≤ 256². Name textures with affixes and connect them in Blender's Principled BSDF so the Importer auto-creates the SurfaceAppearance. See [[Shaders-Materials-And-Surfaces]].
+- **Format caveat (checked 2026-10-04):** automatic SurfaceAppearance creation is documented for **FBX** "Import as model" uploads, where the Principled BSDF has Base Color/Metallic/Roughness textures and the normal map goes through a Normal Map node. Nothing is documented for **OBJ + MTL**.
+  - With OBJ, the MTL carries only `map_Kd`. Insert a SurfaceAppearance under each MeshPart in Studio and paste the uploaded image IDs. The importer also turns an RGB emissive map into an emissive mask.
+- **Baking a SurfaceAppearance set in Blender** (local observations, [[Fantasy-Creatures-Set]] v3):
+  - selected-to-active Cycles bakes of DIFFUSE (colour only), NORMAL (tangent, +X +Y +Z = OpenGL), ROUGHNESS and EMIT;
+  - triangulate and set sharp-by-angle on the low mesh *before* baking, so Blender's tangents match the exported mesh;
+  - write the data maps with a raw PNG writer (zlib), so no view transform touches them.
+  - **Join the high-res parts into one bake source before baking.** Selected-to-active raycasts every selected object per texel. 300 parts took 323 s per 1024 pass; one joined proxy took 1.5 s.
+  - **Creature UVs:**
+    - cut anatomical regions with ring seams plus one underside seam each, and use an angle-based unwrap;
+    - split the head into left and right halves (whole, it folded);
+    - smart-UV the feet and the small parts, and give plates planar islands;
+    - weight the texel share by importance (skin first);
+    - this took the drake from 19% to 61% atlas use and from 45 to 80 px/stud. Details in [[Fantasy-Creatures-Set]].
 
 ## Export formats
 | Format | Use | Notes |
@@ -119,8 +132,20 @@ Also: `CanCollide = false` + `CanQuery = false` + `CanTouch = false` for pure de
 - Overlapping coplanar faces (trim on a plank, rim on a wall top) → z-fighting stripes. Offset trims by 0.015–0.03 studs (seen in [[Dragons-Hoard-Set]]).
 - OBJ + MTL with `path_mode=COPY` puts a copy of the atlas next to every OBJ → the importer uploads one identical texture per model. Repoint every MeshPart to one `TextureID` afterwards.
 
+## Sculpted creatures → baked game mesh (local observation, 2026-10-04)
+Worked example: [[Fantasy-Creatures-Set]] (`Assets/FantasyCreatures/build_creatures.py`). These steps were tested in Blender only, and the Studio import is unverified.
+1. **High-detail model.** Sculpt organic bodies as signed-distance fields, meshed with surface nets. Hard parts are explicit meshes. Procedural Cycles materials read per-vertex zone attributes.
+2. **Game mesh:**
+   - COLLAPSE-decimate the dense meshes to per-object targets.
+   - Disable Subsurf and drop bevels to 1 segment.
+   - Join per Roblox MeshPart: `_Body` (textured), `_Crystals`/`_Ice` (textured, same PNG, Glass) and `_Glow` (flat colour, Neon).
+3. **One UV space and one 1024² texture per creature.** Run Smart UV Project on all textured parts at once in multi-object edit mode, then pack.
+4. **Bake** selected-to-active (cage 0.08, ray 0.3): DIFFUSE colour-only (AO nodes count) plus EMIT, combined in numpy. About 33 s per pass on an RTX 4060 Ti.
+5. **Export:** OBJ forward −Z / up Y, `path_mode="STRIP"` (the MTL names the PNG next to it). Write a `build_report.json` with tris, size and attachment points in Roblox axes relative to the file origin.
+- Result: 6.3–7.8k tris per creature. The game mesh looks almost the same as the Cycles render because the AO and colour zones are baked in.
+
 ## Related
-- [[Visuals/_Index]] · [[Shaders-Materials-And-Surfaces]] · [[Animation-Rigging-And-IK]] · [[Asset-Creation-Workflow-And-Marketplace]] · [[Art-Direction]] · [[Dragons-Hoard-Set]] · [[Blender to Roblox Asset Pipeline]]
+- [[Visuals/_Index]] · [[Shaders-Materials-And-Surfaces]] · [[Animation-Rigging-And-IK]] · [[Asset-Creation-Workflow-And-Marketplace]] · [[Art-Direction]] · [[Dragons-Hoard-Set]] · [[Blender to Roblox Asset Pipeline]] · [[Fantasy-Creatures-Set]]
 
 ## Sources
 - General mesh specifications (20k tris, 4 influences, watertight, rig rules) — https://create.roblox.com/docs/art/modeling/specifications

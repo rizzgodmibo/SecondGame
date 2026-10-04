@@ -31,7 +31,7 @@ Decision rule: if the top 10% of players stop gaining an advantage after ~5 hour
 ## Obby difficulty design
 Roblox defaults: `Humanoid.WalkSpeed` 16 studs/s, `JumpPower` 50 (`JumpHeight` 7.2 studs), `Workspace.Gravity` 196.2 studs/s². Changing any of these changes every jump in the game, so lock them before you build stages.
 
-Gap guidelines, measured on default character settings. ⚠️ verify by measuring in Studio: max horizontal running-jump distance with defaults.
+Gap guidelines, measured on default character settings. **Measured 2026-10-04** (fresh Baseplate, R15): WalkSpeed 16, JumpHeight 7.2, Gravity 196.2, MaxSlopeAngle 89. Ideal level running-jump reach is **≈ 8.7 studs**, calculated as 16 × 2√(2 × 7.2 ÷ 196.2); [[Roblox Map Audit Skill]] uses 7.4 with a 0.9 margin. ⚠️ verify the reach with a physical jump test.
 
 | Tier | Horizontal gap (edge to edge) | Platform width | Checkpoint spacing | Expected deaths/stage (median) |
 |---|---|---|---|---|
@@ -144,7 +144,7 @@ end)
 - Long death animations or menus before respawn. Every second added to retry time raises quit rate.
 
 ## Related
-- [[Core-Loops]] · [[Onboarding-And-First-60-Seconds]] · [[Balancing-Methods]] · [[Session-Length-And-Pacing]] · [[Genre-Playbooks]]
+- [[Core-Loops]] · [[Onboarding-And-First-60-Seconds]] · [[Balancing-Methods]] · [[Session-Length-And-Pacing]] · [[Genre-Playbooks]] · [[Roblox Map Audit Skill]]
 - [[Gamepasses-vs-Developer-Products]] · [[Anti-Exploit-And-Server-Authority]] · [[Analytics-And-Instrumentation]] · [[Discovery-Algorithm]]
 
 ## Sources

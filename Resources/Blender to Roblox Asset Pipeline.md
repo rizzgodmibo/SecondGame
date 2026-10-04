@@ -34,4 +34,4 @@ An alternative to the GLB + Open Cloud route, used for [[Dragons-Hoard-Set]]. On
 - **Pivots:** write `build_report.json` (tris, sizes, pivot and socket offsets from the bounding-box centre, in Roblox axes). A command-bar setup script then applies `PivotOffset` and the attachments, so the result doesn't depend on how the importer centres the mesh.
 - **Preview before showing:** render each model with Workbench (`color_type="TEXTURE"`, Standard view) and critique it honestly. Two problems only showed up in renders: z-fighting and flat-looking egg scales.
 
-Related: [[Blender MCP Setup]], [[Roblox Studio MCP Quirks]]
+Related: [[Blender MCP Setup]], [[Roblox Studio MCP Quirks]], [[Roblox Asset Pipeline Skill]] (preflight checks + previews before upload)

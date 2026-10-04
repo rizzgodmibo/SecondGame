@@ -1,0 +1,42 @@
+{
+  "v": 3,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-04T05:37:11Z"
+  },
+  "title": "Creature Design Bible",
+  "launch": {
+    "view": "canvas"
+  },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "title": "Sheet 01 \u00b7 Cinder Drake (fire)"
+    },
+    "MossbackGolem.dc.html": {
+      "x": 2000,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "title": "Sheet 02 \u00b7 Mossback Golem (earth)"
+    },
+    "FrostfangWolf.dc.html": {
+      "x": 4000,
+      "y": 0,
+      "w": 1920,
+      "h": 1080,
+      "title": "Sheet 03 \u00b7 Frostfang Wolf (ice)"
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "MossbackGolem.dc.html",
+    "FrostfangWolf.dc.html"
+  ],
+  "notes": {},
+  "designSystems": []
+}

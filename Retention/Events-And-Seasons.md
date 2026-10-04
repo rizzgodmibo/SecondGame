@@ -247,6 +247,7 @@ MessagingService limits (docs, 2026-10): message ≤ **1 kB**; sends per server 
 - Admin abuse events with no RSVP/notification funnel. You get the spike from players already in game and none from returning ones.
 - Event currency that persists forever, which inflates the economy. Convert or expire at event end ([[Core-Loops]] economy notes).
 - Too many simultaneous events. One headline event at a time, plus background weekly beats.
+- **Case: The Hatch (Roblox's official egg hunt, July 2025).** Per community trackers on X (captured 2026-10-04 in [[X-Game-Feel-And-Showcases]]): it ended as the worst-rated platform event (about 68.5% disliking the hub). Of 1,000 invited games, 606 dropped out, and some inappropriate games got in. The 'egg contributions' counter was reportedly a disguised timer. A community Egg Hunt 2026 was also downvoted, for paywalling. Lessons: curate fewer, better games; never fake a community-progress meter; keep celebration events free to complete. ⚠️ community-reported figures, not official data.
 
 ## Related
 - [[Retention/_Index]] · [[Live-Ops-Playbook]] · [[Content-Cadence]] · [[Notifications-And-Re-Engagement]] · [[Leaderboards]] · [[Daily-Rewards-And-Streaks]] · [[Community-Management]] · [[Discovery-Algorithm]] · [[Retention-Metrics-D1-D7-D30]]

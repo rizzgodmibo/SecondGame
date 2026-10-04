@@ -20,6 +20,10 @@ UI, VFX, animation, 3D pipeline, lighting, audio and art direction. Facts verifi
 |---|---|
 | [[UI-Architecture]] | ScreenGui layering (DisplayOrder, ResetOnSpawn=false, ZIndexBehavior=Sibling, ScreenInsets), state-driven UI (React-lua / Fusion / Vide / minimal Value helper), router & component patterns, UI Styling tokens |
 | [[UI-Layout-And-Device-Scaling]] | Scale vs Offset, aspect constraints, UIScale controller, list/flex/grid layouts, safe areas & thumb zones, touch target sizes, gamepad selection, text scaling & accessibility |
+| [[Roblox UI Checker Skill]] | Claude Code skill: automated UI checks at 4 screen sizes (touch size, overlap, off-screen, centring, text size, stray boxes, outline mix) |
+| [[Roblox VFX Review Skill]] | Claude Code skill: VFX budget lint + phase-freeze screenshots (start/middle/end), building blocks from Holden's pack, recipes |
+| [[Roblox Asset Pipeline Skill]] | Claude Code skill: Blender preflight (tri limits, vertex colours, transforms, origin, normals, textures, UVs, colour variation) + previews before Open Cloud upload |
+| [[Roblox Sound Library Skill]] | Claude Code skill: soundcheck (lead silence, clipping, limits), tagged catalogue of approved ids, upload quota, calibrated volumes, layered SoundPlayer |
 | [[UI-Polish-And-Juice]] | Tween easing presets, reusable ButtonJuice module, count-up numbers, reward popup recipe, trauma screen shake, FOV kick, UIStroke/UIGradient/UICorner styling |
 | [[VFX-Particles-Beams-Trails]] | ParticleEmitter properties & recipes, Emit() bursts on the client, flipbooks, Beams, Trails, Attachments, limits (400/s, 100/s mobile, 20 s lifetime, 255 Highlights) |
 | [[Shaders-Materials-And-Surfaces]] | Substitutes for shaders: MaterialVariant, SurfaceAppearance PBR + emissive, Highlight, Neon/Glass/ForceField, scrolling textures, ViewportFrames, EditableImage/EditableMesh |

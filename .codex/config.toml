@@ -1,0 +1,19 @@
+[mcp_servers.Roblox_Studio]
+command = "cmd.exe"
+args = [
+    "/c",
+    'C:\Users\holde\AppData\Local\Roblox\mcp.bat',
+]
+
+[mcp_servers.blender]
+command = 'C:\Users\holde\AppData\Local\Microsoft\WinGet\Packages\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe\uvx.exe'
+args = [
+    "--no-python-downloads",
+    "--python",
+    'C:\Program Files\Blender Foundation\Blender 5.2\5.2\python\bin\python.exe',
+    "mcp-for-blender",
+]
+
+[mcp_servers.blender.env]
+DISABLE_TELEMETRY = "true"
+BLENDER_MCP_SAFE_MODE = "1"

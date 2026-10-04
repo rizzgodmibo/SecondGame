@@ -307,7 +307,7 @@ Shake is applied after the default camera (priority Camera+1) and re-derived eac
 - Too much juice on low-value actions dilutes big moments — scale feedback to reward size (small/medium/large tiers).
 
 ## Related
-- [[Visuals/_Index]] · [[UI-Architecture]] · [[UI-Layout-And-Device-Scaling]] · [[VFX-Particles-Beams-Trails]] · [[Sound-Design]] · [[Animation-Rigging-And-IK]]
+- [[Visuals/_Index]] · [[UI-Architecture]] · [[UI-Layout-And-Device-Scaling]] · [[VFX-Particles-Beams-Trails]] · [[Sound-Design]] · [[Animation-Rigging-And-IK]] · [[X-Animated-UI-Lessons-And-Tools]] (real designer examples of spring press, shine sweep, odometer counters and reveals) · [[X-Reference-Library]]
 
 ## Sources
 - UI animation / tweening — https://create.roblox.com/docs/ui/animation

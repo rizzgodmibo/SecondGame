@@ -108,6 +108,23 @@ For saved prompt wording, see [[Prompt-Library]].
   `Enum.Font.FredokaOne`). Exact prompt in [[Prompt-Library]]. Combine with the multi-pass method in §1.
   See [[UI-Polish-And-Juice]].
 
+## 8. One skill per discipline, each with its own checker (SyphoDev video, 2026-10-04)
+A whole-game Claude Code workflow, watched in full. Details, timestamps and frames are in [[Video-SyphoDev-Claude-Code-Roblox-Workflow]]. These are practitioner claims.
+- **Three building blocks:** skills (instructions + tested scripts + a growing "traps" list), MCPs (Studio's built-in server; Rojo for code),
+  and external APIs for what Claude can't do (Flux on Cloudflare Workers AI for images/icons, Hi3DGen on Kaggle for image→3D, Open Cloud for uploads).
+- **Make the game checkable while it is not running:** pure-number rule modules with tests, and a Rojo build + tests + Selene + StyLua gate.
+  The empty scaffold must pass before any game code.
+- **Automated checkers per discipline:** UI at 4 screen sizes (thumb-size buttons, no overlaps, centred ±1.5 px, readable text); maps via
+  raycasts + real movement numbers (9 checks); VFX via "phase freeze" (fire → wait exact time → freeze → check start/middle/end); animation via
+  contact sheets.
+- **When something breaks, write the fix and the reason into the skill.** The video's starting advice: build one skill for the job AI does
+  worst for you.
+- ⚠️ Its AI image→3D route conflicts with Holden's art rules (no AI meshes, flat-shaded low-poly). Treat it as information, not a plan.
+- **Built 2026-10-04:** code gate, UI checker, map audit, VFX review, asset pipeline (Blender only), sound library and the game manager. All have self-tests that pass. Animation is parked. Status table: [[Roblox Game Manager Skill]].
+
+## 9. Gauntlet Loop (builder + blind critic vs a real reference)
+Matt Shumer's method: split the goal, give every piece a builder and a fresh-context harsh critic that compares the real output blind against a named, fetchable reference, and loop until ours wins. Full write-up, original prompt and Roblox-specific cautions: [[Gauntlet-Loop]].
+
 ## Pitfalls
 - Skipping the analyse-only step → the AI guesses the layout and every later pass inherits the error.
 - Vague corrections ("looks off") waste a whole pass. Give coordinates, sizes, hex colours.
@@ -116,9 +133,10 @@ For saved prompt wording, see [[Prompt-Library]].
 
 ## Related
 - [[Prompt-Library]] · [[Animation-Rigging-And-IK]] · [[UI-Polish-And-Juice]] · [[Blender-To-Roblox-Pipeline]] · [[UI-Architecture]] · [[UI-Layout-And-Device-Scaling]]
-- [[Tooling-Rojo-Wally-And-Studio-MCP]] · [[Thumbnails-And-Icons]] · [[Home]]
+- [[Tooling-Rojo-Wally-And-Studio-MCP]] · [[Thumbnails-And-Icons]] · [[Home]] · [[Video-SyphoDev-Claude-Code-Roblox-Workflow]] · [[Gauntlet-Loop]]
 
 ## Sources
 - Community advice screenshots (Discord, 2026-09-18 to 2026-10-03), two batches, supplied by vault owner, 2026-10-04.
 - Roblox mesh specifications (20,000-triangle limit): https://create.roblox.com/docs/art/modeling/specifications
 - Roblox texture specifications: https://create.roblox.com/docs/art/modeling/texture-specifications
+- SyphoDev, "How to Make a Roblox Game With AI (Claude Opus 5.5 Full Tutorial)": https://www.youtube.com/watch?v=afuKhenJldY (watched 2026-10-04)

@@ -148,6 +148,7 @@ Safety: MCP clients can modify any open place — connect only trusted clients; 
 ## Related
 - [[Module-Architecture]]
 - [[Project-Bootstrap-Checklist]]
+- [[Roblox Code Gate Skill]]
 - [[Common-Libraries]]
 - [[Luau-Strict-Typing]]
 
