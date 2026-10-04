@@ -13,7 +13,7 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 | Area | Folder | Last deep pass | Next focus |
 |---|---|---|---|
 | Growth | Growth/ | 2026-10-04 | Re-verify the 2026-06-15 algorithm change details; benchmark table from real dashboards |
-| Engineering | Systems/ | 2026-10-04 | (pending agent report) |
+| Engineering | Systems/ | 2026-10-04 | Type-check all code; write Deprecated-API-Replacements; Studio MCP hands-on recipes |
 | Visuals | Visuals/ | 2026-10-04 | (pending agent report) |
 | Design | Design/ | 2026-10-04 | Time real top games to calibrate time-to-milestone targets; add a worked economy spreadsheet |
 | Monetisation | Monetisation/ | 2026-10-04 | Track Roblox Plus / Creator Rewards changes (2025–26 overhaul); test price heuristics |
@@ -78,6 +78,18 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 - Whether the 120 s join timeout still applies; clock skew between servers; how AFK time counts toward playtime; maturity labels for horror; minimum mobile button size.
 - Benchmarks: session length per genre, onboarding step completion rates, loot rarity percentages, daily free premium currency, time-to-milestone targets.
 - Third-party facts: Cookie Clicker 1.15 cost growth, Genshin pity figures, PS99 rebirth cap and update cadence, whether the reference titles are still current.
+### Systems
+- Luau: whether Studio defaults to `--!optimize 1`; whether client-side native codegen is enabled; the default type solver; user-defined type functions in production; string requires (`require("./X")`) in live servers.
+- Replication: which Humanoid properties replicate from the client; what happens when a client deletes parts of its own character; allowed attribute types; whether Server Authority mode (`Workspace.AuthorityMode`) is in beta or released.
+- Networking: the ~50 KB/s per-client bandwidth guideline.
+- Data: whether a per-key write cooldown still applies in practice; Roblox's recommended receipt pattern vs ProfileStore's; whether a bare `{UserId}` key works in deletion templates.
+- Platform coverage of Hyperion (Byfron).
+- Performance: where heap snapshots appear in the Dev Console; sources for the rules of thumb (Heartbeat ≥55 Hz, 20–30k parts, ~1–1.5 GB mobile memory).
+- Parallel Luau thread-safety tags (e.g. Raycast); whether SharedTable can hold Instances; the default `StreamingIntegrityMode`.
+- Server-wide (non-player) analytics events; whether client errors show in the Creator Hub Error Report.
+- Tooling: is the standalone studio-rust-mcp-server superseded by the built-in MCP? setup-rokit behaviour; quotas for the Open Cloud Luau Execution API for CI; can MCP edits be undone?
+- Library status: ByteNet maintenance; TopbarPlus v3.4.0 with the current topbar.
+- Analytics custom-field limits; maturity questionnaire requirements; the name of the localization setting.
 ### AI workflow
 - What "Astra 6" (image model) and "6.1 SOL" (coding model) are, and whether the benchmark claims hold.
 - Texture size: whether 8K source textures help at all given the 4096 max and the ≤1024 recommendation.
