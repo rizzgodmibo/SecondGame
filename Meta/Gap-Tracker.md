@@ -127,6 +127,7 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 ## Session log
 | Date | Work done |
 |---|---|
+| 2026-10-03 | Added Holden's VFX texture pack (25 PNG + 2 MP4) to Assets/VFX/TexturePack with catalogue [[VFX-Texture-Pack]]; asset ids still to record after upload |
 | 2026-10-03 | Dragon's Hoard set built in Blender (11 OBJ models, atlas, 7 particle PNGs, HoardVFX/HoardSetup scripts, IMPORT guide, zip); see [[Dragons-Hoard-Set]] |
 | 2026-10-04 | Deprecated-API sweep + note; Visuals done; Reference partly done (stopped to save cloud credits; move to local) |
 | 2026-10-04 | Vault bootstrapped: conventions, Home, playbook, 7 domain folders (~80 notes), Prompt Library, AI-Assisted Workflow (from owner's screenshots), icon pack + catalogue, 5 video breakdowns, Reference folder |

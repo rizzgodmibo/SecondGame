@@ -157,7 +157,7 @@ Server side only fires `RemoteEvent:FireAllClients("CoinBurst", position)`; clie
 - **Fallback textures:** `rbxasset://textures/particles/sparkles_main.dds`, `fire_main.dds` and `smoke_main.dds` are used until real Image ids are pasted in. ⚠️ verify that these still ship with the client.
 
 ## Related
-- [[Visuals/_Index]] · [[UI-Polish-And-Juice]] · [[Dragons-Hoard-Set]] · [[Shaders-Materials-And-Surfaces]] · [[Lighting-And-Atmosphere]] · [[Animation-Rigging-And-IK]] · [[Remotes-And-Networking]]
+- [[Visuals/_Index]] · [[UI-Polish-And-Juice]] · [[Dragons-Hoard-Set]] · [[VFX-Texture-Pack]] · [[Shaders-Materials-And-Surfaces]] · [[Lighting-And-Atmosphere]] · [[Animation-Rigging-And-IK]] · [[Remotes-And-Networking]]
 
 ## Sources
 - Particle emitters (400/s, 100/s mobile, 20 s lifetime cap, flipbooks, fill-rate) — https://create.roblox.com/docs/effects/particle-emitters
