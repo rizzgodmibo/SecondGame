@@ -28,6 +28,8 @@ Check [[Gap-Tracker]] for what is due next.
 - [[Growth/_Index|Growth]] — discovery, thumbnails, ads, launch, influencers
 - [[Retention/_Index|Retention]] — D1/D7/D30, dailies, events, social, community
 - [[Operations/_Index|Operations]] — analytics, A/B, live-ops, scaling, policy, post-mortems
+- [[Reference/_Index|Reference]] — real-game icons, thumbnails, videos, UI and VFX breakdowns
+- `Assets/` — owner-supplied icon packs and reference captures ([[Free-Icon-Pack-v3.1-Basic]])
 - `Projects/` — per-game specs (use [[Project-Template]])
 - `Inbox/` — untriaged findings
 - `Meta/` — [[Gap-Tracker]], [[Verification-Log]], [[Sources]], [[Prompt-Library]] (reusable prompts for asking Claude), [[AI-Assisted-Workflow]] (how to drive AI tools well)

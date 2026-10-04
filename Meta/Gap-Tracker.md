@@ -102,6 +102,13 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 ### Assets
 - Licence of Free Icon Pack v3.1 (Basic): the zip has no licence file. Find the source page.
 
+## Next session (start here — runs locally from C:\Vault)
+1. Finish Reference/: write `VFX-And-Art-Style-Reference.md` and `Reference-Capture-Process.md`; add timestamps to [[Video-Breakdowns]].
+2. Re-run the deprecated-API sweep (see [[Deprecated-API-Replacements]] → "Regenerating this list") over Visuals/ and Reference/.
+3. Install luau-analyze and type-check every ```lua block.
+4. Work down **Open verifications**, starting with Growth. On a local machine create.roblox.com and devforum are reachable, so check those directly.
+5. Update `Growth/Sponsored-Ads-And-Paid-Acquisition.md` break-even maths to the $0.0038 / $0.0054 DevEx rates.
+
 ## Cross-vault follow-ups
 - [x] 2026-10-04: swept the vault against all 423 deprecated engine members and wrote [[Deprecated-API-Replacements]].
   Fixed `GetRankInGroup(Async)` in Live-Ops-Playbook and Community-Management (now `GroupService:GetRolesInGroupAsync` + role Ids) and `GetProductInfo` in Error-Handling.
@@ -119,4 +126,5 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 ## Session log
 | Date | Work done |
 |---|---|
+| 2026-10-04 | Deprecated-API sweep + note; Visuals done; Reference partly done (stopped to save cloud credits; move to local) |
 | 2026-10-04 | Vault bootstrapped: conventions, Home, playbook, 7 domain folders (~80 notes), Prompt Library, AI-Assisted Workflow (from owner's screenshots), icon pack + catalogue, 5 video breakdowns, Reference folder |
