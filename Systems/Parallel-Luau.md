@@ -28,10 +28,14 @@ confidence: medium
 -- Clones a worker Actor template N times and sends each a slice of NPC ids every tick.
 local RunService = game:GetService("RunService")
 local ServerScriptService = game:GetService("ServerScriptService")
+local ServerStorage = game:GetService("ServerStorage")
 
 local WORKERS = 4
-local parallelFolder = ServerScriptService:WaitForChild("Parallel")
-local template = parallelFolder:WaitForChild("WorkerTemplate") :: Actor
+-- Template lives in ServerStorage so its script doesn't run until cloned into ServerScriptService.
+local template = ServerStorage:WaitForChild("WorkerTemplate") :: Actor
+local parallelFolder = Instance.new("Folder")
+parallelFolder.Name = "ParallelWorkers"
+parallelFolder.Parent = ServerScriptService
 
 local actors: { Actor } = {}
 for i = 1, WORKERS do
@@ -57,7 +61,7 @@ end)
 ```
 ```lua
 --!strict
--- ServerScriptService/Parallel/WorkerTemplate (Actor) / Worker.server.luau
+-- ServerStorage/WorkerTemplate (Actor) / Worker (Script, RunContext = Legacy so it only runs once cloned into ServerScriptService)
 local actor = script:GetActor()
 assert(actor, "Worker must be under an Actor")
 

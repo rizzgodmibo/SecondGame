@@ -19,6 +19,8 @@ It is never "done": every session should close a gap, verify a claim, or refresh
 | `Growth/` | Discovery algorithm, thumbnails/icons, ads, launch, influencers |
 | `Retention/` | D1/D7/D30, dailies, events, social, community |
 | `Operations/` | Analytics, A/B testing, live-ops, moderation/policy, post-mortems |
+| `Reference/` | Real-game and community examples: icons, thumbnails, videos, UI/VFX breakdowns |
+| `Assets/` | Binary assets the owner supplies (icon packs, reference captures) + a catalogue note per pack |
 | `Projects/<name>/` | Game-specific decisions, specs, asset IDs |
 | `Inbox/` | Unsorted findings — triage into a folder later |
 | `Meta/` | Gap tracker, verification log, sources list |
