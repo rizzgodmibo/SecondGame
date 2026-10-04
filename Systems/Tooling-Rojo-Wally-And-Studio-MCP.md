@@ -20,7 +20,7 @@ confidence: medium
 |---|---|---|
 | Rojo | Filesystem ↔ Studio sync, place builds | v7.7.1 |
 | Rokit | Toolchain manager (`rokit.toml`) — successor to Aftman/Foreman | v1.2.0 |
-| Wally | Package manager | v0.4.0-alpha.0 (pre-release); use the latest 0.3.x stable ⚠️ verify: exact stable version |
+| Wally | Package manager | v0.3.2 stable (v0.4.0-alpha.0 pre-release exists) |
 | Selene | Linter (roblox std) | 0.32.0 |
 | StyLua | Formatter | v2.5.2 |
 | luau-lsp | Language server + `analyze` CLI | 1.70.1 |
@@ -30,11 +30,11 @@ confidence: medium
 ```toml
 [tools]
 rojo = "rojo-rbx/rojo@7.7.1"
-wally = "UpliftGames/wally@0.3.2"         # ⚠️ verify latest 0.3.x
+wally = "UpliftGames/wally@0.3.2"
 selene = "Kampfkarren/selene@0.32.0"
 stylua = "JohnnyMorganz/StyLua@2.5.2"
 luau-lsp = "JohnnyMorganz/luau-lsp@1.70.1"
-wally-package-types = "JohnnyMorganz/wally-package-types@1.3.2"  # ⚠️ verify version
+wally-package-types = "JohnnyMorganz/wally-package-types@1.7.0"
 ```
 `rokit install` then all tools are on PATH for this repo.
 
@@ -47,8 +47,8 @@ registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 
 [dependencies]
-Trove = "sleitnick/trove@^1"          # ⚠️ verify package names/versions on wally.run
-Signal = "sleitnick/signal@^2"
+Trove = "sleitnick/trove@^1"          # 1.8.0 in RbxUtil, 2026-10-04
+Signal = "sleitnick/signal@^2"        # 2.0.3
 # Promise = "evaera/promise@^4"
 
 [server-dependencies]
@@ -76,7 +76,7 @@ call_parentheses = "Always"
 
 ### luau-lsp
 - VS Code extension "Luau Language Server" + Rojo sourcemap (`rojo sourcemap --watch -o sourcemap.json`) gives typed `script.Parent.X` requires and instance trees.
-- CI: `luau-lsp analyze --definitions=globalTypes.d.luau --sourcemap=sourcemap.json src/` (download Roblox definitions file in CI) ⚠️ verify: current flag names (`--defs` vs `--definitions`) and definitions URL in luau-lsp README.
+- CI: `luau-lsp analyze --definitions:@roblox=globalTypes.d.luau --sourcemap=sourcemap.json src/`. Since recent versions, definitions files must be **named** (`--definitions:@roblox=…`); unnamed form is temporarily still accepted (luau-lsp CHANGELOG, 2026). Definitions file: `scripts/globalTypes.d.luau` in the luau-lsp repo.
 
 ### GitHub Actions CI
 ```yaml
@@ -88,15 +88,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: CompeyDev/setup-rokit@v0.1.2   # ⚠️ verify action name/version
-      - run: rokit install --no-trust-check
+      - uses: CompeyDev/setup-rokit@v0.2.1   # tag checked 2026-10-04
+      - run: rokit install --no-trust-check   # ⚠️ verify: setup-rokit may already install tools
       - run: wally install
       - run: rojo sourcemap default.project.json -o sourcemap.json
       - run: stylua --check src
       - run: selene src
       - run: |
           curl -sL -o globalTypes.d.luau https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/main/scripts/globalTypes.d.luau
-          luau-lsp analyze --definitions=globalTypes.d.luau --sourcemap=sourcemap.json --ignore="Packages/**" src
+          luau-lsp analyze --definitions:@roblox=globalTypes.d.luau --sourcemap=sourcemap.json --ignore="Packages/**" src
       - run: rojo build default.project.json -o build.rbxl
       - run: '! grep -rnE "^\s*(wait|spawn|delay)\(" src'
       - run: '! grep -rn "InvokeClient" src'

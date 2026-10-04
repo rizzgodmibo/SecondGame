@@ -18,7 +18,7 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 | Design | Design/ | 2026-10-04 | (pending agent report) |
 | Monetisation | Monetisation/ | 2026-10-04 | Track Roblox Plus / Creator Rewards changes (2025–26 overhaul); test price heuristics |
 | Retention | Retention/ | 2026-10-04 | (pending agent report) |
-| Operations | Operations/ | 2026-10-04 | (pending agent report) |
+| Operations | Operations/ | 2026-10-04 | Replace snippet-sourced case-study numbers with primary sources; write native Experiments (ConfigService) recipes |
 | Reference | Reference/ | 2026-10-04 | Refresh icon/thumbnail gallery monthly (CDN URLs expire) |
 | AI workflow | Meta/ | 2026-10-04 | Verify "Astra 6" and "6.1 SOL"; write Claude↔Codex handoff protocol if a 2nd agent joins |
 
@@ -54,6 +54,15 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 - Price-range, starter-pack and offer-timing heuristics (synthesised, need A/B data).
 - The pay-to-win acceptance matrix; the ">10% PvP odds" rule of thumb; dated backlash examples.
 - Subscription conversion and lifetime-value claims; the Pet Simulator 99 odds-nerf date; the 1,000 R$/month transfer cap; Community Standards wording on misleading commerce.
+### Operations
+- AnalyticsService: whether `LogJourneyEvent` shows in dashboards and its limits; which keys `GetPlayerSegmentsAsync` returns; whether "120 + 20×CCU" means per server or per game.
+- GameAnalytics Roblox SDK: is it still maintained? GameAnalytics 2026 median D1 of 10.3% (not read at source).
+- HttpService 500 requests/min per server; 700-player maximum server size.
+- Fallback KPI targets and the bad-launch triage/pivot thresholds; whether relaunching in the same place is penalised.
+- Best update day/time (Saturday? Grow a Garden's 10:00 ET schedule comes from fan sites).
+- Current list of allowed off-platform links (Community Standards).
+- All case-study figures in [[Post-Mortems-Real-Games]] (from search snippets); BedWars ">90% decline".
+- Contractor rates and revenue-share norms; legal rules for paying minors; DevEx tax forms.
 ### AI workflow
 - What "Astra 6" (image model) and "6.1 SOL" (coding model) are, and whether the benchmark claims hold.
 - Texture size: whether 8K source textures help at all given the 4096 max and the ≤1024 recommendation.
