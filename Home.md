@@ -30,4 +30,4 @@ Check [[Gap-Tracker]] for what is due next.
 - [[Operations/_Index|Operations]] — analytics, A/B, live-ops, scaling, policy, post-mortems
 - `Projects/` — per-game specs (use [[Project-Template]])
 - `Inbox/` — untriaged findings
-- `Meta/` — [[Gap-Tracker]], [[Verification-Log]], [[Sources]], [[Prompt-Library]] (reusable prompts for asking Claude)
+- `Meta/` — [[Gap-Tracker]], [[Verification-Log]], [[Sources]], [[Prompt-Library]] (reusable prompts for asking Claude), [[AI-Assisted-Workflow]] (how to drive AI tools well)

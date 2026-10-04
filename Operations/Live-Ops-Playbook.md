@@ -115,7 +115,7 @@ local notice = Instance.new("RemoteEvent")
 notice.Name = "ServerRestartNotice"
 notice.Parent = ReplicatedStorage
 
-game.ServerRestartScheduled:Connect(function(restartTime: DateTime, source: Enum.CloseReason, attributes: any)
+game.ServerRestartScheduled:Connect(function(restartTime: DateTime, source: Enum.CloseReason, attributes: { [string]: any }?)
 	local secondsLeft = math.max(0, restartTime.UnixTimestamp - DateTime.now().UnixTimestamp)
 	local reason = if source == Enum.CloseReason.DeveloperUpdate then "update" else "maintenance"
 	notice:FireAllClients(secondsLeft, reason)
@@ -127,7 +127,7 @@ game.ServerRestartScheduled:Connect(function(restartTime: DateTime, source: Enum
 	end
 end)
 ```
-⚠️ verify: the exact `ServerRestartScheduled` callback parameter types in the API reference (the docs list `restartTime: DateTime`, `source: Enum.CloseReason` and optional `attributes`).
+The event's parameters (`restartTime: DateTime`, `source: CloseReason`, `attributes: Dictionary`) were checked against DataModel.yaml on 2026-10-02.
 
 ### Old-style "soft shutdown"
 Before the built-in delayed restart, devs teleported everyone to a reserved server and back in `BindToClose`. **Don't build this any more.** The built-in restart does the same job, and `BindToClose` has about 30 s before the server is forced down.
