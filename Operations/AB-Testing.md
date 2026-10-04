@@ -10,7 +10,7 @@ confidence: high
 - **Use Roblox's native Experiments first** (Creator Hub → Experiments, built on **Configs** / `ConfigService`). Roblox handles randomisation and tracks D1, D7, playtime, ARPU, ARPPU, payer conversion and session time, with confidence intervals, early-harm alerts and sample-ratio-mismatch checks. Runs last 14–60 days, with ≤2 variants plus control.
 - Below **~1,000 DAU** experiments rarely reach significance (Roblox's own guidance). Below that, ship the bold change and compare cohorts week over week, or use your own bucketing on a high-traffic, high-variance metric.
 - Roll your own (deterministic `UserId` hash) only for things Configs can't express: multi-session persistence, server-level variants, or more than 2 variants.
-- Size the test first. For a D1 retention of 10%, detecting a **+1 pp absolute** lift needs about **14k new users per arm**; +2 pp needs about **3.5k per arm** (α = 0.05, power 80%).
+- Size the test first. For a D1 retention of 10%, detecting a **+1 pp absolute** lift needs about **14.7k new users per arm**; +2 pp needs about **3.8k per arm** (α = 0.05, power 80%).
 - Test order, by expected value: **onboarding (first 5 min) > first-purchase offer / starter pack price > core-loop pacing numbers > shop layout > cosmetics**.
 - Don't peek and stop. Run whole weeks (at least 14 days on Roblox; weekends behave differently), and change nothing else in the tested area while it runs.
 
