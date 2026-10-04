@@ -286,7 +286,7 @@ Shake is applied after the default camera (priority Camera+1) and re-derived eac
 ## Styling recipe (simulator-style button)
 - Frame/ImageButton fill: saturated mid-tone (e.g. `#3BD16F`).
 - `UICorner.CornerRadius = UDim.new(0, 12)` (or `UDim.new(0.3, 0)` for pills).
-- `UIStroke`: Thickness 3, Color = fill darkened ~40%, `ApplyStrokeMode = Border` for the frame; separate `UIStroke` on the text label (Thickness 2, black, Transparency 0.2) for legibility. `StrokeSizingMode = ScaledSize` makes stroke scale with UIScale ⚠️ verify exact behaviour of `ScaledSize` vs `FixedSize` in your layout.
+- `UIStroke`: Thickness 3, Color = fill darkened ~40%, `ApplyStrokeMode = Border` for the frame; separate `UIStroke` on the text label (Thickness 2, black, Transparency 0.2) for legibility. `StrokeSizingMode`: `FixedSize` = Thickness in pixels (then scaled by UIScale); `ScaledSize` = Thickness relative to the parent's min width/height (or font size for text) — use ScaledSize for strokes that must stay proportional on Scale-sized elements.
 - `UIGradient`: `Rotation = 90`, Color top white → bottom light grey (the gradient multiplies the fill), gives a bevel. Animate `Offset` for a shine sweep on premium buttons.
 - `UIShadow` (BlurRadius, Offset, Spread) exists for drop shadows; otherwise a 9-slice shadow ImageLabel behind.
 - Idle attention pulse on "Free reward" buttons: UIScale 1 ↔ 1.05, `Sine InOut`, 0.8 s, `RepeatCount = -1`, `Reverses = true`. Max one pulsing element per screen.

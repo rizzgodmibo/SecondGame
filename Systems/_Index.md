@@ -30,6 +30,7 @@ Engineering knowledge for building a Roblox game: Luau, architecture, networking
 | [[Physics-And-Network-Ownership]] | Assemblies, ownership rules, SetNetworkOwner patterns, mover constraints, collision groups (WorldRoot API), exploit risks |
 | [[Error-Handling-And-Logging]] | pcall/xpcall, retry with backoff, task library, ScriptContext.Error reporter, structured logs, Promise libs |
 | [[Tooling-Rojo-Wally-And-Studio-MCP]] | Rojo, Wally, Rokit, Selene, StyLua, luau-lsp, GitHub Actions CI, built-in Roblox Studio MCP server and how Claude drives it |
+| [[Deprecated-API-Replacements]] | Old → new API table generated from the official reference (…Async renames, multi-role groups, Plus purchase prompt, legacy movers) — check before writing any code |
 | [[Common-Libraries]] | Vetted libraries with status/versions (ProfileStore, Trove, Signal, Promise, Fusion/Vide/React-lua, Knit archived, Blink/Zap/ByteNet, TopbarPlus) |
 
 ## Reading order for an agent building a game

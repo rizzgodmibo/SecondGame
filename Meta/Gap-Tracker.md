@@ -13,7 +13,7 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 | Area | Folder | Last deep pass | Next focus |
 |---|---|---|---|
 | Growth | Growth/ | 2026-10-04 | Re-verify the 2026-06-15 algorithm change details; benchmark table from real dashboards |
-| Engineering | Systems/ | 2026-10-04 | Type-check all code; write Deprecated-API-Replacements; Studio MCP hands-on recipes |
+| Engineering | Systems/ | 2026-10-04 | Type-check all code; Studio MCP hands-on recipes |
 | Visuals | Visuals/ | 2026-10-04 | (pending agent report) |
 | Design | Design/ | 2026-10-04 | Time real top games to calibrate time-to-milestone targets; add a worked economy spreadsheet |
 | Monetisation | Monetisation/ | 2026-10-04 | Track Roblox Plus / Creator Rewards changes (2025–26 overhaul); test price heuristics |
@@ -68,7 +68,7 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 - Which timezone the Roblox Analytics D1 day boundary uses (assumed UTC).
 - ProfileStore method names (`StartSessionAsync`, `Reconcile`, `EndSession`); check with the Monetisation items.
 - Whether paid streak restores are allowed; whether a season pass can be a Subscription; the ~100 R$/month private-server price.
-- Whether the server-side `IsInGroupAsync` cache refreshes after `PromptJoinAsync`.
+- ~~Whether the server-side `IsInGroupAsync` cache refreshes after `PromptJoinAsync`~~ → resolved: no. Only the client's cache is cleared (GroupService.yaml); the note's re-check-on-rejoin approach is correct.
 - The Game Settings name for "leave slots for friends".
 - Whether `GetRangeAsync` accepts a bound with sortKey only; the Open Cloud notification permission scope.
 - Whether favourites/follows still trigger update notifications.
@@ -97,14 +97,9 @@ then log what it did in **Session log**. Rotate areas so none goes stale.
 - Licence of Free Icon Pack v3.1 (Basic): the zip has no licence file. Find the source page.
 
 ## Cross-vault follow-ups
-- [ ] Sweep ALL code in the vault for deprecated APIs and replace them:
-  - `IsInGroup` → `IsInGroupAsync`
-  - `IsFriendsWith` / `GetFriendsOnline` → their `…Async` versions
-  - `ReserveServer` → `ReserveServerAsync`
-  - `PromptLinkSharing` → `PromptLinkSharingAsync`
-  - deep links → share links
-
-  Then write `Systems/Deprecated-API-Replacements.md`.
+- [x] 2026-10-04: swept the vault against all 423 deprecated engine members and wrote [[Deprecated-API-Replacements]].
+  Fixed `GetRankInGroup(Async)` in Live-Ops-Playbook and Community-Management (now `GroupService:GetRolesInGroupAsync` + role Ids) and `GetProductInfo` in Error-Handling.
+  - [ ] Re-run the sweep after the Visuals and Reference agents land, and after every large batch of new code.
 - [ ] Replace hand-rolled soft-shutdown patterns with the built-in "restart only outdated servers" + `DataModel.ServerRestartScheduled`.
 - [ ] Point A/B and feature-flag mentions everywhere to native `ConfigService` / Experiments.
 - [ ] Check `Growth/Launch-Checklist.md` against the 2026 Kids/Select eligibility rules in [[Moderation-And-Policy-Compliance]].

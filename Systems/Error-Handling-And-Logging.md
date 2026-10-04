@@ -7,7 +7,7 @@ confidence: high
 # Error Handling and Logging
 
 ## TL;DR
-- Wrap every **web-backed call** in `pcall` with retry + exponential backoff + jitter: DataStore, MemoryStore, MessagingService, HttpService, MarketplaceService `GetProductInfo`/`UserOwnsGamePassAsync`, TeleportService, `Players:GetUserThumbnailAsync`, `TextService:FilterStringAsync`, BadgeService.
+- Wrap every **web-backed call** in `pcall` with retry + exponential backoff + jitter: DataStore, MemoryStore, MessagingService, HttpService, MarketplaceService `GetProductInfoAsync`/`UserOwnsGamePassAsync`, TeleportService, `Players:GetUserThumbnailAsync`, `TextService:FilterStringAsync`, BadgeService.
 - Use `xpcall(fn, debug.traceback)` (or a handler that adds `debug.traceback()`) where you need the stack.
 - Use the **`task` library** only: `task.spawn`, `task.defer`, `task.delay`, `task.wait`, `task.cancel`. Never `spawn`, `delay`, `wait` (deprecated, throttled).
 - Capture all uncaught server errors with `ScriptContext.Error` and send aggregated counts to analytics; watch the Creator Hub **Error Report** after each release.

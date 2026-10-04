@@ -71,13 +71,19 @@ local _ = openFeedback -- wire to a "Send feedback" button in settings
 -- ServerScriptService/ModTools (Script)
 local Players = game:GetService("Players")
 local GROUP_ID = 0
-local MOD_RANK = 200 -- your "Moderator" role rank
+local GroupService = game:GetService("GroupService")
+local MOD_ROLE_IDS: { [number]: true } = {} -- role Ids of your Moderator/Admin roles (Rank no longer defines hierarchy)
 
 local function isMod(player: Player): boolean
-	local ok, rank = pcall(function()
-		return player:GetRankInGroupAsync(GROUP_ID)
+	-- GroupService:GetRolesInGroupAsync supersedes Player:GetRankInGroupAsync (multi-role groups)
+	local ok, info = pcall(function()
+		return GroupService:GetRolesInGroupAsync(player.UserId, GROUP_ID)
 	end)
-	return ok and (rank :: number) >= MOD_RANK
+	if not ok or not info.IsMember then return false end
+	for _, role in info.Roles do
+		if MOD_ROLE_IDS[role.Id] then return true end
+	end
+	return false
 end
 
 Players.PlayerAdded:Connect(function(player)

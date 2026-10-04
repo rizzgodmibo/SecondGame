@@ -84,7 +84,7 @@ return AnimationCache
 
 ## IKControl (procedural IK)
 
-Required properties: `Type` (`Transform`, `Position`, `Rotation`, `LookAt`), `EndEffector` (part/bone/attachment that moves), `Target` (anything with a world position), `ChainRoot` (start of chain). Optional: `Pole` (bend direction for elbows/knees), `Weight` (0–1), `SmoothTime` (seconds), `Priority` (solve order), `Offset`, `EndEffectorOffset`, `Enabled`. Parent under the `Humanoid` or `AnimationController`. IK solves on top of the playing animation.
+Required properties: `Type` (`Transform`, `Position`, `Rotation`, `LookAt`), `EndEffector` (part/bone/attachment that moves), `Target` (anything with a world position), `ChainRoot` (start of chain). Optional: `Pole` (bend direction for elbows/knees), `Weight` (0–1), `SmoothTime` (seconds), `Priority` (solve order), `Offset`, `EndEffectorOffset`, `Enabled`. Must be a child of a `Humanoid` or `AnimationController` that has an `Animator`; it overrides the animation for every part between ChainRoot and EndEffector (blend with `Weight`).
 
 Common uses:
 | Use | Type | ChainRoot → EndEffector |

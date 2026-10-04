@@ -153,17 +153,23 @@ Before the built-in delayed restart, devs teleported everyone to a reserved serv
 local TextChatService = game:GetService("TextChatService")
 local Players = game:GetService("Players")
 local DataStoreService = game:GetService("DataStoreService")
+local GroupService = game:GetService("GroupService")
 
 local GROUP_ID = 0           -- your group
-local MIN_RANK = 250         -- admin rank in group
+local ADMIN_ROLE_IDS: { [number]: true } = {} -- role *Ids* (not ranks) allowed to use admin commands
 local ALLOW: { [number]: true } = { [1] = true } -- explicit UserIds (owner)
 local audit = DataStoreService:GetDataStore("AdminAudit_v1")
 
 local function isAdmin(player: Player): boolean
 	if ALLOW[player.UserId] then return true end
 	if GROUP_ID == 0 then return false end
-	local ok, rank = pcall(function() return player:GetRankInGroup(GROUP_ID) end)
-	return ok and rank >= MIN_RANK
+	-- GetRankInGroup(Async) is superseded: groups are multi-role and Rank no longer defines hierarchy.
+	local ok, info = pcall(function() return GroupService:GetRolesInGroupAsync(player.UserId, GROUP_ID) end)
+	if not ok or not info.IsMember then return false end
+	for _, role in info.Roles do
+		if ADMIN_ROLE_IDS[role.Id] then return true end
+	end
+	return false
 end
 
 local handlers: { [string]: (Player, { string }) -> string } = {

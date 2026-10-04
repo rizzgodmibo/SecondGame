@@ -19,3 +19,6 @@ Append one row whenever a claim is checked against a source.
 | 2026-10-04 | Remotes-And-Networking | UnreliableRemoteEvent payload >1000 bytes dropped | Confirmed via creator-docs mirror | github.com/Roblox/creator-docs |
 | 2026-10-04 | Data-Persistence-DataStores-And-ProfileStore | ProfileStore v1.0.3: autosave 300 s, session steal 40 s, dead-session 630 s | Confirmed from library source | github.com/MadStudioRoblox/ProfileStore |
 | 2026-10-04 | Physics-And-Network-Ownership | PhysicsService collision-group methods deprecated → workspace:RegisterCollisionGroup; 32-group cap | Confirmed via creator-docs mirror | github.com/Roblox/creator-docs |
+| 2026-10-04 | Deprecated-API-Replacements | 423 deprecated engine members; GetRankInGroup(Async)/GetRoleInGroup(Async) superseded by GroupService:GetRolesInGroupAsync (multi-role) | Confirmed; vault code fixed | creator-docs `Player.yaml`, `GroupService.yaml` |
+| 2026-10-04 | Friend-And-Group-Play | Server group cache not cleared after PromptJoinAsync (client only) | Confirmed | creator-docs `GroupService.yaml` |
+| 2026-10-04 | Deprecated-API-Replacements | BodyVelocity deprecated → LinearVelocity | Confirmed | creator-docs `BodyVelocity.yaml` |
