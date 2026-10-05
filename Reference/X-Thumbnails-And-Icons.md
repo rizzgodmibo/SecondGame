@@ -35,6 +35,15 @@ If a thumbnail candidate is AI-generated, ship it only as one arm of a personali
 (in-engine render or human art) and judge on qualified play-through, per [[Thumbnails-And-Icons]]. For Paper Plane Toss
 this is flagged in [[Paper Plane Toss Thumbnails and Game Icon]]; the decision is Holden's.
 
+## Icon-sheet supplement — 2026-10-04
+
+[cyberdelicdev's Halloween pack preview](https://x.com/cyberdelicdev/status/2104459508282229161), dated 2026-09-28. Original post and image visually inspected; this is a saved promotional sheet, not the commercial icon pack.
+![[Assets/Reference-Captures/X/supplement-2026-10-04/cyberdelic-2104459508282229161-halloween-icons.webp|600]]
+
+**Observed:** paired smooth and stud-textured treatments of bones, tombstones, cauldrons, witch hats, ghosts and coffins; consistent contours and bright accents separate silhouettes from the purple background. **Study:** outline and lighting consistency across an icon family. **Critique:** stud detail may collapse at HUD scale; compare both treatments before choosing. This still establishes neither animation quality nor conversion lift.
+
+The creator's profile links https://cyberdelicdev.itch.io/. No pack purchase or production-use licence was verified. Devion's egg-shop post credits this account for vectors; that does not establish authorship of every asset in the separate Halloween showcase. Source URL, media URL and SHA-256 are saved in the supplement manifest.
+
 ## Catalogue
 <!-- catalogue:start -->
 ### Thumbnails, icons and the AI-thumbnail debate (25)

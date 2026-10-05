@@ -12,12 +12,100 @@ confidence: medium
 
 ## TL;DR
 
+- **v8 winner-style variants:** +1 BOUNCE!, FLY FAR!, SKY PETS! made from Holden's exact Ghost Race reference. Final exports are exactly 1920×1080; upload JPGs are under 0.5 MB. Screenshot now shows Ghost Race at 2% CTR versus 0.5% for the older two; different traffic/time windows remain unknown.
+- Additional campaign candidates **v7**: Ghost Race and Plus One Bounce, created 2026-10-04. Existing campaign creatives were not changed; Ads Manager was inaccessible from this browser. Files are ready for manual addition to the same campaign.
 - Latest candidates are **Refined v6**, made 2026-10-04 from Holden's exact three pastel attachments and two new rendered Roblox style references. Earlier versions below are history.
 - Keep the white starter plane and +1 on the icon; gold/red star plane on the banners; smooth pastel islands and the cloud lane throughout.
 - Improve expression, pose, lighting, silhouette and flight-path clarity together. A material polish pass alone does not create stronger storytelling.
 - Public competitor artwork supplies composition observations, not evidence that any creative choice increases conversion. No live asset upload or analytics experiment occurred.
 - ⚠️ **Risk flagged 2026-10-04 (observation, not a decision):** the v1–v6 candidates come from ChatGPT image generation. On X, anti-AI-thumbnail sentiment is strong: the most-liked post in the [[X-Thumbnails-And-Icons]] capture (46.5k likes) says players won't play games with AI thumbnails, and people call out AI thumbnails in replies. That audience is mostly devs and older players and it isn't player conversion data. Options for Holden: (a) keep the AI candidates but A/B test them against an in-engine Roblox render or a human-painted version, (b) commission an artist, (c) re-stage the composition as a real in-engine render in Studio/Blender. Holden decides.
 - Current +1 and +10K claims match Starter and GoldenTicket Glide per bounce in local Config.luau, checked 2026-10-04. Recheck after balancing.
+
+## Ghost Race winner-style variants v8 (2026-10-04)
+
+Holden identified Ghost Race as his best-performing creative and requested three close style variants. Used his exact reference as the primary image input for all three. Kept white/cyan folded plane, yellow rim, white/gold tilted chunky title with plum outline, bright blue sky, soft clouds and smooth pastel islands. Removed rival planes for these three hooks.
+
+![[Paper Plane Toss Plus One Bounce v8.png|640]]
+![[Paper Plane Toss Fly Far v8.png|640]]
+![[Paper Plane Toss Sky Pets v8.png|640]]
+
+- **+1 BOUNCE!:** three cloud contacts, three gold +1 labels and dotted gold bounce arcs; up-right white plane.
+- **FLY FAR!:** long cloud road/rainbow arches and exact requested distance text 1,000,000 M. Distance reachability was not verified in this task; illustration is not evidence of a reachable distance.
+- **SKY PETS!:** baby dragon and winged bunny perched on the plane as explicitly requested. Actual StormDragon and CloudBunny UI renders supplied as supporting references. Riding and tiny bunny wings are requested promotional staging, not verified live behavior; existing pet notes describe followers. No gameplay changes were made.
+- Resolved contradictory wording by treating the specifically requested +1 bonus labels and distance number as exceptions to the general 'no other text besides title' rule. No unrelated text/UI was added.
+
+### New screenshot evidence
+
+![[Paper Plane Toss Ghost Race Results October 4.png|640]]
+
+| Creative | Spend shown | Impressions | Clicks | Displayed CTR |
+| --- | --- | --- | --- | --- |
+| Ghost Race | USD 1.28 | 9,732 | 191 | 2% |
+| Noob Pro | USD 3.04 | 51,287 | 241 | 0.5% |
+| How Far | USD 3.09 | 53,640 | 246 | 0.5% |
+
+All rows show Learning. This supports the user's observed CTR lead for Ghost Race; it does not isolate the style's causal effect or establish retention/paid-play quality. Screenshot received 2026-10-04; reporting range and traffic composition unseen. Preserve this newer evidence alongside the earlier baseline, not as a replacement for it.
+
+### Deliverables and QA
+
+`C:\Users\holde\Downloads\SecondGame\art\thumbnails\winner-v8\` contains final `Plus One Bounce`, `Fly Far`, and `Sky Pets` in PNG and JPG, native images, 320×180 phone-size previews and `Prompts.md`.
+
+- Built-in image_gen created/edited all artwork; high-quality bicubic export resampled the native 1672×941 results to the requested exact 1920×1080. Native originals preserved.
+- Final JPG bytes: Bounce 395,797; Fly Far 467,617; Sky Pets 426,657. Use these upload copies; full-resolution PNGs exceed 3 MB.
+- Inspected all three 320×180 previews: titles, principal plane and pet silhouettes remain distinguishable; number has correct digits, three +1 labels present. Bottom-right carries background rather than faces/title. Actual platform-specific crop/overlay still requires upload-preview review.
+- No campaign changes or uploads requested/performed this turn. New variants have no measured CTR yet.
+- Exact prompts/provenance archived as `Assets/Paper Plane Toss Winner v8 Prompts.txt`.
+
+Related: [[Paper Plane Toss Pets and Eggs]], [[Thumbnails-And-Icons]], [[AB-Testing]], [[Sky Island Hub and Throw Lane]].
+
+## Additional campaign ideas v7 (2026-10-04)
+
+Holden requested 1–2 distinct concepts alongside the existing campaign creatives, keeping the game's pastel look, one main subject and at most three words of headline text. Created two candidates using built-in image_gen; preserved all existing images.
+
+### Ghost Race
+
+![[Paper Plane Toss Ghost Race v7.png|640]]
+
+- Competition concept: one opaque white/cyan starter plane with yellow outline, flanked by two quieter translucent replay planes, over the real-style cloud lane. Two-word headline: GHOST RACE.
+- Verified in current local `src/client/Controllers/GhostController.luau`: recent/server-best flights replay in side lanes; Config specifies ghost transparency 0.6. This is promotional illustration of an implemented local feature, not a screenshot or a fresh live-server test.
+- One clear hero plane; supporting rivals stay smaller. Actual lane render supplied as environment reference. No finish-line rewards or controllable aircraft mechanics invented.
+
+### Plus One Bounce
+
+![[Paper Plane Toss Plus One Bounce v7.png|640]]
+
+- Numeric progression concept: one large white paper plane and a connected three-cloud bounce path, with exactly three +1 labels increasing in perspective size. No headline or avatar competes with the plane.
+- Starter +1 Glide per bounce checked in current local Config.luau. Chose this suggested option instead of an unverified 1,000,000-metre claim. Pet/Taco Jet remains a possible later concept; no pet-riding feature was assumed.
+- Both new images retain organic pastel grass islands, rounded foliage, beige undersides and cloud lane/rainbow scenery. They offer different creative hypotheses, not a promise of higher CTR.
+
+### Screenshot baseline and campaign status
+
+![[Paper Plane Toss Campaign Baseline October 4.png|640]]
+
+User-supplied screenshot, received 2026-10-04; reporting date range, campaign ID, audience and spend window are not visible:
+
+| Existing creative | Status | Spend shown | Impressions | Clicks | Displayed CTR |
+| --- | --- | --- | --- | --- | --- |
+| Noob Pro | Learning, enabled | USD 2.63 | 45,900 | 219 | 0.5% |
+| How Far | Learning, enabled | USD 2.48 | 45,017 | 208 | 0.5% |
+
+These rounded rates do not establish a winner. Neither the screenshot nor public reference artwork proves that large numbers or collecting imagery improve conversion. Record new creative activation times, counts, plays and retention context before comparing results; paid CTR and organic Home personalization QPTR are different metrics. See [[Thumbnails-And-Icons]] and [[AB-Testing]].
+
+**Platform check:** live Ads Manager documentation states up to 10 thumbnails per campaign, creatives editable after publication, and independent enable/disable controls. Checked 2026-10-04; source at bottom. Two existing plus two new would make four, provided the unseen campaign has no additional creatives.
+
+**Execution limitation:** navigation to `https://ads.roblox.com` was blocked by the browser (ERR_BLOCKED_BY_CLIENT). No campaign ID, live controls, uploads or mutations were accessible. No attempt was made to bypass the block. The two new files are prepared; they have **not** been added or activated. Existing creatives, budget and schedule were not touched. To finish: edit that same campaign's Creatives, add these two files, keep the existing two enabled, and preserve budget/schedule.
+
+### Saved files and checks
+
+Workspace: `C:\Users\holde\Downloads\SecondGame\art\thumbnails\campaign-v7\`.
+
+- `Ghost Race.png`: 1672×941, 1,843,861 bytes.
+- `Plus One Bounce.png`: 1672×941, 1,744,105 bytes.
+- `Prompts.md`: exact prompts, inputs and publication limitation. Vault artifact copy: `Assets/Paper Plane Toss Campaign v7 Prompts.txt`.
+
+Dimensions/file sizes verified from PNG headers; approximately 16:9, not exact 1920×1080 exports. Outputs visually inspected for ghost count, lettering, plane silhouette, cloud contacts and terrain. Actual phone/Ads Manager preview and campaign performance remain untested.
+
+Related: [[Deterministic Flight Sim and Ghosts]], [[Paper Plane Toss Pets and Eggs]], [[Sky Island Hub and Throw Lane]].
 
 ## Refined v6 with new rendering references (2026-10-04)
 
@@ -222,6 +310,9 @@ After art approval, test the progression and curiosity thumbnails through Roblox
 
 ## Sources
 
+- V8: Holden's exact winning reference `codex-clipboard-d7a45445-835f-46c1-8ae0-a59c8f65889b.png` and screenshot `codex-clipboard-8679b444-b1d8-4831-94e6-98ff08eb1a7f.png`, supplied 2026-10-04. Local pet references: `art/ui/pet_StormDragon.png` and `art/ui/pet_CloudBunny.png`. Screenshot observations are user-supplied evidence, not independently accessed analytics.
+- [Roblox Ads Manager: creative limits, editing and enable/disable controls](https://create.roblox.com/docs/production/promotion/ads-manager), checked 2026-10-04 for v7 campaign additions.
+- V7 campaign baseline: Holden's supplied `codex-clipboard-3602b7cc-f7a4-4c89-b44d-4ecdedf64b21.png`, preserved in Assets. Current ghost implementation: `src/client/Controllers/GhostController.luau`; Starter gain and ghost transparency: `src/shared/Config.luau`. Environment source: `art/preview_lane_start.png`.
 - Latest targets: `ChatGPT Image Oct 3, 2026, 07_10_11 PM.png`, `exec-1107a03d-ec85-43d3-8f92-8abd8af5445d.png`, and `exec-623f2324-e2ed-463b-9b1b-5336c2663b02.png`, supplied by Holden. Exact copies are embedded in the v6 comparison.
 - New rendering references supplied by Holden: ![[Paper Plane Toss v6 Square Style Reference.png|150]] ![[Paper Plane Toss v6 Wide Style Reference.png|280]]. These inform art direction, not verified performance.
 - Environment correction references: local game renders `art/preview_island_34.png` and `art/preview_lane_start.png`; [[Sky Island Hub and Throw Lane]]; `C:\Users\holde\Documents\GameDev\AssetLibrary\README.md`; Holden's exact selected attachments named above.

@@ -1,0 +1,39 @@
+---
+title: Paper Plane Toss Additional Campaign Creatives
+date: 2026-10-04
+updated: 2026-10-04
+tags: [roblox, marketing, prompts]
+source: codex
+project: Paper Plane Toss
+status: draft
+confidence: medium
+---
+# Additional campaign creatives
+
+Built-in image_gen. Related: [[Paper Plane Toss Thumbnails and Game Icon]], [[Deterministic Flight Sim and Ghosts]]. Two new creatives; existing files untouched. No live campaign changes: Ads Manager navigation was blocked by the browser. New creative performance is untested.
+
+## Ghost Race
+
+Create ONE original LANDSCAPE 16:9 sponsored Roblox thumbnail for Paper Plane Toss, ideally 1920x1080. Recompose the first input's white folded paper plane and polished rendered style into a COMPLETELY DIFFERENT ghost racing scene. Second input is the actual game environment reference: pastel sky islands and continuous cloud lane with rainbow arches. Do not copy the first input's avatar/throwing layout or +1 text.
+
+Concept: "GHOST RACE" (these exact two words only, large dimensional cream/gold lettering, dark plum keyline and white edge, top left, clear at phone size). One unmistakable hero WHITE folded starter paper plane with cyan creases and a warm yellow outline, about 45% of frame width, dominates center-right foreground. TWO smaller translucent pale blue/purple folded-paper ghost planes race beside it in separate side lanes, one left middle distance and one behind upper center. Their see-through surfaces reveal the sky and signal replay ghosts, NOT spooky ghost creatures. All three paper planes travel in the SAME direction toward upper right, diagonal forward momentum, similar recognizably folded triangular paper geometry, no metallic cockpits or engines, no riders. Hero opaque and crisp, opponents visibly quieter and smaller. Visually this is one primary subject and two supporting competitors.
+
+Dynamic three-quarter side tracking camera, pronounced foreshortening, beautiful thick paper fold shadows. A soft continuous cloud road beneath recedes into distance and rainbow arch behind racers; a couple isolated puffs underneath suggest bounce contacts, restrained tapered speed trails behind each plane parallel to its own lane. NO crossed flight paths, lasers, finish line, leaderboard numbers, winning rewards, countdowns or player names. Bright azure sky, smooth organic mint-green island turf, faceted beige undersides, small rounded layered green/pink trees and a few hanging vines, enough open sky to separate every silhouette. No blocky grass, studs, cubes, Minecraft terrain, water, pets, coins, objects not in the game. Premium vivid 3D Roblox promo render consistent with reference1: crisp white contours, disciplined highlights, warm/cool separation, controlled bloom. Keep essential plane tips and text within 6% edge margins; bottom strip only clouds/scenery. Full opaque finished banner only, no mockup or montage.
+
+## Plus One Bounce
+
+Create ONE original LANDSCAPE 16:9 sponsored Roblox thumbnail for Paper Plane Toss, ideally 1920x1080. Transform the first input's white plane, Roblox art style and pastel environment into a genuinely different numeric progression concept, NOT a stretched copy of its square avatar layout. Second input shows actual continuous cloud lane and sky islands. No avatar in this new composition; the plane is the sole hero.
+
+Concept: an enormous beautifully folded WHITE paper dart with pale cyan crease shadows dominates RIGHT HALF foreground, full triangular thin paper silhouette seen in dynamic three-quarter perspective, nose aiming upper right fully inside frame. This one plane has bounced along THREE separated fluffy cloud puffs growing in size from distant left to close center. One continuous WHITE glowing arc connects the three cloud contacts and then rises behind the hero plane. At each contact place ONE bold gold '+1' label with dark plum outline and white outer edge: exactly THREE labels '+1', '+1', '+1', increasing in visual scale with perspective from left to center. Make all three readable at phone size, largest label the visual number hook beside foreground bounce. These numbers are Glide gained per bounce, not a distance or money claim. NO OTHER TEXT, no headline, no million, no currency symbols, no fake multipliers.
+
+Composition should read left-to-right as bounce, bounce, bounce, launch toward viewer/right. ONE plane only, one route, all three cloud contacts causally connected, no branching laser trails. Maintain generous blue sky behind the white plane and clear gap around each gold +1. Small airy cloud impact wisps, not liquid splashes. Continuous cloud lane visible BELOW the isolated airborne bounce puffs, receding to a small quiet rainbow arch. Only a few soft-focus pastel islands frame the far edges with organic mint/lime continuous grass caps, faceted beige rock bottoms, rounded green and pink trees. No voxel cubes, no grass studs, no square foliage. Borrow first input's dimensional rendering, deliberate white contour and navy edge around the plane, orange/yellow versus azure contrast, crisply shaded folds. Keep foreground beautifully sharp while distant scenery is quieter, no overexposed bloom. Bottom strip only scenery; protect lettering and nose from cropping. Finished polished edge-to-edge opaque banner only, no comparison sheet, no watermark.
+
+## References
+
+Both edits used art/thumbnails/refined-v6/Game Icon After.png for rendering/plane style and art/preview_lane_start.png for the actual environment. Local GhostController.luau and Config.luau confirm ghosts in side lanes and Starter +1 Glide. No million-metre claim or pet-riding mechanic was assumed.
+
+## Sources
+
+- [Roblox Ads Manager: campaign supports up to 10 creatives, editable after publication](https://create.roblox.com/docs/production/promotion/ads-manager)
+- [Roblox thumbnail guidance](https://create.roblox.com/docs/production/publishing/thumbnails)
+

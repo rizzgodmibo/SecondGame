@@ -6,8 +6,8 @@ confidence: medium
 ---
 # X (Twitter) Reference Library
 
-306 high-engagement Roblox posts from X (UI, VFX, game feel, showcases), saved locally with full-res images, best-quality
-videos (200 videos, 163 images, about 1.6 GB), 12-frame contact sheets, and the post text and like count. Collected 2026-10-04 by searching X while logged in
+306 catalogued Roblox posts from X (UI, VFX, game feel, showcases), plus two reviewed supplements below. The main archive contains
+200 videos, 163 non-poster images and 200 posters (about 1.6 GB), contact sheets, post text and like counts. The earlier collector reports requesting original images and the highest available video bitrate; this audit did not independently compare available resolutions. Collected 2026-10-04 by searching X while logged in
 as Holden, sorted by likes. Started from Holden's example: DevionUI's Halloween shop (815 likes).
 
 | Note | What's in it |
@@ -25,8 +25,8 @@ as Holden, sorted by likes. Started from Holden's example: DevionUI's Halloween 
 
 ## TL;DR — patterns that repeat across the best posts
 - **A seasonal shop is a re-skin, not a rebuild.** Keep the frame; swap the header icon (pumpkin breaking the frame), the
-  section dividers (bats), the border motif (snow caps, candy cane, jungle leaves) and the currency (candy). Every Halloween
-  shop here sells the same three things: a lucky block or chest with odds shown, bulk egg buttons, and two event boosts
+  section dividers (bats), the border motif (snow caps, candy cane, jungle leaves) and the currency (candy). Several captured Halloween
+  mockups show a lucky block or chest with displayed odds, bulk egg buttons, and event boosts
   (luck, magnet). Examples: DevionUI, jackdoesui, absidev, FurixShahin.
 - **The 2026 'Steal an Egg' shop anatomy** is one scrolling column: a FEATURED limited egg or box (countdown, 4–5 pets with %
   odds, quantity buttons such as 1/3/10/50) → PASSES (x2 Growth / x2 Money) → stat packs in tiers, each ending in an
@@ -97,6 +97,15 @@ as Holden, sorted by likes. Started from Holden's example: DevionUI's Halloween 
 **Storage and rights:** the vault's GitHub mirror is public, so all X media (`*.jpg/png/mp4`, `post.json`) is gitignored and
 stays on this PC. Only notes, the manifest, takeaways and scripts are tracked. This is third-party art for private study:
 don't upload, trace or resell it. Credit the author if a design is closely followed.
+
+## Independent archive and quality audit — 2026-10-04
+- Main manifest: **306 records**, **200 MP4s**, **363 images including posters**, **1,568,817,521 bytes** across listed files; **zero missing listed files**. Contact sheets and unlisted derivatives are additional. This verifies presence, not decoding or viewing every video.
+- Two additional original posts reviewed in-browser: DevionUI's ice shop and cyberdelicdev's Halloween icon sheet. Saved with source URLs, dates and SHA-256 in `Assets/Reference-Captures/X/supplement-2026-10-04/manifest.json`. There are **308 distinct post references across both manifests**; the generated catalogue still covers 306.
+- Both owner screenshots of the Halloween example are preserved in the supplement folder. Existing full Halloween and egg-shop clips were retained; duplicate lower-resolution posters were not added.
+- The supplement adds observations to [[X-Shop-And-Seasonal-UI]] and [[X-Thumbnails-And-Icons]]. Jack's practice Halloween shop has displayed percentages totaling **126%** and a larger pack with worse unit value than its middle pack. The persistent takeaway now flags mockup numbers instead of recommending them.
+- Scope: this pass inspected selected browser frames/stills and the original Halloween contact sheet. It did not independently watch 200 clips or measure conversion, retention, animation timing, audio or mobile performance. Earlier Viewed labels describe the previous collection pass.
+
+Follow [[Reference-Capture-Process]] for evidence and quality checks. The logged-out browser showed only short profile slices in this pass and video export timed out, but the existing archive already contains both matching full clips. No credentials are needed to study those local files.
 
 ## Next queries
 All queued queries ran on 2026-10-04 (hatch, low poly, lobby/map, #RobloxAnimation, paper, fishing). Next: a Christmas pass

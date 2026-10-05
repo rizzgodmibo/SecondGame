@@ -13,7 +13,7 @@ confidence: medium
   - Show every outcome with numerical odds summing to 100% *before* purchase.
   - Explain luck boosts and **pity systems** numerically, with odds updated live.
   - Check `PolicyService:GetPolicyInfoForPlayerAsync().ArePaidRandomItemsRestricted` per player.
-- Add pity on any table where the chase item is < 1%. Hard pity at ≈ 1.5–2× the expected number of rolls caps the worst case without changing the median much.
+- Choose any pity threshold from an approved waiting-time and reward-supply target, not a universal <1% rule. A hard cap can preserve the median while materially increasing long-run reward supply; calculate both before choosing it.
 - Never fake a near-miss on a paid roll. The animation must reflect the outcome actually rolled on the server.
 
 ## The four schedules (operant conditioning, applied)
@@ -32,12 +32,12 @@ FR progress bar (e.g. 100 coins = 1 egg) + VR result (rarity roll) + FI daily bo
 ## Loot table design
 1. Define rarity tiers by **tier weight first**, then split items inside each tier. Designers can then add items without changing tier odds.
 2. Common tier sizing: Common 60–75%, Uncommon 20–30%, Rare 4–10%, Epic 0.5–2%, Legendary 0.05–0.5%, Secret/Huge ≤ 0.01%. ⚠️ verify: these are vault heuristics; benchmark against odds displayed in top games (Pet Simulator 99, Grow a Garden).
-3. A chase item worth chasing for a week needs `p ≈ 1 / (rolls per week of an engaged player)`.
+3. `p ≈ 1 / rollsPerWeek` sets a mean waiting time near one week under constant independent rolls; it does not give most players a one-week guarantee. Choose a target completion percentile and model the actual roll cadence instead.
 
 ### Roll math
-- P(at least one hit in n rolls) = `1 − (1 − p)^n`
-- Rolls for a 50% chance = `ln 0.5 / ln(1 − p)`. Rolls for 90% = `ln 0.1 / ln(1 − p)`.
-- Expected rolls with hard pity at H = `(1 − (1 − p)^H) / p`
+- For independent rolls at constant hit probability `0 < p < 1`, P(at least one hit in n rolls) = `1 − (1 − p)^n`.
+- Rolls to reach completion fraction c = `ceil(ln(1 − c) / ln(1 − p))`, for `0 < c < 1`. Count attempts including the successful roll, not failures before it.
+- Expected rolls with hard pity guaranteeing success on attempt H = `(1 − (1 − p)^H) / p`, assuming constant p before H and reset after a hit. This is not the formula for soft pity, changing luck or no-replacement draws.
 
 | p | 50% chance after | 90% after | 99% after | Expected rolls with hard pity H = 100 |
 |---|---|---|---|---|
@@ -45,7 +45,16 @@ FR progress bar (e.g. 100 coins = 1 egg) + VR result (rarity roll) + FI daily bo
 | 1% | 69 | 230 | 459 | 63.4 |
 | 0.1% | 693 | 2,302 | 4,603 | 95.2 |
 
-Worked example: a 1% legendary at 4 hatches/min. The median player gets one in ~17 min and 10% of players are still dry after ~57 min. That 10% is your churn risk. Hard pity at 100 rolls (25 min) caps it.
+Illustrative arithmetic, not a game benchmark: at 1% and a constant 4 hatches/min, the median is 69 attempts (17.25 min); the 90th-percentile completion point is 230 attempts (57.5 min). This identifies an unlucky tail, not measured churn. Hard pity on attempt 100 caps first-hit waiting at 25 min under that cadence.
+
+### Waiting-time and supply review (verified scope: 2026-10-04)
+The R statistics manual defines the geometric variable as failures before success and its quantile as the smallest qualifying integer. Our attempt count is that variable plus one. The equations above follow from summing its survival probabilities; no R runtime or Roblox playtest was run.
+
+**Locally checked arithmetic:** for p=1%, without pity the mean is 100 attempts and the chance of a hit within 100 attempts is only 63.3968%. With hard pity H=100, mean waiting becomes 63.3968 attempts; 36.9730% of cycles reach the guaranteed attempt (99 previous misses). The median remains 69. If identical cycles reset on each hit and cadence stays fixed, the long-run hit supply is about 100/63.3968 = 1.577 times the no-pity supply. This renewal-rate comparison is not a forecast for a finite session or a changing economy.
+
+**Procedure (design recommendation):** specify the target item versus target tier, desired completion percentile, actual attempt cadence and maximum tolerable wait. Calculate both tail time and reward supply. Model finite sessions, duplicates and changing luck separately. Record the approved hypothesis and compare observed cohorts after implementation; do not infer retention improvement from these equations.
+
+**Pending acceptance checks:** verify n−1 misses the chosen percentile while n reaches it; H=1 always awards on the next eligible roll; success resets the counter; leaving/rejoining preserves the intended counter; sequential batch rolls update pity after each result; unique-item removal renormalizes the remaining outcomes. These are test cases, not executed game tests.
 
 ### Pity systems
 | Type | Mechanic | Effect |
@@ -60,6 +69,10 @@ Industry reference: Genshin Impact runs a 5★ base 0.6%, soft pity from about r
 Roblox policy classes **pity systems and luck boosts as "probability modifier" paid random items**. If the rolls are paid (Robux, or currency bought with Robux), you must explain the effect numerically and show the player's current odds dynamically.
 
 ## Code: weighted tiers with luck and pity (server-only rolls)
+**Reuse limitation (source/code inspection, 2026-10-04):** this excerpt returns tier odds, not final-item odds. For its two-stage sampler, final-item probability is tier probability × item weight / total weight within that tier. A guaranteed tier does not guarantee a particular item in it. The fixed four-decimal formatter below can round a very small nonzero percentage to zero; it is not a complete disclosure formatter. Validate nonempty tables, unique IDs/names, finite nonnegative weights, positive totals and valid pity targets before reuse. No code was changed or type-checked in this pass.
+
+Roblox's live policy requires final outcomes and current numerical probabilities for applicable paid random items; modified odds must reflect active modifiers. Its rounding allowance depends on the first nonzero decimal place, not a blanket four-decimal format. See the dated primary source below. The client display must use the same authoritative configuration and player state as the next roll; merely calling a function with the same name is insufficient.
+
 ```lua
 --!strict
 -- ReplicatedStorage/Shared/LootTable.lua
@@ -194,8 +207,8 @@ Server usage (ServerScriptService/HatchService.server.lua):
 
 ## Checklist
 - [ ] Each random table has tier weights, item weights, a computed p, and a "rolls to 50%/90%" row in the balance sheet
-- [ ] Pity configured for any chase tier < 1%, stored in DataStore, and reset on hit
-- [ ] Odds UI built from `currentOdds()` so displayed odds always equal real odds, luck and pity included
+- [ ] Pity, if approved, has explicit target/reset/persistence rules and checked waiting-time and supply effects
+- [ ] Final-item odds include tier and within-tier weights, current luck/pity and remaining eligible items; tiny nonzero chances remain visible
 - [ ] `PolicyService` checked on join; restricted players routed to the fallback treatment
 - [ ] Rolls server-only; client receives the result to animate
 - [ ] Hatch/drop events logged with tier for telemetry ([[Analytics-And-Instrumentation]])
@@ -212,6 +225,9 @@ Server usage (ServerScriptService/HatchService.server.lua):
 - [[Gamepasses-vs-Developer-Products]] · [[Daily-Rewards-And-Streaks]] · [[Anti-Exploit-And-Server-Authority]] · [[Data-Persistence-DataStores-And-ProfileStore]] · [[Analytics-And-Instrumentation]]
 
 ## Sources
+- R stats primary documentation, Geometric Distribution: https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Geometric.html (read 2026-10-04; failures-versus-attempts convention and quantiles).
+- Roblox live paid-random-items guidance: https://create.roblox.com/docs/production/monetization/paid-random-items (read 2026-10-04; final-outcome disclosure, active modifiers and rounding scope).
+- Local PowerShell arithmetic, 2026-10-04: checked 1% quantiles 69/230/459 and H=100 expectation by closed form and direct 100-term survival sum; both 63.396765872677 within floating-point precision. This was arithmetic verification, not a game simulation.
 - Roblox Creator Docs, Paid random items policy guidelines: https://create.roblox.com/docs/production/monetization/paid-random-items (via github.com/Roblox/creator-docs, read 2026-10-04)
 - DevForum, Clarifying Requirements for Paid Random Items: https://devforum.roblox.com/t/clarifying-requirements-for-paid-random-items/4654622
 - Tech Times (2026-06-26), Korea's loot-box rules push Roblox to disclose odds worldwide: https://www.techtimes.com/articles/319148/20260626/koreas-loot-box-rules-push-roblox-disclose-item-odds-worldwide.htm

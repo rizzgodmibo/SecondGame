@@ -4,48 +4,48 @@
   "showTags": false,
   "showAttachments": true,
   "hideUnresolved": true,
-  "showOrphans": true,
+  "showOrphans": false,
   "collapse-color-groups": false,
   "colorGroups": [
     {
       "query": "path:\"Resources\"",
       "color": {
         "a": 1,
-        "rgb": 16486972
+        "rgb": 9684477
+      }
+    },
+    {
+      "query": "path:\"Reference\"",
+      "color": {
+        "a": 1,
+        "rgb": 10980346
       }
     },
     {
       "query": "path:\"Systems\"",
       "color": {
         "a": 1,
-        "rgb": 15485081
-      }
-    },
-    {
-      "query": "path:\"Design\"",
-      "color": {
-        "a": 1,
-        "rgb": 16498468
+        "rgb": 15235577
       }
     },
     {
       "query": "path:\"Projects/Paper Plane Toss\"",
       "color": {
         "a": 1,
-        "rgb": 16007006
+        "rgb": 16478597
       }
     }
   ],
-  "collapse-display": true,
+  "collapse-display": false,
   "showArrow": false,
-  "textFadeMultiplier": 0,
-  "nodeSizeMultiplier": 1,
-  "lineSizeMultiplier": 1,
-  "collapse-forces": true,
-  "centerStrength": 0.518713248970312,
-  "repelStrength": 10,
+  "textFadeMultiplier": 0.1,
+  "nodeSizeMultiplier": 0.900253658536585,
+  "lineSizeMultiplier": 0.502517073170732,
+  "collapse-forces": false,
+  "centerStrength": 0.475512195121951,
+  "repelStrength": 11.6416692174268,
   "linkStrength": 1,
-  "linkDistance": 250,
-  "scale": 0.03408574896699968,
+  "linkDistance": 174,
+  "scale": 0.25883865621815166,
   "close": false
 }

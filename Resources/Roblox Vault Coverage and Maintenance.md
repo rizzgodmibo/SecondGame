@@ -18,7 +18,7 @@ Initial inventory found strong project histories and art workflows, but little d
 
 ## Rotation state
 
-**Current authority (2026-10-04):** [[Gap-Tracker]] holds the active rotation, detailed gaps and session log after the vault reorganisation. Visuals/assets is next after the Engineering boundary-validation pass. Follow its seven-domain queue and cover all seven before repeating. The coverage table and older change-log entries below preserve the earlier cycle as history; their next-step labels are not the active queue.
+**Current authority (2026-10-04):** [[Gap-Tracker]] holds the active rotation, detailed gaps and session log after the vault reorganisation. Monetisation is next after the Design reward-distribution pass. Follow its seven-domain queue and cover all seven before repeating. The coverage table and older change-log entries below preserve the earlier cycle as history; their next-step labels are not the active queue.
 
 Track the exact subtopic and canonical note after each pass. Select the oldest or highest-impact gap within the next domain. Urgent data-loss, security, payment or policy corrections can interrupt, but resume the displaced domain next. Never repeatedly expand a favourite subject while others wait.
 
@@ -59,6 +59,10 @@ Read existing coverage; verify one useful gap; edit canonical notes; include dec
 
 ## Change log
 
+2026-10-04 (23:57 EDT heartbeat) — Design: updated [[Reward-Schedules]] with geometric waiting-time assumptions, integer quantiles, pity supply effects, final-item disclosure limits and pending acceptance checks. Primary sources and local arithmetic checked; no game code or runtime tests. Next: Monetisation.
+
+2026-10-04 — Visuals/reference pass: verified the existing 306-post X manifest has no missing listed media, preserved two new original-post images and two owner screenshots, added [[Reference-Capture-Process]], and corrected mockup odds/unit-price advice in [[X-Shop-And-Seasonal-UI]]. See [[X-Reference-Library]] for exact inspection scope. No game changes or performance/conversion tests. Next: Design.
+
 2026-10-04 — Engineering: updated [[Remotes-And-Networking]] and [[Anti-Exploit-And-Server-Authority]] with primary-source validation, mutation contract procedure and pending adversarial checks. No game code or runtime tests. Next: Visuals/assets; active queue in [[Gap-Tracker]].
 
 2026-10-04 — Reconciled this legacy entry point with [[Gap-Tracker]]. Updated canonical [[Thumbnails-And-Icons]] and [[Verification-Log]]; no duplicate retention note created. Next: Engineering per the active rotation.
@@ -79,7 +83,6 @@ Read existing coverage; verify one useful gap; edit canonical notes; include dec
 
 - Holden's instructions and ongoing mandate in this chat, 2026-10-03.
 - Local vault inventory and linked notes, read or indexed 2026-10-03; topic-specific verification is recorded in each researched note.
-
 
 
 

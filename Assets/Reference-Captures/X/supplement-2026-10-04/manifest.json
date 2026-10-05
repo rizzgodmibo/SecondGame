@@ -1,0 +1,26 @@
+[
+  {
+    "id": "2084509518806077565",
+    "sha256": "1A1C791F80ABD5F416CA074D2D345D54344C954C0367F9B8A5CB34F1AB7D9D9C",
+    "rights": "Third-party reference only; no production asset licence verified",
+    "author": "DevionUI",
+    "postDate": "2026-08-04",
+    "evidence": "Original post and image visually inspected in browser; downloaded rendered webp, not full-resolution original",
+    "mediaUrl": "https://pbs.twimg.com/media/HO2qLMya8AAmFtw?format=webp&name=small",
+    "file": "devion-2084509518806077565-ice-shop.webp",
+    "url": "https://x.com/DevionUI/status/2084509518806077565",
+    "retrieved": "2026-10-04"
+  },
+  {
+    "id": "2104459508282229161",
+    "sha256": "1886A013DCD2C509F7E0FE16A961A7C4E1FA7B263D57B08E0649A68A0F79D882",
+    "rights": "Commercial pack promotional sheet; no pack purchase or licence verified",
+    "author": "cyberdelicdev",
+    "postDate": "2026-09-28",
+    "evidence": "Original post and image visually inspected in browser; downloaded rendered webp, not full-resolution original",
+    "mediaUrl": "https://pbs.twimg.com/media/HTSKwzga0AEkmaz?format=webp&name=small",
+    "file": "cyberdelic-2104459508282229161-halloween-icons.webp",
+    "url": "https://x.com/cyberdelicdev/status/2104459508282229161",
+    "retrieved": "2026-10-04"
+  }
+]

@@ -6,32 +6,57 @@ confidence: medium
 ---
 # X Reference: Shop and Seasonal UI
 
-48 shop, store, starter-pack, seasonal and stud-style UI posts from X, ranked by likes within each section. Part of
+48 catalogued shop, store, starter-pack, seasonal and stud-style UI posts from X, plus one manually reviewed ice-shop supplement below. Catalogue order is by likes, not measured usability. Part of
 [[X-Reference-Library]] (method, rights and storage are explained there). Media lives locally in
 `Assets/Reference-Captures/X/`; video posts show a 12-frame contact sheet with a link to the MP4.
 "**Take:** Viewed…" means the frames were actually reviewed; posts with no Take have only their caption.
 
 ## TL;DR
 - **Seasonal = re-skin.** Same frame; swap the header icon (breaking the frame), divider icons, border motif and currency.
-  Halloween shops all sell: a lucky chest with odds shown, bulk buys with a built-in discount (1/5/10 = 150/250/1k), and
-  two event boosts (luck, magnet). Add a 'LIMITED TIME' tag and a timer.
+  Several captured Halloween mockups show a chest, quantity buttons and
+  event boosts. These are observed motifs, not required mechanics. Use a timer only for a real, defined deadline.
 - **2026 simulator shop order:** FEATURED limited egg/box (timer + pets with odds + quantity buttons) → PASSES (x2) → stat
   pack tiers → one oversized BEST VALUE bundle per section. Colour-code sections and add right-side jump tabs.
-- **Every price button gets a Gift button beside it** (honey packs, cash packs, battlepass, Steal an Egg's 'Gift Player').
+- **Several showcases put a Gift button beside Buy** (honey packs, cash packs, battlepass, Steal an Egg's 'Gift Player').
 - **Feedback:** 'Processing…' → 'Purchase Complete!' + confetti → card flips to OWNED; a thank-you overlay with a huge
   number; booster cards float '+50% LUCK!'.
 - **Reveal recipe:** hide UI → object to centre → shake → light rays → name + rarity + odds → '1 of N' for batches.
-- **Stud style** (chunky outlines, stud texture, bright saturated fills) is the dominant 2025–26 simulator look on X.
+- **Stud style** (chunky outlines, stud texture, bright saturated fills) recurs in this curated sample; selection by likes is not a representative genre survey.
 
 ## Checklist for a new or seasonal shop (derived from these references; untested in Holden's games)
-- [ ] One scroll column, featured item first, with a visible countdown.
-- [ ] Odds shown on the card and on the reveal.
-- [ ] Bulk buttons priced as a visible discount.
-- [ ] Each section ends with one 'best value' bundle; HOT / POPULAR / NEW tags used sparingly.
-- [ ] Gift button next to every Robux price; a 'Receive Gifts' setting.
+- [ ] Choose a layout appropriate to the actual offers; only show a countdown for a genuine deadline.
+- [ ] If a random offer is approved, validate its actual outcome distribution and applicable disclosure requirements; never copy mockup percentages.
+- [ ] Compute cost per item for every quantity tier; any discount or best-value claim must be true.
+- [ ] Use offer tags only when accurate; justify any best-value claim with the actual quantities and prices.
+- [ ] Add gifting controls only if gifting is implemented, authorized and tested; a reference icon is not an entitlement-delivery design.
 - [ ] Processing state, success celebration, OWNED state; never a silent purchase.
 - [ ] Seasonal skin = icon + border motif + currency swap on the existing frame.
 - [ ] Test at phone width (most of these mockups are filmed on a PC baseplate).
+
+## Review supplement — 2026-10-04
+
+### DevionUI — Ice King shop practice image
+[Original post](https://x.com/DevionUI/status/2084509518806077565), dated 2026-08-04. Original page and still image inspected in this pass; image saved at the resolution served by X, not claimed full resolution.
+![[Assets/Reference-Captures/X/supplement-2026-10-04/devion-2084509518806077565-ice-shop.webp|600]]
+
+**Observation:** cyan title bar, four equal cash cards in a 2×2 group, one tall pink character offer beside them, repeated green price buttons, purple gift buttons and snow accents at the frame corners. The large character card creates hierarchy without changing every card style.
+**Useful pattern:** a featured card can span two standard rows; themed border pieces can sit outside a stable rectangular content area.
+**Critique:** the cash cards repeat the same displayed amount and price. Treat this as practice composition, not calibrated bundle design. Small price and gift targets need a touch test; a PC screenshot does not establish mobile accessibility.
+
+### Original Halloween reference — independent review
+[DevionUI post](https://x.com/DevionUI/status/2104979132245479646), dated 2026-09-29. Two owner screenshots are preserved in the supplement folder. Existing full clip and contact sheet remain in `ui-seasonal/DevionUI-2104979132245479646/`; duplicate lower-resolution posters were not added.
+
+**Observed:** pumpkin entry button; orange/brown panel against a blue-purple world; two-up pass cards and three-up currency cards; shop dimmed behind reward silhouettes with names/rarity below. A browser frame at 00:11 and the existing 12-frame sheet were inspected. This pass did not measure tween curves, animation timings or audio, and did not establish mobile performance.
+**Critique:** long outlined italic labels and dense art compete at small size. Keep the framing and silhouette hierarchy; reduce secondary detail and test price readability. Preserve a close/skip path and prevent reveal decoration from swallowing input. Success animation must follow authoritative purchase/reward confirmation.
+
+### Acceptance checks before adapting any showcase
+- [ ] Separate visual observations, creator marketing claims and proposed implementation choices.
+- [ ] Check phone-sized labels, touch targets, scrolling, controller focus and long/localized text in the actual implementation.
+- [ ] Verify close/skip/re-entry while an animation runs and a reduced-motion alternative.
+- [ ] Check pending, failed, cancelled, duplicate and successful purchase states; a celebratory prototype proves none of these.
+- [ ] Verify displayed quantities, probabilities, timers and unit prices against real configuration. Jack's mockup shows 50+40+25+10+1 = 126%; its 5-pack is 50 per egg while its 10-pack is 100 per egg.
+
+These are pending acceptance checks, not completed game tests. Style reference does not approve mechanics, paid randomness, pricing or purchases.
 
 ## Catalogue
 <!-- catalogue:start -->
@@ -53,7 +78,7 @@ confidence: medium
 [post](https://x.com/jackdoesui/status/2104899811401212315) · ♥ 177 · 2026-09-29
 ![[Assets/Reference-Captures/X/ui-seasonal/jackdoesui-2104899811401212315/img-1.jpg|480]]
 > ✦ Practice Halloween Shop UI &gt; thoughts? DM for commissions 👇 Discord: jackrblx
-**Take:** Viewed. Pixel/voxel Halloween re-skin of a standard shop: themed title bar (pumpkin icon breaking the frame, spider hanging off the close button), one big LIMITED TIME chest row showing all 5 drop odds (50/40/25/10/1%) above 3 bulk buttons (1/5/10 eggs = 150/250/1k candy, so bulk is a discount), then two 2-up boost cards (+50% luck, candy magnet) priced in the event currency. Event currency, odds shown up front, bulk discount.
+**Take:** Viewed. Pixel/voxel Halloween re-skin of a standard shop: themed title bar (pumpkin icon breaking the frame, spider hanging off the close button), one big LIMITED TIME chest row showing all 5 drop odds (50/40/25/10/1%) above 3 bulk buttons (1/5/10 eggs = 150/250/1k candy; unit costs are 150/50/100, so the middle tier is cheaper per egg than the largest), then two 2-up boost cards (+50% luck, candy magnet) priced in the event currency. Visual reference only: displayed odds sum to 126%, so these cannot be copied as one mutually exclusive outcome distribution. Pricing and percentages appear to be mockup data.
 
 #### FurixShahin — summer event UI
 [post](https://x.com/FurixShahin/status/2088297576097300736) · ♥ 155 · 2026-08-14
