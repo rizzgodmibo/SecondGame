@@ -68,6 +68,9 @@ Thumbnails are in `Assets/Reference-Captures/TikTok/` (gitignored).
 | [lemonade.gg: 'scripting manually is over'](https://www.tiktok.com/@www.lemonade.gg/video/7672698129032006934) | 574k · 7.5M · 76k · 2026-08-11 · 162 s | AI tool ad; prompts a stud tree that breaks, flashes and auto-loots (trend signal only) |
 | [mmii665_: every game getting AI thumbnails](https://www.tiktok.com/@mmii665_/video/7675982434738932999) | 384 · 20k · 71 · 2026-08-21 · 8 s | same sentiment as [[X-Thumbnails-And-Icons]] (low reach) |
 | [devmindofficial: growth site ad](https://www.tiktok.com/@devmindofficial/video/7633564458714959118) | 29.8k · 441k · 17.6k · 2026-04-27 · 14 s | ad for a growth-advice site; listed only because of reach (unvetted) |
+| [andythropic: Claude scripting, not one prompt](https://www.tiktok.com/@andythropic/video/7632072838253530398) | 30.2k · 442k · 14.5k · 2026-04-23 · 118 s | one system at a time; say what it does, where, how players interact; on-screen refactor prompt ([[Community-Prompt-Examples]] §2–3) |
+| [andythropic: how I vibe coded a game with Claude Code](https://www.tiktok.com/@andythropic/video/7638783229322939679) | 16.1k · 325k · 8k · 2026-05-11 · 154 s | Rojo + Claude Code; small specific tasks; paste the error plus what you clicked; 3 months of work, not a one-shot |
+| [lolstudios33: Blender MCP model in 2 prompts](https://www.tiktok.com/@lolstudios33/video/7690308892881882381) | 3.7k · 75k · 2.7k · 2026-09-27 · 53 s | references from the old design; prompt written by another AI then hand-edited; "ask questions when unsure" ([[Community-Prompt-Examples]] §5) |
 
 ## Pitfalls
 - Many high-reach Roblox-dev TikToks are ads for AI tools or paid services (ForgeGUI, Bloxsmith, ClickLab, Lemonade,

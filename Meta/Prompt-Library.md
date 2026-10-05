@@ -8,6 +8,7 @@ confidence: medium
 
 Prompts that worked well (or are worth reusing) when asking Claude to produce Roblox work.
 Store the original wording verbatim, then a reusable template and why it works.
+For prompts covering every part of game development (systems, UI, maps, monetisation, launch…), see [[Prompting/_Index|Prompting]]; this note keeps the saved asset prompts.
 
 ## TL;DR — what makes a good asset prompt
 - Say **what the asset is used for in-game** (held, placed in a machine, worn, etc.) — it decides rigging, collision and scale.

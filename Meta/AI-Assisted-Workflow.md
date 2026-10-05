@@ -9,7 +9,7 @@ confidence: low
 How to get good results from AI tools (Claude, ChatGPT/Codex, image models, Meshy) when building Roblox games.
 Source: community advice from Discord screenshots supplied by the vault owner (Sept 2026). These are
 **practitioner opinions, not verified facts**. Platform limits below were checked where marked.
-For saved prompt wording, see [[Prompt-Library]].
+For saved prompt wording, see [[Prompt-Library]]. For official prompting guidance (Anthropic, Roblox, OpenAI) and copy-paste prompts per part of game development, see [[Prompting/_Index|Prompting]] and [[Prompting-Principles]].
 
 ## TL;DR
 - **Always start from a reference image.** Have the AI *analyse* it first (no building), then build in small passes.

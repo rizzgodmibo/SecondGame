@@ -34,6 +34,7 @@ It is never "done": every session should close a gap, verify a claim, or refresh
 | `Bugs/` | Bugs and their fixes |
 | `Playtests/` | Observed playtest logs |
 | `Resources/` | Reusable how-tos and guidance |
+| `Prompting/` | How to prompt Claude and other AIs for each part of Roblox development (principles, copy-paste prompts, checks) |
 | `Inbox/` | Unsorted findings — triage into a folder later |
 | `Meta/` | Gap tracker, verification log, sources list |
 | `Templates/` | Note templates |

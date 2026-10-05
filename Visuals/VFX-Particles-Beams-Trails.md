@@ -172,6 +172,7 @@ Server side only fires `RemoteEvent:FireAllClients("CoinBurst", position)`; clie
 - [ ] Tested on low-end mobile with 10+ players spamming abilities
 
 ## Pitfalls
+- **Showcase packs blow the phone budget.** A shared "Purple Blue Mega Effect" (2026-10-05) used 152 emitters at about 7,100 particles/s, roughly 5,800 live: about 4× the ~1,500 live target. Shared weather effects ran 35–50/s per emitter (about 300 live each). Measure a borrowed effect before using it ([[Discord-Prompt-Pack-2026-10-05]]).
 - Spawning particles from the server for every hit → network spam and delayed visuals.
 - `Lifetime` 30 expecting long trails — capped at 20 s.
 - Additive (`LightEmission 1`) particles on bright skies wash out to white; use darker colours or `LightEmission 0.5`.

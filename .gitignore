@@ -37,3 +37,5 @@ Projects/*/attachments/shop-gauntlet/refs/
 # blind critic pairs contain copies of the refs above
 Projects/*/attachments/shop-gauntlet/blind/
 Assets/*Style Reference.png
+# Community drops (other creators' prompts, Roblox model/place files, Discord screenshots): local only
+Assets/Community-Drops/

@@ -80,6 +80,8 @@ family; X posts by the same creators are not repeated here.
 |---|---|---|
 | [GPT 6 Astra + Roblox Studio is Insane](https://www.youtube.com/watch?v=jld-8pFWj6M) | Cole · 9 min · 2026-09-16 · 299k | 0:25 Studio setup · 0:53 connecting 'Higgsfield' · 1:19 first result · 2:54 car physics · 4:48 wall rides, 3v3 · 6:57 thumbnail and publishing · 7:33 ranked mode, leaderboards |
 | [How to Build Roblox Games With AI in 2026](https://www.youtube.com/watch?v=0ENeVVC9QT0) | SmartyRBX · 18 min · 2026-03-30 · 182k | overview; compare with [[Video-SyphoDev-Claude-Code-Roblox-Workflow]] |
+| [Which AI Can Make the BEST Steal a Brainrot GAME?](https://www.youtube.com/watch?v=uzOyfbTUyFk) | RoDev · 17 min · 2026-03-14 · 285k | one fixed clone prompt across 5 models, 2 corrections each; Claude won with no corrections; lesson: put features in the first prompt (transcript read; [[Community-Prompt-Examples]] §2, §4) |
+| [I Asked Opus 5.5 To Make My DREAM Game!](https://www.youtube.com/watch?v=IFtKCN8jw6o) | Scuppy · 16 min · 2026-10-03 · 19k | long design prompt, no references, extra-high effort, mid-run ideas; genre clarified late caused rework; 68% weekly usage in 90 min; one-line thumbnail ask failed (transcript read; [[Community-Prompt-Examples]] §6) |
 
 ## Duplicates and gaps found
 - Video-Breakdowns #9 and #10 are the same talk (identical transcripts); merged there.

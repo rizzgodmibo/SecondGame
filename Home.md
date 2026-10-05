@@ -7,6 +7,7 @@ confidence: high
 # Roblox Development Vault — Home
 
 Start here. Read [[CLAUDE]] for conventions, then [[Game-Building-Playbook]] for the end-to-end order of work.
+Asking Claude (or another AI) to do any of it? Use the copy-paste prompts in [[Prompting/_Index|Prompting]].
 Check [[Gap-Tracker]] for what is due next.
 
 ## End-to-end path
@@ -29,7 +30,8 @@ Check [[Gap-Tracker]] for what is due next.
 - [[Retention/_Index|Retention]] — D1/D7/D30, dailies, events, social, community
 - [[Operations/_Index|Operations]] — analytics, A/B, live-ops, scaling, policy, post-mortems
 - [[Reference/_Index|Reference]] — real-game icons, thumbnails, videos, UI and VFX breakdowns
-- `Assets/` — owner-supplied icon packs and reference captures ([[Free-Icon-Pack-v3.1-Basic]], [[Dragons-Hoard-Set]], [[VFX-Texture-Pack]], [[Fantasy-Creatures-Set]])
+- [[Prompting/_Index|Prompting]] — how to prompt Claude and other AIs for each part of Roblox development: principles, prompts, checks
+- `Assets/` — owner-supplied icon packs and reference captures ([[Free-Icon-Pack-v3.1-Basic]], [[Dragons-Hoard-Set]], [[VFX-Texture-Pack]], [[Fantasy-Creatures-Set]]); community drops (local only): [[Discord-Prompt-Pack-2026-10-05]]
 - `Projects/` — per-game specs (use [[Project-Template]])
 - `Inbox/` — untriaged findings
 - `Meta/` — [[Gap-Tracker]], [[Verification-Log]], [[Sources]], [[Prompt-Library]] (reusable prompts for asking Claude), [[AI-Assisted-Workflow]] (how to drive AI tools well), [[Gauntlet-Loop]] (builder/critic quality loop)

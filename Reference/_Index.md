@@ -27,6 +27,7 @@ Real-game and community examples to learn from. Images are embedded **by URL** (
 | [[X-Fishing-And-Paper-References]] | 12 fishing-game (Fisch, Fish It) and paper-style posts |
 | [[X-Thumbnails-And-Icons]] | 25 thumbnail/icon posts incl. the anti-AI-thumbnail backlash and human-made thumbnails for top games |
 | [[X-Game-Feel-And-Showcases]] | 37 top #RobloxDev posts: Scrapbook Saga game feel, events, viral reveals, colour-ramp rule |
+| [[Steal-An-Egg-Teardown]] | Steal an Egg loop, zones, 5-min global cycle, pen levels, shop prices and UX, condensed from a community recreation spec (unverified, 2026-09-29) |
 | [[Community-Showcase-Breakdowns]] | Owner-supplied clips: fruit-stand tycoon, war elephant, pirate animations, Crystal Bee VFX |
 
 Owner-supplied assets: [[Free-Icon-Pack-v3.1-Basic]] (in `Assets/Icon-Packs/`); video contact sheets are in `Assets/Reference-Captures/`; X captures (local only, gitignored) are in `Assets/Reference-Captures/X/`; video frames for the SyphoDev breakdown (local only, gitignored) are in `Assets/Reference-Captures/SyphoDev-AI-Workflow/`.
