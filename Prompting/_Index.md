@@ -36,6 +36,8 @@ GOAL / READ FIRST / CONTEXT / TARGET / CONSTRAINTS / DONE WHEN / PROCESS / REPOR
 | Analytics, experiments, live-ops, policy | [[Prompting-Analytics-And-Live-Ops]] | Instrument · diagnose numbers · experiment plan · weekly update · incident · policy question | Funnel-order diagnosis, smoke test |
 | Research and vault upkeep | [[Prompting-Research-And-References]] | Research into vault · collect references · video breakdown · verify a claim · maintenance pass | No duplicates, sourced numbers |
 | Big one-shot specs, session bootstraps, Discord "master prompts" | [[One-Shot-Spec-Prompts]] | Steal an Egg spec anatomy + Holden spec skeleton, fresh-context verifier JSON prompt, Studio session bootstrap, VFX / map / polish master prompts with stop rules | Verifier total ≥ 85 and no blockers |
+| Subagents: when to delegate, Roblox hazards (one Studio, Rojo, worktrees), Studio MCP explore/playtest agents, community agent studios | [[Subagents-For-Roblox-Development]] | Decision table, hazards + fixes, official mechanics and limits, cost data |
+| Ready-to-copy Roblox agent files + delegation prompts | [[Roblox-Subagent-Definitions-And-Prompts]] | explorer, docs researcher, gate runner, studio tester; brief skeleton, fan-out, isolated parallel build, serial Studio check |
 | What other devs actually use | [[Community-Prompt-Examples]] | 11 sourced patterns from X, TikTok, YouTube, DevForum, GitHub and Roblox docs, each rewritten for this setup | — |
 
 Every aspect page also has a **More examples** section (4–7 shorter prompts each, about 60 in total, added 2026-10-04).
