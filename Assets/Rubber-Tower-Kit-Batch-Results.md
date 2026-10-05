@@ -78,7 +78,7 @@ Split out of [[Rubber-Tower-Valley-Kit]] (the kit list and status) on 2026-10-04
     - **OmniKoi2:** crooked, goofy shapes.
     - New captures are in `Assets/Reference-Captures/Roblox-Games/` (Islands, Bee Swarm, Grow a Garden, World // Zero, Arcane Odyssey, Adopt Me, Dungeon Quest; see the MANIFEST).
   - The shop accent is now purple and gold, not pink. Holden kept the per-structure colours "for now", so the gamepass (green/gold dome) and halfway (teal mushroom) shops are unchanged.
-- Batch (f) rebuilt: `PREFLIGHT RESULT PASS objects=70 fails=0`.
+- Batch (f) rebuilt: `PREFLIGHT RESULT PASS objects=70 fails=0`. Final full rebuild with the gamepass options on 2026-10-05: 42 types, 52 models, `PASS objects=76 fails=0`.
 - **Honest:** the shack is the strongest shop now. Next to it, the gamepass pavilion looks a bit "clean plastic", so it may want the same fantasy treatment (wood, stone, a crooked roof) if Holden agrees.
 
 ![[Shop_Cosmetics_Shack.png|600]]

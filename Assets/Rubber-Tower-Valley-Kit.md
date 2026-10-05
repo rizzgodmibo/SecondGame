@@ -253,6 +253,11 @@ confidence: medium
 **Seasonal swap set:**
 - [ ] Pumpkin, Jack_O_Lantern (glow) · Wrapped_Present ×3 colours · snowy hub variants (re-bakes of the hub decor with snow caps)
 
+## Pitfalls
+- **`--only` rebuilds wipe the batch folder.** `run_batch` writes the manifest, .blend and models for ONLY the specs it built. Running `batch_x.py -- --only A` after `rm -rf kit_batch_x` leaves just A. This happened to batch (f) on 2026-10-05: a gamepass test left 3 of 52 models, and it was caught at commit time and fully rebuilt. **Test builds go to a copy with a different OUT folder**, as was done for the batch (g) hat fixes.
+- **Git:** generated output (GLBs, .blend, textures, renders) is gitignored in the Rubber Tower repo and rebuilds from the seeded scripts. Only scripts, manifests, preflight logs and hat icons are committed. Approved models are archived in `AssetLibrary/models/rubber-tower-kit-v4`/`-v5`.
+- **Public vault:** review sheets that composite third-party references ("model | reference") are gitignored; our own renders are tracked.
+
 ## Where the rest lives
 - **[[Rubber-Tower-Kit-Batch-Results]]**: results, sheets, preflight and self-critique per batch, for the fixes, (f), (a) and (b)–(e2), plus the Squishies coin options.
 - **[[Rubber-Tower-Kit-Style-History]]**: the v1 to v5 style tests and the pipeline lessons behind the locked style.
