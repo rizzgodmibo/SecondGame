@@ -20,6 +20,16 @@ Collected across [[Fish a Monster]] and [[Paper Plane Toss]]. The connection use
 
 Related: [[Rojo Workflow Gotchas]], [[Blender to Roblox Asset Pipeline]]
 
+**Update 2026-10-04 (Rubber Tower, Studio play mode):**
+- `screen_capture` with a camera position **worked in play mode**: it captured the ragdolled avatar and the dev panel. This counts against the dispute below for this Studio build.
+- `execute_luau` calls time out at about 60 s, including calls that only wait. Start long tests with `task.spawn`, write progress to a workspace attribute, and read it in a later call.
+- `execute_luau` can't fire remotes, but setting a workspace attribute that a Studio-only server script listens to (`DevCommand`) drives dev tools well.
+- Rojo-synced script changes only take effect after a play restart.
+- Humanoid `MoveTo` called from the server **does** walk a player's own character (useful for walk-off-ledge tests). Calling it repeatedly also walks a character into a truss so it climbs, which makes it good for ladder, bounce and hatch tests.
+- **Blank white `screen_capture` (Rubber Tower, 2026-10-04):** Studio was maximised but covered by other windows, so it didn't draw 3D (client FPS showed 15). Fix: bring Studio to the front first, from PowerShell with user32 `keybd_event(Alt)` + `SetForegroundWindow`. Then captures work in both edit and play mode. Calls can still time out while Studio is busy; retry.
+- After `rojo serve` restarts (including after a crash), the Studio plugin reconnects **by itself in about 20–25 s**. Poll for a freshly synced instance instead of asking Holden to click Connect.
+- In play mode, `require(module:Clone())` on the Server datamodel works for stateless modules (used to run MapAudit directly). Modules that hold state give a separate copy.
+
 **Play-mode screenshots disputed (2026-10-04):** a SyphoDev tutorial claims Studio MCP screenshots only work in edit mode, so the output log is the only thing that comes out of a running game. That creator falls back to an unnamed third-party Roblox MCP when the built-in one breaks. This conflicts with the play-mode observation above. ⚠️ Re-test on the current Studio build. See [[Video-SyphoDev-Claude-Code-Roblox-Workflow]].
 **Don't use the Blender MCP's Hunyuan3D tools for Holden's games:** the Hunyuan3D licence excludes the UK (verified 2026-10-04).
 

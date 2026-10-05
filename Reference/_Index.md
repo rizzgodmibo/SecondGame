@@ -6,10 +6,12 @@ confidence: medium
 ---
 # Reference — Index
 
-Real-game and community examples to learn from. Images are embedded **by URL** (not stored) unless the owner supplied them.
+Real-game and community examples to learn from. X references are saved locally with provenance; some older galleries still embed remote URLs. See each library for storage and evidence scope.
 
 | Note | One-line summary |
 |---|---|
+| [[Reference-Capture-Process]] | Capture, deduplication, evidence labels and quality checks |
+| [[Roblox-Obby-Surface-References]] | Top obby/climb games + Fisch: why surfaces look "real Roblox" (stud/painted texture, lighting, climb readability); Rubber Tower v5 study |
 | [[Icon-And-Thumbnail-Gallery]] | Top games' icons and thumbnails (via Roblox APIs), with a breakdown of each and cross-game rules |
 | [[TikTok-Reference-Library]] | 26 Roblox-dev TikToks (onboarding friction rules, UI effects, Studio tips, marketing formats) deduplicated against X and YouTube |
 | [[YouTube-Reference-Library]] | 26 new YouTube videos (UI craft, game design, growth, egg/pet systems, AI) deduplicated against Video-Breakdowns, with caption timestamps |
@@ -32,7 +34,7 @@ Real-game and community examples to learn from. Images are embedded **by URL** (
 
 Owner-supplied assets: [[Free-Icon-Pack-v3.1-Basic]] (in `Assets/Icon-Packs/`); video contact sheets are in `Assets/Reference-Captures/`; X captures (local only, gitignored) are in `Assets/Reference-Captures/X/`; video frames for the SyphoDev breakdown (local only, gitignored) are in `Assets/Reference-Captures/SyphoDev-AI-Workflow/`.
 
-**Not yet written** (research stopped early, see [[Gap-Tracker]]): `VFX-And-Art-Style-Reference`, `Reference-Capture-Process`.
+**Not yet written** (see [[Gap-Tracker]]): `VFX-And-Art-Style-Reference`. Capture procedure is now in [[Reference-Capture-Process]].
 
 ## Related
 - [[Home]] · [[Thumbnails-And-Icons]] · [[Art-Direction]] · [[AI-Assisted-Workflow]]

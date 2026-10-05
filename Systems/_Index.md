@@ -28,6 +28,8 @@ Engineering knowledge for building a Roblox game: Luau, architecture, networking
 | [[Parallel-Luau]] | Actors, desynchronize/synchronize, SharedTable, actor messaging, when it's worth it |
 | [[Streaming-And-Instance-Streaming]] | StreamingEnabled settings, ModelStreamingMode, persistent models, client stream-safe patterns, RequestStreamAroundAsync |
 | [[Physics-And-Network-Ownership]] | Assemblies, ownership rules, SetNetworkOwner patterns, mover constraints, collision groups (WorldRoot API), exploit risks |
+| [[Obby-Special-Platforms]] | Ice (friction 0.01 → 4.6-stud slide, measured), wobble platforms (client copy, corner springs, Humanoids put no weight on floors), bounce pads |
+| [[Avatar-Ragdoll]] | Ragdolling the player's own avatar: joint-upgrade rigs (AnimationConstraint + built-in sockets, verified), server decides/client moves, lag-tolerant fall validation, measured PC cost |
 | [[Error-Handling-And-Logging]] | pcall/xpcall, retry with backoff, task library, ScriptContext.Error reporter, structured logs, Promise libs |
 | [[Tooling-Rojo-Wally-And-Studio-MCP]] | Rojo, Wally, Rokit, Selene, StyLua, luau-lsp, GitHub Actions CI, built-in Roblox Studio MCP server and how Claude drives it |
 | [[Roblox Code Gate Skill]] | Claude Code skill: read-only gate (rojo build, Lune specs for pure rules modules, Selene, StyLua) before every sync; scaffold rule |

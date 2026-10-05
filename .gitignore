@@ -39,3 +39,19 @@ Projects/*/attachments/shop-gauntlet/blind/
 Assets/*Style Reference.png
 # Community drops (other creators' prompts, Roblox model/place files, Discord screenshots): local only
 Assets/Community-Drops/
+# Roblox game-page screenshots (Rubber Tower v5 research) and Holden's own picks of other games: local only
+Assets/Reference-Captures/Roblox-Games/**/*.png
+Assets/Reference-Captures/Holden-Picks/**/*.png
+Assets/Reference-Captures/Holden-Picks/**/*.jpg
+
+Assets/Reference-Captures/X/**/*.webp
+
+# Rubber Tower kit review sheets that composite third-party reference images (other games, X artists) next to our
+# models ("model | reference"): local only, same rule as the refs themselves. Our own renders stay tracked.
+Assets/Rubber-Tower-Valley-Kit/batch-*/Batch*_*.png
+!Assets/Rubber-Tower-Valley-Kit/batch-*/Batch*_Diorama.png
+!Assets/Rubber-Tower-Valley-Kit/batch-*/Batch*_Hub_*.png
+!Assets/Rubber-Tower-Valley-Kit/batch-*/Batch*_Icons.png
+!Assets/Rubber-Tower-Valley-Kit/batch-*/Batch*_OnHeads_*.png
+!Assets/Rubber-Tower-Valley-Kit/batch-*/Batch*_Gamepass_Options.png
+Assets/Rubber-Tower-Valley-Kit/v4-styletest/Sheet_*.png

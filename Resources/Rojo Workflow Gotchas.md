@@ -16,6 +16,7 @@ tags: [roblox, rojo, tooling]
   2. Copy it into Studio's `Versions/<ver>/content`
   3. Load it with `game:GetObjects("rbxasset://...")`
 - **Line endings:** add a `.gitattributes` with `* text=auto eol=lf`, or StyLua's check fails after git converts files to CRLF.
+- **A gitignored file still syncs.** Rojo syncs every file in a mapped folder, whatever git ignores. To keep dev tools out of a publish, put `globIgnorePaths: ["**/Dev*.luau"]` in `default.project.json` and serve a `dev.project.json` (the same file without that ignore) while testing (Rubber Tower, 2026-10-04).
 - **Python and Node aren't in Git Bash** on this PC, so edit JSON with the Edit tool.
 
 Related: [[Roblox Studio MCP Quirks]], [[MyGame]]
