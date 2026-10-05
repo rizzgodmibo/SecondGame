@@ -104,6 +104,7 @@ Server logic that depends on time of day (night-only spawns) computes the same f
 
 ## Related
 - [[Visuals/_Index]] · [[Art-Direction]] · [[Shaders-Materials-And-Surfaces]] · [[VFX-Particles-Beams-Trails]] · [[Thumbnails-And-Icons]]
+- Deep-dive set (2026-10-05, Holden's lighting guide drop): [[Lighting Overview]] → [[Lighting Service Properties]], [[Atmosphere]], [[Sky and Clouds]], [[Local Lights and Performance]], [[Post-Processing]], [[Lighting Recipes]], [[Lighting Sources and Videos]]. It agrees with this note on LightingStyle replacing Technology and the 120-stud light range.
 
 ## Sources
 - Global lighting (LightingStyle, PrioritizeLightingQuality, ShadowSoftness) — https://create.roblox.com/docs/environment/lighting

@@ -129,6 +129,9 @@ Music ducking: wire the SFX/voice bus into an `AudioCompressor`'s **Sidechain** 
 
 See [[UI-Polish-And-Juice]] for pairing with motion.
 
+## Ability SFX anatomy (measured)
+A measured breakdown of a community SFX pack ([[SFX-Pack-2026-10-05]]): every ability is **windup → hit → loopable aura** (+ lunge / finisher) as separate files. The windup gets louder and brighter and ends at its peak. The hit attacks in about 40–240 ms, then darkens and fades. The aura bed has equal start and end levels so it loops. Big hits there put 90–97% of their energy below 150 Hz, which ⚠️ may vanish on phone speakers, so keep body in 600 Hz–6 kHz. Measure new sounds with [[Roblox Sound Library Skill]] (`soundcheck.py`, `sfxprofile.py`).
+
 ## Music strategy
 - 2–4 tracks minimum: lobby/menu, main gameplay, intense (boss/event), shop (optional). Crossfade 1–2 s between states.
 - Loop points: use `LoopRegion` to skip intros on repeat.

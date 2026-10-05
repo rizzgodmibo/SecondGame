@@ -30,6 +30,7 @@ UI, VFX, animation, 3D pipeline, lighting, audio and art direction. Facts verifi
 | [[Animation-Rigging-And-IK]] | R15 vs R6, Animator & track caching, priorities/weights, replication & ownership, markers, Animation Graph Editor, IKControl, springs, custom Motor6D/Bone rigs |
 | [[Blender-To-Roblox-Pipeline]] | Units/axis/FBX/glTF export settings, 20k-tri mesh cap & budgets, UVs, texture sizes, PBR maps, Importer settings, Collision/RenderFidelity, SLIM LOD, skinning, cages |
 | [[Lighting-And-Atmosphere]] | LightingStyle/PrioritizeLightingQuality (replacing Technology), Atmosphere/Sky/Clouds, post-processing, genre presets, mobile cost, day/night |
+| [[Lighting Overview]] | Lighting guide set (Resources/Lighting, 8 notes): setup order, Lighting properties, Atmosphere, Sky and Clouds, local lights and cost, post-processing, recipes with Luau, sources and videos |
 | [[Sound-Design]] | Legacy Sound/SoundGroup vs audio API (AudioPlayer/Wire/AudioFader/Emitter/Listener), bus mixer code, rolloff, UI sound map, licensing & upload limits, loudness normalisation |
 | [[Art-Direction]] | Choosing a sustainable style, readability at small sizes, palettes & rarity colours, style guide template, genre expectations, art → thumbnails |
 | [[Creature-Anatomy-And-Proportions]] | Measuring creature limbs on the high-res mesh; big-cat benchmark (forearm ≈ 0.14 × shoulder height), heavier = stouter, joint taper, feet, worked drake example |
