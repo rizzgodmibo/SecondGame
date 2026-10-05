@@ -14,7 +14,7 @@ Managed by the `roblox-game-manager` skill. Read this first every session. The p
   - The v5 test pieces were uploaded with Holden's key (ids in `AssetLibrary/models/rubber-tower-kit-v5/README.md`) and staged in Studio under `workspace.StyleTest_v5`, at about (1500, 800, 1500).
   - Holden ordered TONS of models ([[Rubber-Tower-Kit-Full-Prompt]]), in review batches (a) to (e).
   - Batch (a) was reviewed: USER "keep the colors", "start with batch B and after batch B make even more".
-  - **Git (2026-10-05, Holden asked Claude to commit):** vault commits on branch `rubber-tower-art-2026-10-05` (not merged into main). RubberTower repo first commit `fb9c092` on `main` (code + art scripts + manifests; generated art gitignored). Nothing pushed.
+  - **Git (2026-10-05, Holden asked Claude to commit):** vault commits merged into `main` (fast-forward; branch deleted). RubberTower repo first commit `fb9c092` on `main` (code + art scripts + manifests; generated art gitignored). Nothing pushed.
   - **Session end 2026-10-05:** batch (g) reviewed. Gamepass shop = **B Caravan** (USER, "for now"). Weak hats fixed (flaming crown, rune crown, hot dog); the rest are kept as they are (USER). **Next session: Holden sets the hat Squishies prices, then batch (h) extra + misc.**
   - **2026-10-05:** Squishies = D Duck on the Grape coin (USER). Cosmetics shop redone as a fantasy hat shack after Holden rejected the pink boutique; batch (f) preflight PASS. **Next: Holden reviews the shack, then batch (g) hats.**
   - **Session end 2026-10-04:** Holden reviewed (f): keep the colours, text fine. Weak pieces fixed. Squishies coin: 6 options built, **Holden picks one**. **Next session: batch (g) crazy hats** (USER: "we can move forward tomorrow").
