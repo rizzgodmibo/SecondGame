@@ -1,13 +1,13 @@
 ---
 tags: [prompting/agents, prompting/examples, meta/ai-workflow]
 status: draft
-updated: 2026-10-05
+updated: 2026-10-06
 confidence: medium
 ---
 # Roblox Subagent Definitions and Delegation Prompts
 
-Copy-paste agent files for a Roblox game repo, and prompts for handing work to subagents. The why and when is in [[Subagents-For-Roblox-Development]].
-**Status:** the field names follow the official subagent docs (2026-10-05), but **these four agent files haven't been run in Holden's setup yet**. Test each once and note the result here.
+How to **set up** subagents for Roblox Studio development (step by step, tested), copy-paste agent files for a Roblox game repo, and prompts for handing work to subagents. The why and when is in [[Subagents-For-Roblox-Development]].
+**Status:** field names follow the official subagent docs (2026-10-05). **`roblox-explorer` was tested on 2026-10-06** (setup section below). The other three agent files haven't been run yet; test each once and note the result here.
 Not repeated here: the code-review prompt ([[Prompting-Debugging-And-Testing]] §4), the blind critic ([[Gauntlet-Loop]], [[Prompting-UI]]) and the per-area verifier ([[One-Shot-Spec-Prompts]]). For read-only code audits use the installed `roblox-dev:roblox-reviewer` agent rather than writing a new one.
 
 ## TL;DR
@@ -15,6 +15,43 @@ Not repeated here: the code-review prompt ([[Prompting-Debugging-And-Testing]] �
 - Four roles cover the good-fit jobs: **explorer** (read-only map), **docs researcher** (web, with sources and dates), **gate runner** (runs checks, returns only failures), **studio tester** (the only agent allowed to touch Studio, one at a time).
 - Every brief to a subagent needs: **objective, the context it lacks, tools/sources, boundaries, output format, stop condition.** Subagents never see the conversation.
 - Builders stay in the main session. Approvals stay in the main session. Background agents can't ask Holden anything.
+
+## Setup: step by step (tested 2026-10-06 with Claude Code 2.1.289)
+1. **Choose where the agent lives.**
+   - **Game-specific** (explorer, studio tester): `<game repo>/.claude/agents/`. It's committed with the game, so every session in that repo gets it.
+   - **Every project** (docs researcher, gate runner): `C:\Users\holde\.claude\agents\`. On 2026-10-06 that folder didn't exist yet, so create it.
+2. **Create one `.md` file per agent**, named after the agent (e.g. `.claude/agents/roblox-explorer.md`), and paste the agent block from below.
+   The file must start with `---` on line 1, and `name` and `description` are required. Copy the block as is, including the closing `---`.
+3. **Give Studio access only to agents that need it.** Subagents can use the MCP servers registered for that repo. Holden's game repos register `Roblox_Studio` (and Blender) in a gitignored `.mcp.json`.
+   Grant it per agent in `tools:` with `mcp__Roblox_Studio__*` (as `roblox-studio-tester` does). Read-only agents get `Read, Grep, Glob` only. ⚠️ Not tested yet with a live Studio.
+4. **Start a new Claude Code session in the repo** (Code tab or terminal). In the test, a fresh session picked up the agent file. ⚠️ Whether an already-running session sees a new file without restarting is unverified, so restart to be safe.
+5. **Call it.**
+   - `@"roblox-explorer (agent)" map this repo` guarantees the agent runs.
+   - Naming the agent in a prompt lets Claude decide, and a good `description` lets Claude delegate on its own.
+   - `/agents` points to the agent folders.
+6. **Test once with a known answer** before trusting it. Put a deliberate flaw in a scratch repo and check the agent reports it with file:line (see the test result below).
+7. **Optional, scripted (headless) runs:**
+   ```bash
+   claude -p '@"roblox-explorer (agent)" map this repo using your standard report' --allowedTools "Agent,Read,Grep,Glob" --max-turns 12 < /dev/null
+   ```
+8. **Commit `.claude/agents/` with the game** (Holden commits). Keep `.mcp.json` out of git.
+
+**Test result (2026-10-06):**
+- **Setup:** a throwaway Rojo repo with one server Service containing a planted flaw: a RemoteEvent that adds whatever amount the client sends. The `roblox-explorer` file was copied exactly from this note into `.claude/agents/`.
+- **Run:** a headless `claude -p` run with the @-mention.
+- **Result:** the agent was used (the run confirmed it by name) and followed the report format. It found the flaw at `CoinService.luau:10`, plus the missing rate limit and an unused Config value, and edited nothing.
+- **Lessons:**
+  - Headless runs print a stdin warning unless you add `< /dev/null`.
+  - Headless runs still load `~/.claude/CLAUDE.md`, so Holden's global rules (such as the "Vault:" closing line) apply to scripted runs too.
+
+**Troubleshooting**
+| Symptom | Check |
+|---|---|
+| Claude doesn't use the agent | Use the `@"name (agent)"` form. Make the `description` say *when* to use it. Remove overlapping agents with similar descriptions |
+| Agent missing from the session | File in the right folder? Frontmatter on line 1, with `name` and `description`? Restart the session |
+| Agent can't touch Studio | Is `Roblox_Studio` in the repo's `.mcp.json`? Does `tools:` include `mcp__Roblox_Studio__*`? Is Studio open, with the agent picking it via `list_roblox_studios`? |
+| Agent edits things it shouldn't | Narrow `tools:`. Read-only agents get `Read, Grep, Glob` only |
+| Costs climb | Set `model: haiku` for read-only and log-reading agents. Add `maxTurns` |
 
 ## Agent files
 

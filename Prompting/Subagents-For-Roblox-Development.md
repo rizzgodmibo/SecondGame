@@ -7,7 +7,7 @@ confidence: medium
 # Subagents for Roblox Development
 
 How Claude subagents work, which Roblox jobs they suit and which they don't, the hazards specific to one Studio and one Rojo sync, Roblox's own Studio MCP subagents, and how community "agent studios" are set up.
-Ready-to-copy agent files and delegation prompts are in [[Roblox-Subagent-Definitions-And-Prompts]].
+**Setting them up** (step by step, tested 2026-10-06), ready-to-copy agent files and delegation prompts are in [[Roblox-Subagent-Definitions-And-Prompts]].
 Already covered elsewhere (not repeated here): the fresh-context reviewer and blind critic ([[Prompting-Principles]] rules 10–11, [[Gauntlet-Loop]]), the code-review subagent prompt ([[Prompting-Debugging-And-Testing]]), and the per-area verifier prompt ([[One-Shot-Spec-Prompts]]).
 
 ## TL;DR
