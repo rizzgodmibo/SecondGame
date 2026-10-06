@@ -34,3 +34,19 @@ Related: [[Rojo Workflow Gotchas]], [[Blender to Roblox Asset Pipeline]]
 **Don't use the Blender MCP's Hunyuan3D tools for Holden's games:** the Hunyuan3D licence excludes the UK (verified 2026-10-04).
 
 **Update 2026-10-04 (Edit mode):** `require` via `execute_luau` **worked** in Edit mode (the "blocked require" above may be play-mode-only or fixed since). But `require` **caches across MCP calls**: after Rojo syncs a change you still get the old module. Require a fresh clone instead (`mod:Clone()`, parent it, `require` the clone). Particles also simulate in Edit mode, and `TimeScale = 0` freezes them for `screen_capture` ([[Roblox VFX Review Skill]]).
+
+**Update 2026-10-05 (Trap Your Friends style test, Team Create place):**
+- **`screen_capture` writes every image to disk** under `~/.claude/projects/<project>/<session>/tool-results/mcp-Roblox_Studio-blob-*.jpg` (the path is printed under the image). Copy those files into the vault instead of re-capturing.
+- **Play mode: the camera parameters lose to the follow camera.** The first capture used the requested view; later ones snapped back behind the avatar. Fix: run Client `execute_luau` with `CurrentCamera.CameraType = Scriptable` and set `CFrame`, then call `screen_capture` **with no camera parameters**.
+- **Freezing effects for screenshots:** a Studio-only client listener on a workspace attribute (e.g. `TYF_FreezeDebris`) anchors live client debris and pauses its tweens. A Server `execute_luau` can set the attribute a measured time after triggering the effect.
+- `upload_image` takes **http URLs**, not file paths. Serving the folder with a local `python -m http.server` on 127.0.0.1 worked. Results map URL → `rbxassetid://`.
+- `MaterialVariant.Pattern` is not a valid member in this Studio build (set `MaterialPattern` inside a pcall instead).
+- Rojo + Team Create: syncing worked once Holden clicked Connect (the plugin needs a click for a new place; the MCP can't click it).
+
+**Update 2026-10-06 (Trap Your Friends style test v2):**
+- **`execute_luau` on the Client datamodel CAN `FireServer` now** (it worked with plain and junk arguments). That made a real remote security test possible from the MCP. The older "it can't FireServer" note is out of date for this Studio build.
+- **`screen_capture` resets a Scriptable camera to Custom before it grabs the frame**, so setting the camera once isn't enough. Fix: `RunService:BindToRenderStep("ShotCam", Enum.RenderPriority.Camera.Value + 10, ...)`, which re-applies `CameraType = Scriptable` + `CFrame` from a workspace attribute every frame; then capture with no camera parameters. Unbind afterwards.
+- **Studio throttles to 15 fps (66.7 ms) when it isn't the foreground window.** Frame numbers taken then are worthless. Bring Studio forward (`SetForegroundWindow`, with the Add-Type and the call in **one** PowerShell call, because types don't persist between calls) and drop throttled samples.
+- Studio session ids change when Holden reopens the place (call `list_roblox_studios` again). An old `rojo serve` from an earlier Claude session can still be running and holding port 34872. Check before starting another.
+- Cloned-module requires: clone the **whole folder** of a builder (sibling `require(script.Parent.X)` would otherwise hit cached originals).
+- **Test graphics quality from the MCP (2026-10-06):** a Client `execute_luau` can set `settings().Rendering.QualityLevel = Enum.QualityLevel.Level01` … `Level21` (and back to `Automatic`) during a play test. Combine it with red marker parts at set distances to see the draw distance per level. Studio's own "Automatic" level culled objects past ~600 studs on Holden's PC. Remember to set it back to `Automatic`.

@@ -1,7 +1,7 @@
 ---
 tags: [project/rubber-tower, project/status]
 status: draft
-updated: 2026-10-04
+updated: 2026-10-05
 confidence: high
 ---
 # Rubber Tower Build Status
@@ -9,7 +9,75 @@ confidence: high
 Managed by the `roblox-game-manager` skill. Read this first every session. The plan and file lists are in [[Rubber-Tower-Build-Plan]]. Decisions are in [[Rubber-Tower]].
 
 ## TL;DR
-- **Now (2026-10-04, art: building the full kit):**
+- **PAUSED (Holden, 2026-10-05, ~19:20 EDT).**
+  - Restart with [[Rubber-Tower-Slice-Fix-Pass-Prompt]], a fix pass on the slice: water, the visible void, ground. Places 3–6 stay untouched.
+  - Holden has not given feedback on the slice yet beyond that prompt.
+  - Models are archived in AssetLibrary `models/rubber-tower-kit-v6-map/`; the game repo gitignores the `.blend`/GLB files.
+  - Rojo was stopped.
+  - Nothing is committed: about 58 changed or new files in the game repo, plus the vault changes, are left for Holden to commit.
+- **Now (2026-10-05, ~19:10 EDT): map v3 VERTICAL SLICE BUILT, STOPPED for Holden's review** ([[Rubber-Tower-Map-Build-Plan]] → "Vertical slice BUILT").
+  - History today: Option B picked → build 1 (all six places) → Holden: "not an obby yet" → combo rework + mechanics approved → the slice.
+  - The slice: hub v3, ground v3, cliff kit v2, waterfall v2, the START gate, Lily Lake (deep water) and the Village Rooftops (Miller's Yard).
+  - New gameplay code: swings/fans/slingshot (`MoverController`), water hazards (`WaterController` + `HazardService`), seesaw + per-cube jelly stiffness (`WobbleController`). Evidence: `GATE PASS` (56 specs).
+  - Measured: expert-style bot spawn → windmill ≈ 80–100 s of play (154 s with bot stuck-timeouts), 0 lake falls, 2 hammer bonks. The first-timer estimate (3–5 min, 4–8 falls) is a GUESS until Holden's phone run.
+  - Open: the Leap lane is blocked by the S3/S4 greybox; places 3–6 are still build 1; real client FPS still needs a focused Studio.
+- **Earlier (2026-10-05, late): map layout = WAITING FOR HOLDEN'S PICK (option A "Valley Ring" or B "Through the Middle").** → Holden picked B.
+  - Layout v1 was rejected by Holden as "a classic linear obby" and stopped before any build; the critique and both options are in [[Rubber-Tower-Map-Build-Plan]].
+  - **Test items done** ([[2026-10-05-Rubber-Tower-Studio-Test]], "Follow-up"):
+    - phone-size (844×390) crowd shot;
+    - textures pass after the 429 reset;
+    - TP_Top_Hat streamer moved;
+    - **leap pad v2** (bigger, readable arch, walkable, same arc standing or running);
+    - own hats hidden under a game hat (dev tools).
+  - **Real client FPS is not measured:** Studio caps at 15 FPS unless it's focused. Steps for Holden are in the test note.
+  - Code gate `GATE PASS` (44 specs) after the leap-launch change (`BounceController`, `CheckpointService.LeapRangeStuds`, Config `LeapRangeStuds`/`LeapGetUpSeconds`).
+  - **Built, ready for the map:**
+    - `Valley_Floor_S1` + `Pond_Basin` (asset 89785848208249);
+    - `tools/BuildValleyS1.luau` (kit placer, not run);
+    - `art/map/kit_colliders.json`.
+  - **Holden's own tests:** a 2-player checklist + Disco Duck test zone (`Workspace.TestPlace.DiscoDuckTestZone`).
+- **2026-10-05, night: gaps closed, Studio checks run, test-place uploads done. STOPPED for Holden's review.** Full pass/fail list + screenshots: [[2026-10-05-Rubber-Tower-Studio-Test]].
+  - **Built:**
+    - Checkpoint Squishies (50/75/100/200, once each) and +20 replay (once per UTC day, clean runs only), session-only, logged to Output, total in the dev panel (`RewardService`).
+    - **Leap of Faith** (USER): a summit pad tagged `LeapOfFaith` + `BouncePad` resets progress to 0. A run starts when you leave the ground floor (start top + 15 studs). A rise of more than 35 studs in one 10 Hz sample taints the run. Tainted runs get no summit reward, no summit titles and no Squishmaster count.
+    - Kit models `Summit_Leap_Pad` + `Landing_Cushion` (batch h).
+  - **Code gate:** `GATE PASS` (44 specs).
+  - **Uploads (Holden's OK, private test place only):**
+    - kit batches a–h as 13 GLBs;
+    - 39 hats (built in Studio as Accessories);
+    - 12 title icons.
+    IDs are in [[Rubber-Tower-Valley-Kit]] and [[Rubber-Tower-Title-UI]]. The placeholders were swapped for the real icons.
+  - **Studio results:**
+    - Payouts, the Leap and the replay pass.
+    - First jump passes (velocity rule).
+    - Nunito Heavy passes.
+    - Dance detection moved to animation IDs (⚠️ verify with a real `/e dance`).
+    - **3 hat bugs + 2 title bugs found and fixed:** wobble-joint attachments, WeldConstraint baking, title height from all hat parts, title height while ragdolled, sparkle glyph.
+  - **Not done, needs Holden:**
+    - the 2-client test;
+    - the phone-emulator 16-dummy shot + client FPS (Studio was minimized, which throttles rendering);
+    - the real phone test.
+  - **Next (after the review, plan only):** [[Rubber-Tower-Map-Build-Plan]] (ground floor + S1 with the obby pieces, then stop).
+- **2026-10-05, evening: title system v1 BUILT** (the overhead title is approved for real). Evidence: `GATE PASS` (build, 41 specs incl. `Titles.spec`, lint, format). **Studio test pending:** Holden presses Connect in the Rojo plugin (`rojo serve dev.project.json` is running); the checks are listed in [[Rubber-Tower-Title-UI]].
+  - **USER decisions (2026-10-05, evening):**
+    - Saving is session-only for now (real saving later).
+    - Squishies payouts are logged to Output, and the total shows in the dev panel. **No on-screen counter.**
+    - **No HUD Titles button and no Titles menu yet.** For testing, titles are equipped from the dev panel (dev-only, gated like the other Dev scripts).
+    - The style C overhead title gets built for real.
+  - **Waiting for the UI pass** (Holden wants to plan it properly first; he has rejected primitive-built UI before, see [[Art Direction Feedback]]):
+    - **Squishies counter.** Suggested spot: top-left under the Roblox menu buttons, a painted jelly-coin pill with the duck coin icon. Clear of the phone thumbstick (bottom-left) and jump button (bottom-right).
+    - **Titles button.** Suggested spot: left edge, middle of the screen, in a short column of painted round buttons (Titles, Hats, Shop later). Thumb-reachable on phones and clear of the climb view.
+    - **Titles menu.** Suggested: a centred panel (~70% of the phone screen) opened from that button. Rows grouped by rarity, each showing the real style-C preview; locked rows greyed with the unlock text + a progress bar; Equip/Unequip on the right; a "new" dot on fresh unlocks.
+    - **Unlock toast** (title + Squishies payout). Suggested: top-centre, slides down, 2.5 s.
+    - All four use painted image assets made in the UI pass, not primitives.
+- **Now (2026-10-05, late afternoon):**
+  - **Title UI = style C, ~13% smaller, your own title shown (USER).** The v2 mockup is fixed (gem shape per tier, Rare shine, small badge, tested on 4 backgrounds, final list).
+  - **Final 27 titles are in Config** (Claude, as delegated; same rarity counts, still 2,975; gate PASS). Legendary stays 900 (USER).
+  - **Batch (h) v3 kit fixes:** rocky secret-room hideout with a turf roof, smooth clipped hedge, winter twins of the batch (b) lantern post, bench, barrel, well and a frozen fountain.
+  - **Waiting for Holden:** "go" on C v2, and approval of the **title system plan + file list** ([[Rubber-Tower-Title-UI]] "Build plan v1"), including 3 decisions (session-only saving shim vs phase 4 first, session Squishies wallet, Titles button placement).
+  - **Next after that:** code the title system; then the test place, **asking before any upload.**
+- **Earlier 2026-10-05:**
+  - **2026-10-05:** the Squishies economy is locked (USER numbers; Config `Squishies`; code gate PASS; [[Rubber-Tower-Squishies-Economy]]). Holden still decides the missed-day rule (Restart vs the Grace PROPOSAL), the repeat-summit +20/day PROPOSAL and the title list. **Batch (h) extra + misc is built** (106 models, preflight PASS, gameplay UI icons). **Waiting for Holden's review.** Next after the review: upload the kit to the test place for the hat fit and ragdoll test, only with Holden's OK.
   - **The v5 style is approved and locked** (USER: "Lock it in"): [[Rubber-Tower-Art-Style-Guide]].
   - The v5 test pieces were uploaded with Holden's key (ids in `AssetLibrary/models/rubber-tower-kit-v5/README.md`) and staged in Studio under `workspace.StyleTest_v5`, at about (1500, 800, 1500).
   - Holden ordered TONS of models ([[Rubber-Tower-Kit-Full-Prompt]]), in review batches (a) to (e).
@@ -143,12 +211,28 @@ Managed by the `roblox-game-manager` skill. Read this first every session. The p
   - Every ragdoll ends after 8 s at most.
   - Draft numbers in Config: settle speed 4 studs/s, bounce 90 studs/s.
 
+- 2026-10-05 USER: Squishies amounts (checkpoints 50/75/100/200, titles 25/75/150/300, daily 25/30/40/50/60/75/150, packs 99→400 / 249→1,100 / 499→2,500 as developer products, hat prices by rarity 30/75/175/400/900/2,250; Summit_Crown never sold).
+- 2026-10-05 PROPOSAL → decided: grace day declined (USER: Restart); +20 Squishies for re-reaching the summit once per day accepted (USER). Bag bonus label corrected to +9% (real +9.3%).
+- 2026-10-05 USER: 27 titles with rarity payouts (Common 25, Uncommon 75, Rare 75, Epic 150, Legendary 300, Mythic 300; all = 2,975), one equipped at a time via a Titles menu, cheatable unlocks server-checked (M1). Title above the head = BillboardGui UI, mockups first.
+- 2026-10-05 USER: title style C Clean Text ~13% smaller; own title shows (smaller); Legendary stays 900; Claude writes the final title names/rarities/unlocks (done: Config `Titles`, [[Rubber-Tower]]).
+- 2026-10-05 PROPOSAL: title UI LOD (full <25 studs, title 25–45, badge 45–70, hidden >70), declutter by overlap, own title 12% smaller, Adornee root + StudsOffsetWorldSpace for ragdoll; Legendary 1,200 if Legendary-on-day-2 feels too fast.
+- 2026-10-05 USER (night): pay checkpoint Squishies + the +20 replay now (session-only, Output + dev panel).
+  - **Squishmaster via a summit "Leap of Faith"** edge/launch pad (ragdoll fall to the ground floor, also counts for Full Send) and a soft landing zone.
+  - A new run starts when you leave the ground floor. A run counts for Squishmaster and the +20 only if the server's climb trace saw it climbed with no teleport up (teleporting down is fine).
+  - Other hooks stay one line.
+  - Upload OK for the **private test place only** (kit a–h, 39 hats, 12 title icons); nothing public.
+  - After review: plan (don't start) the map build, ground floor + S1.
+- 2026-10-05 PROPOSAL (Claude, built as config, tune freely): ground floor = start-pad top + 15 studs; teleport-up = >35 studs rise per 10 Hz sample; test leap pad LaunchSpeed 60 at a 10° tilt.
+
 ## Open questions
 - Should a ragdoll happen when the player dies (falling into the void or resetting)? Today the body just stays stiff. Not specified.
 - Phase 3: knockback has to be applied by the target's client (or the server briefly takes ownership). Is a server fall-ragdoll cooldown wanted? (Reviewer M1.)
 - The note conflicts listed in [[Rubber-Tower]] are still open.
 
 ## Traps (with the reason)
+- **Test accessories in play, not Edit** (2026-10-05): Edit mode doesn't simulate. Hat wobble joints with world coordinates in `Position` looked fine until play flung the parts away.
+- **Equip multi-part hats by pre-positioning every part, then parenting** (2026-10-05): WeldConstraints bake their offset when they become active.
+- **Studio minimized = white `screen_capture` and ~15 FPS** (2026-10-05): restore the window (no focus steal: `ShowWindow(h, 4)`) before screenshots or FPS numbers.
 - A standing Humanoid puts no weight on the floor, so a wobble platform won't tilt unless the client pushes it ([[Obby-Special-Platforms]]).
 - Distance along the track isn't the real gap at corners. The builder measures real edge-to-edge gaps; the first build had a 7-stud corner gap.
 - Deleting a synced folder while `rojo serve` runs crashed Rojo 7.7.0. Restart it; the plugin reconnects by itself in about 20 s.

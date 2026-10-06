@@ -1,7 +1,7 @@
 ---
 tags: [reference/captures, project/rubber-tower]
 status: draft
-updated: 2026-10-05
+updated: 2026-10-04
 confidence: high
 ---
 # Roblox game-page screenshots (manifest)
@@ -37,15 +37,3 @@ confidence: high
 The place ids marked "–" were not looked up: those games came from search results by universe id.
 
 `../Holden-Picks/` is where Holden drops his own screenshots. **They outrank everything here.** That folder was empty on 2026-10-04.
-
-**Added 2026-10-05: fantasy-shop references, for the Rubber Tower cosmetics shop redo** (Holden: "use references from other games"). Same capture method. The most useful are **Islands** screen-2/6/7 (half-timber + stone shops, purple door, lanterns, banners, an open counter) and Fisch screen-2.
-
-| Folder | Place id | Universe id | Files (SHA-256, first 12) |
-|---|---|---|---|
-| Bee-Swarm-Simulator | 1537690962 | 601130232 | 1 `7f79b07cebcc`; 2 `f9c3b7f1c075`; 3 `7e0c837463e2`; |
-| Grow-a-Garden | 126884695634066 | 7436755782 | 1 `c8789713ecab`; 10 `5a2a010d4a8d`; 2 `d1865c757f8b`; 3 `56fdc08e8491`; 4 `b2b2383e82a0`; 5 `10a67e3a900b`; 6 `2cdc8e90ca94`; 7 `08977cde1a7a`; 8 `eb820460172a`; 9 `69a4ad5956cb`; |
-| Islands | 4872321990 | 1659645941 | 1 `fe789b452a55`; 2 `e713d4c50232`; 3 `e7cbfc53f4c2`; 4 `5c57def2680e`; 5 `4668f22e7a13`; 6 `9631ef209f6e`; 7 `578bc0eeb212`; 8 `c7ad9825ebcc`; 9 `30936d5891b0`; |
-| World-Zero | 2727067538 | 985731078 | 1 `a8f8c9e77169`; 2 `85bd1c4ea3ad`; 3 `118d22af93eb`; 4 `7c11156c161a`; |
-| Arcane-Odyssey | 3272915504 | 1180269832 | 1 `8a8b2d3be3e3`; 2 `6c008b5d0182`; 3 `2bbea90649b7`; 4 `464b82994b38`; 5 `7689f538677a`; 6 `4a48d46ee0e4`; 7 `55039da256d1`; 8 `d4e842b7765d`; 9 `1e0f8cd130c5`; |
-| Adopt-Me | 920587237 | 383310974 | 1 `0de9b8af27d5`; 2 `80c8116b9dc1`; 3 `9b10a93059f2`; 4 `8de7a49d2f6d`; 5 `0bd460569340`; 6 `ab1ca512f38f`; |
-| Dungeon-Quest | 2414851778 | 848145103 | 1 `b9518467fadf`; 2 `2cf5ead9b251`; 3 `b31a35664a5e`; 4 `892b63ec9a03`; 5 `aa7a577b4c05`; |

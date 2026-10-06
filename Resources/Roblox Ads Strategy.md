@@ -68,4 +68,12 @@ The ranking algorithm rewards player behaviour (retention, playtime, repeat visi
 - **Next:** 3 more in the same style with different hooks ("+1 BOUNCE!", "FLY FAR!", "SKY PETS!"). Pause the two 0.5% creatives once the new ones have ~5K impressions each.
 - **Lesson:** test *different ideas*, not variations of one idea. Show the real game's look and its unique hook, not a generic avatar.
 
+### Day 3 (2026-10-05)
+- **Ghost Race:** 2.7% click rate over 20,048 impressions ($5.50).
+- **New creatives, hours old and too small to judge:** Sky Pets 2.8% (143 impressions), Fly Far 2.6% (234), +1 Bounce 1.8% (607).
+- **Old creatives paused** at 0.5%.
+- **Why the old ones show more impressions:** they're lifetime totals, and the old ones ran alone for about a day and a half. New creatives start with a small test batch, and auto-bidding then moves spend toward the best click rate. Ghost Race already outspends each old one.
+- **Rule:** judge a creative at 3–5K impressions, not at a few hundred.
+- **"Plays" still shows "—"** while learning. Check it after learning ends.
+
 Related: [[Paper Plane Toss Release Prep]], [[Paper Plane Toss Thumbnails and Game Icon]]

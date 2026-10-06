@@ -9,8 +9,9 @@ confidence: high
 **Approved by Holden (2026-10-04):** "we can work with this style. Lock it in." Every new model must match the v5 wall, islet, beacon and crystal (`AssetLibrary/models/rubber-tower-kit-v5/`; Studio screenshots are in [[Rubber-Tower-Valley-Kit]]). Holden's standing rules: [[Art Direction Feedback]]. Kit list and status: [[Rubber-Tower-Valley-Kit]].
 
 ## TL;DR
+- **USER override (2026-10-05, after map build 1):** "I don't like the black lines/cracks on every rock. It looks repetitive and fake." **No black crack lines on rock**: use soft darker-tone crevices (a darker shade of the rock, not near-black), colour variation between masses, and light edge highlights. Cliff walls need 5–6 different pieces + colour variants, randomly rotated/scaled, broken up with ledges, vines, trees, crystals, caves, arches and waterfalls ([[Rubber-Tower-Map-Build-Plan]]).
 - **The look:**
-  - chunky faceted rock with **dark cracks and light edge highlights**;
+  - chunky faceted rock with ~~dark cracks~~ **soft darker crevices** and light edge highlights;
   - **bright grass caps with tufts and blades hanging over the edges**, and a darker band where grass meets rock;
   - **crisp painted zones**;
   - little pebbles, flowers and props for detail;
@@ -91,7 +92,8 @@ confidence: high
 
 ## Pitfalls
 - Workbench and flat-cyan renders make everything look plastic. Use a sky gradient, a sun, a ground and a dummy.
-- Heavy crack contrast up close reads like marker lines. Keep the cracks, but give big faces enough texture density (split big meshes).
+- Heavy crack contrast up close reads like marker lines. ~~Keep the cracks~~ (USER 2026-10-05: no black crack lines at all; soft darker crevices only), and give big faces enough texture density (split big meshes).
+- One rock model stacked into a wall reads as fake (USER 2026-10-05). Mix 5–6 shapes, rotations, scales and tints.
 
 ## Related
 [[Rubber-Tower]] · [[Rubber-Tower-Valley-Kit]] · [[Obby-Special-Platforms]] · [[Roblox-Obby-Surface-References]] · [[X-Low-Poly-Builds-And-Maps]] · [[Art-Direction]]

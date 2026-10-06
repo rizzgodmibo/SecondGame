@@ -1,12 +1,136 @@
 ---
 tags: [assets/models, project/rubber-tower]
 status: draft
-updated: 2026-10-04
+updated: 2026-10-05
 confidence: medium
 ---
 # Rubber Tower Kit: Batch Results
 
 Split out of [[Rubber-Tower-Valley-Kit]] (the kit list and status) on 2026-10-04, when that note passed 500 lines. Results, sheets, preflight and self-critique per batch, newest first.
+
+## Batch (h) v3 (2026-10-05, late afternoon): the remaining weak points
+Holden asked for the last weak points to be fixed, or for an explanation of why one can't be.
+
+**Changes:**
+- **Secret room:**
+  - Mossy grey stone walls (`stone_dark`), a turf roof, boulders hugging the walls, a stone chimney.
+  - Tried a rock paint on the flat walls first; it looked like cardboard.
+  - Still a little "brick hut" from outside. The real fix is placing it into a cliff when the map is built, since the shell is meant to be embedded.
+- **Hedge:** smooth `hedge` paint (the leaf-outline paint read as scales). Now it reads as a clipped hedge.
+- **Winter twins of the batch (b) hub decor**, built from batch (b)'s own functions:
+  - `Lantern_Post_Snowy`, `Bench_Snowy`, `Barrel_Snowy`, `Well_Snowy` (snow on the roof slopes + rim);
+  - `Fountain_Snowy` (frozen: the water is ice, snow on both rims).
+- **Not done, with the reason:** the shops (batch f) have no winter twin. Their roofs are custom shapes, so snow would need per-shop work; worth doing when a winter event is planned.
+
+**Result:**
+- 104 specs, 127 models, 64k tris; preflight `PASS objects=166 fails=0 warns=103`.
+- Small overruns, all accepted kinds: Squishies_Pickup, Hedge_Snowy_M, Wet_Floor_Sign, Scroll_Rack, Barrel_Snowy (878 / 800).
+
+## Batch (h) v2 fixes (2026-10-05, after Holden's review): built, waiting for review
+Holden's list (USER): fix the secret room, gates, hedge and moon lantern; give the hub decor a snowy version; add emblem-only icons; add a Hidden_Duck; leave the 3 tri overruns.
+
+**Changes:**
+- **Goofy_Secret_Room v2** (1.5k tris). The outside now has:
+  - a crooked half-open door with a glowing keyhole;
+  - a duck-shaped glowing window in a wooden frame;
+  - a glowing "?" and vines from the eaves;
+  - a crooked purple gable roof with a chimney.
+  - The roof is a separate **Roof** part, so the room can be shown open.
+  - A **cutaway render** shows the inside: disco ball, duck shrine, blank plaque, glowing dance floor.
+- **Segment_Entry_Gate v2:** pillars 2.6–3 wide, a fat 1.8-deep arch, a big top piece per segment and a bigger blank sign:
+  - S1: log pillars + a giant smiling flower;
+  - S2: mushroom stems + a spotted cap arch + a giant cap;
+  - S3: ice pillars wrapped in crystals + a crystal crown;
+  - S4: white/gold columns + a cloud + a smiling gold star.
+- **Hedge v3:** a rounded block covered in smooth round puffs, in a deeper hedge green (`hedge` recipe), with flowers.
+  - v1 read as a log; v2's random-point puffs looked like shards.
+- **Moon_Lantern v2:** a fat crescent with a big closed eye + lashes, a pink cheek and a smile, a gold back rim and glow sparkles.
+- **Checkpoint_Emblem S1–S4 (new, Gameplay):** round theme-colour badges with a gold rim and the 1.25× emblem, rendered face-on as UI icons. S3 uses a deeper blue so the glowing snowflake reads.
+- **Hidden_Duck (new, Gameplay):** a 1.4-stud rubber duck with a trigger collider, for Duck Whisperer. Yellow + Pink/Blue/Mint variants.
+- **Snowy twins (new, Seasonal):**
+  - `Plaza_Floor_Snowy` (drifts in the corners), `Path_Piece_Snowy` (snow on the edge stones), `Hedge_Snowy` (snow on each top puff);
+  - `Flower_Box_Snowy` (snow + holly with red berries), `Spawn_Pad_Snowy` (banks outside the rim; the glow stays clear);
+  - `Height_Marker_Snowy`, `Swing_Bench_Snowy`.
+  - These replace the old colour-only "Snowy" hedge variant.
+- New helpers in `batch_h.py`: `emblem()`, `snow_cap()`, `snowy_twin()`.
+
+**Result:**
+- 99 specs, 122 models, 59k tris.
+- Preflight `PASS objects=160 fails=0 warns=97` (same WARN kinds as before: glow parts, open double-sided shells, moving/floating parts).
+- Over budget, all small and far under the 10k limit: the 3 accepted ones + Hedge_Snowy_M 1,578 / 1,500.
+
+![[BatchH_SecretRoom_Cutaway.png|700]]
+
+**Still weak, honest:**
+- The secret room's walls are the lavender brick from the kit. It reads as a cute cottage rather than a "secret" until it's hidden in the map.
+- Older hub decor (Lantern_Post, Bench, the shops) has no snowy twin yet.
+- The hedge is fine, not great: a hand-modelled hedge would beat the procedural puffs.
+
+## Batch (h) extra + misc (2026-10-05): reviewed by Holden the same day (fixes in v2 above)
+**What was built:**
+- Code: `RubberTower/art/batch_h.py`, output in `art/kit_batch_h/`.
+- **90 specs, 106 models, 40.9k tris in total** (checked against `manifest.json`).
+  - Two budgets were raised during the fixes: Path_Piece (T junction 1,660, budget 1,800, for the chunky edge stones) and Rubber_Band_Ball (888, budget 900).
+  - **3 are slightly over budget and left as they are** (all far under the 10k prop limit): Squishies_Pickup 1,284 / 1,200 (the both-sided icon), Scroll_Rack 816 / 700, Wet_Floor_Sign 512 / 400 (the text).
+- Preflight: `PASS objects=139 fails=0 warns=86`.
+  - Most WARNs are `_Glow` parts (Neon, single colour, floating) or open double-sided shells (flag cloth, text, blades, tent).
+  - 6 origin WARNs are by design: moving parts (Swing_Bench_Seat, Watermill_Wheel_Wheel) and floating items (Sky_Jellyfish, Star_Lantern, Enchanted_Broom, Squishies_Pickup).
+- Reused instead of rebuilt (in the script docstring): Decor_Stump = Stump_Platform, Apple_Crate = Goods_Crate, mushroom rings = Fairy_Ring, toadstool lamp = Mushroom_Lamp, fountain = Fountain, Giant_Snail = Snail ×3, puffballs = Puffball_Cluster, Snowman / Penguin, Rubber_Chicken prop = the hat, Summit_Crown prop = the hat on Display_Pedestal or Glass_Display_Case, chests = Treasure_Chest, days 1–6 rewards = Daily_Mailbox + Gift_Chest_Pedestal.
+
+**Groups:**
+- **Gameplay (UI-quality, transparent icons from one rig, like the hats):**
+  - Banana_Peel: classic cartoon peel with a trigger collider r 1.8.
+  - Squishies_Pickup: the chosen duck Grape coin with icons on both faces, a glow halo and sparkles; spin pivot in the manifest.
+  - Trophy: Gold, plus Silver and Bronze as re-baked variants; BLANK plaque.
+  - Title_Plaque: BLANK face for a SurfaceGui.
+  - Checkpoint_Flag S1–S4: white/gold pole, cyan glow ring and a themed cloth (flower, mushroom, snowflake, star) with the emblem on both sides.
+  - **Daily_Chest_Day7:** the big purple + gold "7" chest with a pink bow and sparkles. It was missing from the kit.
+- **Hub:**
+  - Plaza_Floor (square, round), Path_Piece (straight, curve, T), Hedge S/M (+ Snowy variant), Flower_Box.
+  - Spawn_Pad (SpawnLocation collider), Segment_Entry_Gate S1–S4 (blank signs), Height_Marker (blank board).
+  - AFK_Beanbag ×3 colours, Swing_Bench (swinging Seat part).
+- **Fantasy:**
+  - Sword_In_Stone, Dragon_Skeleton (landmark scale, ~27 studs), Garden_Gnome ×3 poses, Beehive, Watermill_Wheel (Wheel part + axis).
+  - Mine_Cart + Mine_Track, Hot_Air_Balloon ×3, Kite ×3, Sky_Jellyfish (Tentacles part), Sky_Whale.
+  - Totem, Bell_Tower, Wind_Chimes, Firefly_Cluster.
+- **Secrets:** Hidden_Cave_Entrance, Secret_Ledge, Goofy_Secret_Room shell.
+- **Goofy:** Rubber_Band_Ball, Squeaky_Hammer, Whoopee_Cushion, Cone_With_Wizard_Hat, Wet_Floor_Sign ("SLIPPY!"), Pool_Ring, Donut_Float, Toy_Blocks, Scarecrow, Lost_Sock_Branch, Rubber_Boot.
+- **Clutter (one shared atlas):** Pebble_Cluster, Rock_Pile, Fallen_Log, Clover_Patch, Reeds_Cattails, Stepping_Stones, Puddle, Leaf_Pile, Giant_Acorn, Giant_Pinecone.
+- **Village:** Picnic_Blanket, Laundry_Line, Flower_Pot ×3, Wheelbarrow, Garden_Tools, Pumpkin_Patch, Carrot_Patch, Birdhouse, Doghouse, Camping_Tent, Telescope, Arrow_Street_Sign, Water_Trough, Bunting, String_Lights, Weather_Vane.
+- **Magic:** Crystal_Ball_Stand, Alchemy_Table, Floating_Candles, Magic_Mirror, Enchanted_Broom, Levitating_Teacups, Scroll_Rack, Wand_Rack, Star_Lantern, Moon_Lantern.
+- **Segment:** Frozen_Fish_Block, Ice_Sculpture (Duck, Swan), Cloud_Sheep, Star_Decor, Golden_Harp, Sundial, Winged_Statue.
+- **Seasonal:** Pumpkin S/M/L, Jack_O_Lantern, Wrapped_Present S/M ×3 colours. Snowy hub variant = the Hedge "Snowy" re-bake.
+
+![[BatchH_Icons.png|700]]
+![[BatchH_Diorama.png|900]]
+
+**Self-critique (done before review, local observation):**
+- **Fixed after the first full build:**
+  - Banana peel was pale and flat (it read as a starfish).
+  - Flags: thin poles, plain cloth, no checkpoint colours.
+  - Chest: small "7" and bow.
+  - Spawn pad: a gold hull "rim" was a solid disc that hid the glow.
+  - Path edges were invisible.
+  - Cave: the dark opening read as a black cube. Now it's a rock tunnel with darkness 3 studs deep.
+  - Dragon skeleton: small and flat.
+  - Mine cart: white body.
+  - Sky jellyfish dome: faceted like a gem.
+  - Rubber-band ball: over budget, and looked like a gem.
+  - Pumpkins and jack-o'-lantern: crumpled lobes; the grin was a slab sticking out.
+  - Leaf pile was a blob; pebbles and stepping stones were too pale.
+  - Candle flames were invisible; the moon lantern was a thin line; the weather vane was too light.
+  - Stars: convex hulls flattened them into pentagons, so a `star()` helper was added.
+  - The diorama cropped its front rows.
+- **Still weak, honest:**
+  - Goofy_Secret_Room is a plain brick box from outside. The fun is inside (disco ball, duck shrine, plaque), and the tile doesn't show it.
+  - Segment_Entry_Gates are thin for "welcome" arches.
+  - Hedge reads as a lumpy log.
+  - Moon_Lantern face marks are tiny.
+  - Flag icons will be thin at very small UI sizes. Use the emblem alone for tiny icons.
+
+**Review sheets:**
+- Group sheets with reference columns (Gameplay, Hub, Fantasy, Secrets, Goofy, Clutter, Village, Magic, Segment, Seasonal) are gitignored because they composite third-party references.
+- Tracked: `BatchH_Icons.png`, `BatchH_Diorama.png`, `icons/`.
 
 ## Batch (g) crazy hats + gamepass shop options (2026-10-05): reviewed. Gamepass = B Caravan; hats kept as they are; prices tomorrow
 **Gamepass shop, 3 fantasy options** (Holden: "do the gamepass shop the same way, but give me a few options"; `Shop_Gamepass_Fantasy`):

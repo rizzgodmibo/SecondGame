@@ -1,7 +1,7 @@
 ---
 tags: [visuals/index]
 status: draft
-updated: 2026-10-04
+updated: 2026-10-05
 confidence: high
 ---
 # Visuals — Index
@@ -33,6 +33,7 @@ UI, VFX, animation, 3D pipeline, lighting, audio and art direction. Facts verifi
 | [[Lighting Overview]] | Lighting guide set (Resources/Lighting, 8 notes): setup order, Lighting properties, Atmosphere, Sky and Clouds, local lights and cost, post-processing, recipes with Luau, sources and videos |
 | [[Sound-Design]] | Legacy Sound/SoundGroup vs audio API (AudioPlayer/Wire/AudioFader/Emitter/Listener), bus mixer code, rolloff, UI sound map, licensing & upload limits, loudness normalisation |
 | [[Art-Direction]] | Choosing a sustainable style, readability at small sizes, palettes & rarity colours, style guide template, genre expectations, art → thumbnails |
+| [[Retro-Stud-Style-Guide]] | Classic 2006–2012 stud look: 1-stud grid, Brick/Plate sizes, studs via SurfaceType/MaterialVariant/Texture, palette lock, Soft+Retro lighting preset, R6, UI and sound rules |
 | [[Creature-Anatomy-And-Proportions]] | Measuring creature limbs on the high-res mesh; big-cat benchmark (forearm ≈ 0.14 × shoulder height), heavier = stouter, joint taper, feet, worked drake example |
 | [[Asset-Creation-Workflow-And-Marketplace]] | Creator Store use & limits, licensing/IP, Importer vs Asset Manager vs Open Cloud, asset privacy, packages, moderation, free-model backdoor auditing |
 

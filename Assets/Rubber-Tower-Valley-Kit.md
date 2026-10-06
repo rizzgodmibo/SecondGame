@@ -1,7 +1,7 @@
 ---
 tags: [assets/models, project/rubber-tower]
 status: draft
-updated: 2026-10-04
+updated: 2026-10-05
 confidence: medium
 ---
 # Rubber Tower Valley Kit
@@ -13,12 +13,21 @@ confidence: medium
   - **Next session:** (g) crazy hats, then (h) misc, each with a review stop.
   - **Squishies coin: CHOSEN** (USER 2026-10-05): D Duck on the Grape purple coin.
   - **Gamepass shop: CHOSEN** (USER 2026-10-05, "for now"): `Shop_Gamepass_Fantasy_B_Caravan`.
-  - **Batch (g) hats: built and reviewed** (39 hats + display set; prices next session). **Next: batch (h).**
+  - **Batch (g) hats: built and reviewed** (39 hats + display set). Prices set by rarity on 2026-10-05 (USER): [[Rubber-Tower-Squishies-Economy]].
+  - **Batch (h) extra + misc: BUILT 2026-10-05**, reviewed by Holden, then **v2 fixes the same day**: secret room exterior + cutaway, chunky segment gates, clipped hedge, readable moon lantern, emblem-only badges, Hidden_Duck, and a snowy twin of the hub decor; then v3: rocky hideout secret room, smooth hedge paint, batch (b) winter twins. **Waiting for Holden's review.** Next after (h): upload the kit to the test place to check hats on real avatars and in ragdoll (only with Holden's OK).
   - **Cosmetics shop v3** is a fantasy hat shack (Holden rejected the pink boutique). See [[Rubber-Tower-Kit-Batch-Results]].
 - **Code:**
   - `RubberTower/art/batch_*.py` on `kitlib5.py` (paint recipes + bake), `kitlib6.py` (primitives, recipes, review stage) and `kitrun.py` (runner: bake, export, manifest, sheets, diorama).
   - Each batch outputs to `art/kit_batch_<x>/`: GLBs, textures with colour variants, and `manifest.json` (tags, colliders, pivots, `npc_spot`, `prompt_anchor`, refs, tris).
-- **Nothing in (a)–(f) is uploaded or placed** (USER: not yet). Only the 5 v5 test pieces are on Roblox (ids in `AssetLibrary/models/rubber-tower-kit-v5/README.md`).
+- **UPLOADED 2026-10-05 (Holden's OK: private test place only, nothing public).** See "Test-place upload" below.
+  - Batches (a)–(h) as 13 GLB Models (one per batch; a and h split under the 50 MB Open Cloud limit).
+  - Staged in Studio as `ServerStorage.Kit.Batch_A…H` (557 models).
+  - 39 hats built as Accessories in `ServerStorage.Hats`.
+  - Nothing is placed in the map yet; the only placed pieces are the test leap pad + cushion in `Workspace.TestPlace.LeapTest`.
+- **New 2026-10-05 (USER Leap of Faith):**
+  - `Summit_Leap_Pad`: a stone base with a crooked plank over the edge; the pink spring tip is its own part `LeapPad`, tagged `LeapOfFaith` + `BouncePad` with a `LaunchSpeed` attribute; plus a "LEAP OF FAITH!" sign and a wind sock.
+  - `Landing_Cushion`: a mallow cushion r12 with a target and puffy rim.
+  - Both in batch (h).
 - **Results and sheets** per batch: [[Rubber-Tower-Kit-Batch-Results]]. **Style history** (v1 to v5): [[Rubber-Tower-Kit-Style-History]].
 
 ## Full kit list (v5 style, ordered by Holden 2026-10-04)
@@ -213,37 +222,37 @@ confidence: medium
 
 **Hat display set:** Hat_Stand · Mannequin_Head · Hat_Rack · Glass_Display_Case (for rares).
 
-**BUILT 2026-10-05:** all 39 hats + the display set, with icons and on-head fit renders. See [[Rubber-Tower-Kit-Batch-Results]]. Studio fit and ragdoll test pending an upload.
+**BUILT 2026-10-05:** all 39 hats + the display set, with icons and on-head fit renders. See [[Rubber-Tower-Kit-Batch-Results]]. **Uploaded and Studio-tested 2026-10-05:** fit + ragdoll pass after the attachment fix (see "Test-place upload").
 
 ### Batch (h): extra and misc (Holden 2026-10-04; variants over unique meshes)
 "(reuse X)" means it already exists in the kit and gets placed or recoloured instead of rebuilt.
 
 **Hub and village:**
-- [ ] Plaza_Floor tiles · Path pieces (straight, curve, T) · Hedge S/M · Flower_Box · Spawn_Pad · Segment_Entry_Gate S1–S4 · Height_Marker sign (blank number face) · AFK_Seat
+- [x] Plaza_Floor tiles · Path pieces (straight, curve, T) · Hedge S/M · Flower_Box · Spawn_Pad · Segment_Entry_Gate S1–S4 · Height_Marker sign (blank number face) · AFK_Seat
 - Reuse: Lantern_Post, Bench.
 
 **Fantasy:**
-- [ ] Sword_In_Stone · Dragon_Skeleton · Garden_Gnome ×3 poses · Beehive · Watermill_Wheel · Mine_Cart + Track · Hot_Air_Balloon (×3 colours) · Kite (×3) · Sky_Jellyfish · Sky_Whale · Totem · Bell_Tower · Wind_Chimes · Firefly cluster (glow points)
+- [x] Sword_In_Stone · Dragon_Skeleton · Garden_Gnome ×3 poses · Beehive · Watermill_Wheel · Mine_Cart + Track · Hot_Air_Balloon (×3 colours) · Kite (×3) · Sky_Jellyfish · Sky_Whale · Totem · Bell_Tower · Wind_Chimes · Firefly cluster (glow points)
 - Reuse: toadstool street lamp (= Mushroom_Lamp), magic fountain (Fountain + glow water variant), airship.
 
 **Secrets:**
-- [ ] Hidden_Cave_Entrance · Secret_Ledge with a chest (reuse Treasure_Chest) · Goofy_Secret_Room shell
+- [x] Hidden_Cave_Entrance · Secret_Ledge with a chest (reuse Treasure_Chest) · Goofy_Secret_Room shell
 
 **Gameplay items:**
-- [ ] Banana_Peel (placeable, pass) · Squishies_Pickup (CHOSEN 2026-10-05: D Duck on the Grape purple coin) · Summit_Crown prop · Trophy Gold/Silver/Bronze (variants) · Title_Plaque · Checkpoint_Flag S1–S4
+- [x] Banana_Peel (placeable, pass) · Squishies_Pickup (CHOSEN 2026-10-05: D Duck on the Grape purple coin) · Summit_Crown prop (reuse: the hat on a display pedestal) · Trophy Gold/Silver/Bronze (variants) · Title_Plaque · Checkpoint_Flag S1–S4 · **Daily_Chest_Day7** (added 2026-10-05; days 1–6 reuse Daily_Mailbox + Gift_Chest_Pedestal)
 
 **Goofy:**
-- [ ] Rubber_Chicken · Rubber_Band_Ball · Squeaky_Hammer · Whoopee_Cushion · Cone_With_Wizard_Hat · Wet_Floor_Sign · Pool_Ring · Donut_Float · Toy_Blocks · Scarecrow · Lost_Sock_Branch · Rubber_Boot
+- [x] Rubber_Chicken · Rubber_Band_Ball · Squeaky_Hammer · Whoopee_Cushion · Cone_With_Wizard_Hat · Wet_Floor_Sign · Pool_Ring · Donut_Float · Toy_Blocks · Scarecrow · Lost_Sock_Branch · Rubber_Boot
 
 **Ground clutter:**
-- [ ] Pebble_Cluster · Rock_Pile · Fallen_Log · Decor_Stump · Clover_Patch · Reeds_Cattails · Stepping_Stones · Puddle · Leaf_Pile · Giant_Acorn · Giant_Pinecone
+- [x] Pebble_Cluster · Rock_Pile · Fallen_Log · Decor_Stump · Clover_Patch · Reeds_Cattails · Stepping_Stones · Puddle · Leaf_Pile · Giant_Acorn · Giant_Pinecone
 - Reuse: mushroom rings = Fairy_Ring.
 
 **Village life:**
-- [ ] Picnic_Blanket + basket · Laundry_Line · Flower_Pot ×3 · Wheelbarrow · Garden_Tools · Apple_Crate · Pumpkin_Patch · Carrot_Patch · Birdhouse · Doghouse · Camping_Tent · Telescope · Arrow_Street_Sign · Water_Trough · Bunting · String_Lights · Weather_Vane
+- [x] Picnic_Blanket + basket · Laundry_Line · Flower_Pot ×3 · Wheelbarrow · Garden_Tools · Apple_Crate · Pumpkin_Patch · Carrot_Patch · Birdhouse · Doghouse · Camping_Tent · Telescope · Arrow_Street_Sign · Water_Trough · Bunting · String_Lights · Weather_Vane
 
 **Magic clutter:**
-- [ ] Crystal_Ball_Stand · Alchemy_Table · Floating_Candles · Magic_Mirror · Enchanted_Broom · Levitating_Teacups · Scroll_Rack · Wand_Rack · Star_Lantern · Moon_Lantern
+- [x] Crystal_Ball_Stand · Alchemy_Table · Floating_Candles · Magic_Mirror · Enchanted_Broom · Levitating_Teacups · Scroll_Rack · Wand_Rack · Star_Lantern · Moon_Lantern
 
 **Per segment:**
 - S2: reuse Puffball_Cluster (giant scale) and Spore_Mushroom; new Giant_Snail (scaled-up variant of Snail).
@@ -251,9 +260,75 @@ confidence: medium
 - S4: new Cloud_Sheep, Star_Decor, Golden_Harp, Sundial, Winged_Statue.
 
 **Seasonal swap set:**
-- [ ] Pumpkin, Jack_O_Lantern (glow) · Wrapped_Present ×3 colours · snowy hub variants (re-bakes of the hub decor with snow caps)
+- [x] Pumpkin, Jack_O_Lantern (glow) · Wrapped_Present ×3 colours
+- [x] snowy hub set (USER 2026-10-05: "not just the hedge"): `*_Snowy` twins with real snow caps for Plaza_Floor, Path_Piece, Hedge, Flower_Box (holly), Spawn_Pad, Height_Marker, Swing_Bench. Batch (b) hub decor twins added the same day: Lantern_Post, Bench, Barrel, Well and a frozen Fountain (built from batch (b)'s own functions + snow). The shops (batch f) have no winter twin yet: their roofs are custom shapes, so snow would need per-shop work. Worth doing when a winter event is planned.
+- [x] Hidden_Duck (yellow + Pink/Blue/Mint) for the Duck Whisperer title · Checkpoint_Emblem S1–S4 (emblem-only badges for small icons)
+
+**BUILT 2026-10-05:** everything above except the extra snowy variants (reuses as noted, Decor_Stump = Stump_Platform, Apple_Crate = Goods_Crate, Rubber_Chicken prop = the hat). Results, icons and self-critique: [[Rubber-Tower-Kit-Batch-Results]]. Waiting for Holden's review.
+
+## Test-place upload (2026-10-05, Holden's OK, private test place only)
+**Asset IDs** (Model, creator MiboRBX, via `AssetLibrary/tools/upload_model.sh`; also in `RubberTower/art/upload/ids.txt`):
+
+| GLB | Asset ID |
+|---|---|
+| kit_batch_a_p1 | 74227909319514 |
+| kit_batch_a_p2 | 125790743025557 |
+| kit_batch_b | 84718417988392 |
+| kit_batch_c | 111213643907842 |
+| kit_batch_d | 131748576604721 |
+| kit_batch_e | 82281656179651 |
+| kit_batch_e2 | 99310856467237 |
+| kit_batch_f | 120090100629543 |
+| kit_batch_g (hats) | 120005431087435 |
+| kit_batch_h_p1 | 138076362223921 |
+| kit_batch_h_p2 | 89689331119959 |
+| kit_batch_h_p3 | 116120445346284 |
+| kit_batch_h_p4 | 136072609509109 |
+
+| kit_batch_h_leap3 (Summit_Leap_Pad v2 + Landing_Cushion) | 134520179836644 |
+| kit_map (Valley_Floor_S1 + Pond_Basin, map v3) | 89785848208249 |
+
+**Later on 2026-10-05:**
+- **Summit_Leap_Pad v2** (Holden: bigger and readable): 12×10 base, 18-stud 3-plank board with white chevrons pointing over the edge, a gold arch whose "LEAP OF FAITH!" banner faces the player walking up, a big pink spring tip (`LeapPad` part), wind sock. Staged in `Kit.Batch_H` (v1 parked as `ServerStorage.Summit_Leap_Pad_v1`).
+  - Place it with the base sunk so its top is ~0.5 above the ground (the base is a 2.6-stud step otherwise).
+  - Board collision = PreciseConvexDecomposition (Default fidelity floats ~2 studs above the plank).
+- **batch_map.py** (new):
+  - `Valley_Floor_S1`: 260×260, 8.2k tris, a 2048 atlas, crisp per-face zones (3 meadow greens in big blobs + dirt paths) and a square hole for the pond.
+  - `Pond_Basin`: 44×44 with a bowl 5 deep, sand shore and a `Water` part.
+- **`batch_h.py --out <folder>`** builds into another folder (avoids the `--only` wipe pitfall).
+- **`art/map/dump_colliders.py`** → `kit_colliders.json`: every kit collider and stand point as an offset from the main mesh centre in Studio axes. **Blender (x, y, z) → Studio (−x, z, y)**, verified on the leap pad: the predicted base top 401.55 matched the measured one.
+
+**How it was staged:**
+- `art/export_batches.py` writes one GLB per batch (`dir:N` splits it). Colour variants become re-textured copies named `<Instance>__<Variant>`. It also writes `upload/<batch>_index.json` (glow colours, hat data, pivots).
+- In Studio the import nesting is flattened, and each MeshPart gets a SurfaceAppearance ColorMap. Glow parts become Neon in the spec colour.
+- The importer turns models 180°, so the hat attachment offset in Studio = (−x, y, −z) of the manifest value.
+
+**Hats (Studio test 2026-10-05, [[2026-10-05-Rubber-Tower-Studio-Test]]):**
+- Fit is OK on R6/R15, 4 avatars, and big hair.
+- Fixed: 58 wobble-joint attachments had world coordinates in `Position` (the parts got flung away in play).
+- **Equip rule:** move every part to its final spot, then parent (WeldConstraints bake their offset). See `DevStress putHat`.
+- Weak: the TP_Top_Hat streamer hangs over the face.
+
+## Map v3 slice pieces (2026-10-05 evening, private test place)
+After Holden's build-1 critique ([[Rubber-Tower-Map-Build-Plan]]):
+- **`art/batch_v3.py`:**
+  - the soft rock paint `rocks` (no black crack lines: facet tones + soft crevices in a darker shade of the same rock);
+  - **cliff kit v2:** CliffV2_Tall / Stepped / Overhang / Buttress / Arch / Rubble / Cave, each × base, Sand, Moss, Rose, angular slabs over a solid core;
+  - Waterfall_V2 (Body + Sheet1–3 + Pool);
+  - Lake_Rock_Island (vine net = TrussPart collider), Lake_Rock_Small, Wood_Pile;
+  - Yard_Wall (warm dry stone, 9 tall), Hedge_Tall (8 tall);
+  - Start_Gate_V3 (3D "START").
+  - Uploads: kit_v3w_p1 **78370018555865**, kit_v3w_p2 **85508406559984** (split: 63 MB > the 50 MB Open Cloud cap), kit_v3g **81495698382164**.
+- **`art/ground_v3.py`:** 16 ground tiles + 4 stylised water meshes, painted per texel with numpy. Upload kit_ground3c **88000763253329** (PNG textures). The earlier kit_ground3 96861660767510 (JPEG) came in untextured; kit_ground3b 94927423577960 is superseded.
+- Preflight PASS on all (the stepped cliff is 11k tris, over its 9k target and under the 20k cap).
 
 ## Pitfalls
+- **GLB with JPEG textures imports untextured** (2026-10-05, kit_ground3): use PNG (`export_image_format="AUTO"`).
+- **Blender's `image.save()` on a generated image wrote all-black PNGs** in headless runs (2026-10-05). `ground_v3.py` writes its PNGs itself (numpy + zlib) and loads them back.
+- **Setting `MeshPart.CollisionFidelity` from the Studio MCP is silently ignored.** `ApplyMesh` from `AssetService:CreateMeshPartAsync(..., {CollisionFidelity = ...})` works (`BuildValleyB.setFidelity`). And a real Hull fills an arch's opening: decor keeps Default.
+- **Test hats in play, not Edit** (2026-10-05). Edit mode doesn't simulate constraints. Wobble joints 7,600 studs off looked fine in Edit and destroyed the parts in play.
+- **Studio TexturePack 429** (2026-10-05): at play start Studio may log `Failed to upload TexturePack … Rate limit exceeded` for SurfaceAppearances. The textures still showed. ⚠️ verify after publishing.
+- **Convex hulls fill concave shapes.** A star made with `m.hull` turns into a pentagon, and a "rim" hull of two rings is a solid disc that hides anything under it (batch (h) spawn pad). Use `star()` in `batch_h.py`, or `tube()` for rims.
 - **`--only` rebuilds wipe the batch folder.** `run_batch` writes the manifest, .blend and models for ONLY the specs it built. Running `batch_x.py -- --only A` after `rm -rf kit_batch_x` leaves just A. This happened to batch (f) on 2026-10-05: a gamepass test left 3 of 52 models, and it was caught at commit time and fully rebuilt. **Test builds go to a copy with a different OUT folder**, as was done for the batch (g) hat fixes.
 - **Git:** generated output (GLBs, .blend, textures, renders) is gitignored in the Rubber Tower repo and rebuilds from the seeded scripts. Only scripts, manifests, preflight logs and hat icons are committed. Approved models are archived in `AssetLibrary/models/rubber-tower-kit-v4`/`-v5`.
 - **Public vault:** review sheets that composite third-party references ("model | reference") are gitignored; our own renders are tracked.
@@ -261,6 +336,7 @@ confidence: medium
 ## Where the rest lives
 - **[[Rubber-Tower-Kit-Batch-Results]]**: results, sheets, preflight and self-critique per batch, for the fixes, (f), (a) and (b)–(e2), plus the Squishies coin options.
 - **[[Rubber-Tower-Kit-Style-History]]**: the v1 to v5 style tests and the pipeline lessons behind the locked style.
+- **[[Rubber-Tower-Valley-Kit-E-Copy-2026-10-04]]** (archived): the pre-restructure version of this note from E:\Vault, kept during the 2026-10-06 sync so no detail was lost. Statuses there are out of date.
 
 ## Related
 - [[Rubber-Tower]] · [[Rubber-Tower-Kit-Batch-Results]] · [[Rubber-Tower-Kit-Style-History]] · [[Rubber-Tower-Build-Status]] · [[Roblox Asset Pipeline Skill]] · [[Blender to Roblox Asset Pipeline]] · [[Art Direction Feedback]] · [[Rubber-Tower-Reference-Obbies]]

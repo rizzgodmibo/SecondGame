@@ -1,7 +1,7 @@
 ---
 tags: [systems/performance]
 status: draft
-updated: 2026-10-04
+updated: 2026-10-06
 confidence: medium
 ---
 # Performance and Profiling
@@ -128,6 +128,7 @@ For many moving pooled parts per frame, collect parts and CFrames into arrays an
 - [ ] Performance dashboard (Creator Hub) checked weekly after launch.
 
 ## Pitfalls
+- **Distant parts and MeshParts are culled by graphics quality** (local test, Trap Your Friends Sky v3, 2026-10-06, Studio on a PC). Markers drew out to roughly 250 studs at quality 1, ~400 at 5, ~600 at 10, and 3,000+ at 21; culling looked like it goes by the distance to the nearest surface. Terrain `Clouds` and the skybox draw at every level. Decorative far objects (cloud rings, silhouettes) are a high-quality bonus, and map landmarks more than ~300 studs away can vanish on low phones. ⚠️ verify on a real phone. Details: [[Trap-Your-Friends-Sky-v3-Plan]].
 - Optimising from Studio numbers.
 - `--!native` as a perf fix for code that is actually API-bound (no gain; see [[Luau-Strict-Typing]]).
 - Destroying pooled objects by accident (e.g. via Debris) and leaking pool slots.

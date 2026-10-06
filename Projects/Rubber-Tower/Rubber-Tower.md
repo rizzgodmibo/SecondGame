@@ -1,7 +1,7 @@
 ---
 tags: [project/rubber-tower, project-hub]
 status: draft
-updated: 2026-10-04
+updated: 2026-10-05
 confidence: low
 ---
 # Rubber Tower (project hub)
@@ -9,7 +9,8 @@ confidence: low
 ## TL;DR
 - Holden chose Rubber Tower on 2026-10-04 as the next game, from the brainstorm in [[Game-Concept-Shortlist-2026-10-04]].
 - Pitch: an endless tower obby where everything is wobbly and each player's own avatar is the ragdoll. Falling is funny and cheap; free falls with checkpoints.
-- Status: **concept only. No plan, file list or code approved.** Per vault rules, a plan and file list come first and Holden must approve before any game code.
+- **PAUSED 2026-10-05 (~19:20 EDT) by Holden.** Restart prompt: [[Rubber-Tower-Slice-Fix-Pass-Prompt]] (water fix, enclosure, ground). Model archive: AssetLibrary `models/rubber-tower-kit-v6-map/`.
+- Status (2026-10-05, ~19:30): phases 0–1 passed. Ragdoll, checkpoints, titles and Squishies faucets are built and Studio-tested. Build 1 of the map was critiqued ("not an obby yet"). **A map v3 vertical slice (hub, ground, Lily Lake, Village Rooftops) is built in the test place and STOPPED for Holden's review.** Plan: [[Rubber-Tower-Map-Build-Plan]]. Live status: [[Rubber-Tower-Build-Status]]. A plan and file list still come first for every new system.
 - Target: young teens, mobile and PC first. Scope: small game.
 - Reference research: [[Rubber-Tower-Reference-Obbies]] (observations of other games, not approved mechanics). Design draft: [[Rubber-Tower-GDD]]. Build plan (awaiting go-ahead): [[Rubber-Tower-Build-Plan]]. Kickoff prompt for Claude Code: [[Rubber-Tower-Claude-Code-Prompt]]. Brainstormed ideas: [[Rubber-Tower-Ideas-Bank]].
 
@@ -31,8 +32,107 @@ confidence: low
 
 **Currency, titles, social**
 - Currency instead of XP: **Squishies** (name chosen by Holden). Earned at checkpoints, new levels/worlds and title unlocks; also sold for Robux; spent on cosmetics and future items. Every payout can be earned only once per player.
+- **(USER, 2026-10-05) Squishies economy locked** (full table + model: [[Rubber-Tower-Squishies-Economy]], numbers in Config `Squishies`): checkpoints CP1 50 / CP2 75 / CP3 100 / Summit 200 (first clear 425; new worlds pay more later); titles Easy 25 / Medium 75 / Hard 150 / Very hard 300 (once each); daily 7-day streak 25/30/40/50/60/75/150 (430 per week, day 7 milestone); 3 Squishies packs as developer products: 99 R$ → 400, 249 → 1,100 ("Popular"), 499 → 2,500 ("Best value"); hat prices by rarity Common 30 / Uncommon 75 / Rare 175 / Epic 400 / Legendary 900 / Mythic 2,250; halfway-only hats cost the same as their rarity; Summit_Crown is the summit reward, never sold. **(USER 2026-10-05) Missed daily = restart at day 1. Re-reaching the summit pays +20, once per day. Title payouts by rarity: Common 25, Uncommon 75, Rare 75, Epic 150, Legendary 300, Mythic 300** (all 27 titles = 2,975; model v2 in [[Rubber-Tower-Squishies-Economy]]).
 - Friend boost: a reward while invited friends are in the server, tied to the currency (assumed, confirm).
-- Titles instead of badges: unlockable, shown above the player's head. Unlocks include checkpoints, completing worlds, buying a first cosmetic, events, plus unique ones: invite 4+ friends, push 5+ different players down (the same player counts once), reach the top without claiming checkpoints. If invite verification can't be done, Holden is fine with changing the invite title to "3 friends in the server". The full title list is decided later.
+- Titles instead of badges: unlockable, shown above the player's head. Unlocks include checkpoints, completing worlds, buying a first cosmetic, events, plus unique ones: invite 4+ friends, push 5+ different players down (the same player counts once), reach the top without claiming checkpoints. If invite verification can't be done, Holden is fine with changing the invite title to "3 friends in the server". The full title list was decided on 2026-10-05 (below).
+- **(USER 2026-10-05) Title list and rules:**
+  - Rarity uses the hat tiers and colours. Every title pays once, by rarity (locked payouts).
+  - Anything cheatable is checked on the server (climb trace + `skippedCheckpoints`, reviewer M1).
+  - One title equipped at a time, picked in a Titles menu; locked titles show how to unlock them.
+  - Max ~16 characters.
+  - **Holden delegated the final names / rarities / unlocks to Claude (USER, afternoon of 2026-10-05)**, keeping his approved ones: summit without checkpoints, push 5+ players, friends in the server, first cosmetic, and the Millionaire / False Conqueror jokes.
+  - Final list below. Data in Config `Titles`, with a `Check` field saying what the server must see.
+  - Same counts per rarity as his draft, so all 27 still pay **2,975**.
+
+  | Title | How to get it | Rarity | Category (badge) |
+  |---|---|---|---|
+  | Wobbly Beginner | Make your first jump | Common | Climb |
+  | Meadow Hopper | Reach checkpoint 1 | Common | Climb |
+  | Fresh Fit | Buy your first hat | Common | Collection |
+  | Millionaire | Skip a checkpoint with Robux (joke) | Common | Joke |
+  | False Conqueror | Reach the summit after a skip (joke) | Common | Joke |
+  | Mushroom Muncher | Reach checkpoint 2 | Uncommon | Climb |
+  | Bonk Enjoyer | Fall 100 times | Uncommon | Climb |
+  | Boing Boing | Bounce 100 times on bounce pads | Uncommon | Climb |
+  | Human Ladder | Give 10 hand-ups | Uncommon | Social |
+  | Shroom Drip | Buy a halfway-shop hat | Uncommon | Collection |
+  | Loyal Squish | Finish a 7-day daily streak | Uncommon | Daily |
+  | Disco Duck | Dance (emote) in the secret room | Uncommon | Secret |
+  | Frostbitten | Reach checkpoint 3 | Rare | Climb |
+  | Gravity's Pet | Fall 1,000 times | Rare | Climb |
+  | Full Send | Fall 100 studs in one go | Rare | Climb |
+  | Pushy | Shove 5 different players off a ledge | Rare | Social |
+  | Banana Bandit | 10 players slip on your banana peel | Rare | Social |
+  | Hat Goblin | Own 10 hats | Rare | Collection |
+  | Nosy Noodle | Find the secret room | Rare | Secret |
+  | Rubber Champion | Reach the summit | Epic | Climb |
+  | Squad Leader | Play with 3 friends in your server | Epic | Social |
+  | Streak Freak | Finish 4 full daily streaks | Epic | Daily |
+  | Duck Whisperer | Find every hidden rubber duck | Epic | Secret |
+  | Squishmaster | Reach the summit 10 times | Legendary | Climb |
+  | Speedy Noodle | Summit in under 12 minutes (tune by playtest) | Legendary | Climb |
+  | Checkpoint Who? | Reach the top without claiming any checkpoint | Mythic | Climb |
+  | Mad Hatter | Own every hat in the shop | Mythic | Collection |
+
+  **Changes from Holden's draft:**
+  - Renamed: Bonk Survivor → Bonk Enjoyer, Helping Hand → Human Ladder, Mushroom Fashion → Shroom Drip, Pro Faller → Gravity's Pet, Hat Collector → Hat Goblin, Secret Finder → Nosy Noodle, Party Starter → Squad Leader, Daily Wobbler → Streak Freak.
+  - **Moonwalker → Boing Boing:** the low-gravity event doesn't exist, so the title was unobtainable. Moonwalker is saved for that event.
+  - **Long Way Down → Full Send ("fall 100 studs in one go"):** a fall more than 12 studs below your checkpoint respawns you, so "segment 4 to the ground" can't happen once you've claimed a checkpoint.
+  - **Squad Leader uses the approved fallback** (3 friends in your server). ⚠️ verify invite tracking before switching to "invite 4 friends".
+- **(USER 2026-10-05, afternoon) Title UI decisions:**
+  - Style **C Clean Text**, made ~13% smaller (v2 mockup: [[Rubber-Tower-Title-UI]]).
+  - **Your own title shows** above your head, a bit smaller than other players'.
+  - The **Legendary price stays 900** (economy unchanged).
+- **(USER 2026-10-05) Title above the head = UI, not a 3D plaque.**
+  - A BillboardGui banner: title on top, player name below, rarity border + a badge icon per category.
+  - Bold rounded font with a thick stroke, readable on a phone at ~30 studs.
+  - Rarity effects: Common grey, Uncommon green, Rare blue + soft shine, Epic purple animated gradient, Legendary gold shimmer + sparkles, Mythic animated rainbow/pink + sparkles.
+  - Sits above tall hats; follows the body smoothly in ragdoll; fades with distance; fine with 16 players.
+  - **2–3 style mockups first, Holden picks before any code.** Mockups A Badge Banner / B Ribbon / C Clean Text + research + build plan: [[Rubber-Tower-Title-UI]] (waiting for Holden's pick; Claude recommends A).
+  - Title_Plaque stays a world prop only.
+- **(USER 2026-10-05, night) Squishmaster and replays: the Leap of Faith.**
+  - At the summit there's a "Leap of Faith" edge/launch pad. Using it sends you on a ragdoll fall to the ground floor (it also counts for Full Send) onto a soft landing zone, so you can climb again.
+  - **A new run starts when you leave the ground floor.**
+  - A run counts toward Squishmaster and the +20 replay only if the server's climb trace shows it was climbed with **no teleport up the tower** during that run. Teleporting down is fine.
+  - Built and Studio-tested 2026-10-05: [[2026-10-05-Rubber-Tower-Studio-Test]]. The "ground floor" height (start + 15 studs) and the teleport threshold (35 studs per 0.1 s) are Claude's PROPOSAL numbers in Config.
+  - ⚠️ The future checkpoint-teleport menu (USER 2026-10-04: free teleports up or down to claimed checkpoints) will taint a run when used upward, as the rule says.
+- **(USER 2026-10-05, night) Map + hat answers** (details in [[Rubber-Tower-Map-Build-Plan]]):
+  - The footprint stays 240×240 with 100 studs per segment "for now". If S1 is too short, lengthen the route, not the valley.
+  - The Leap lands in a **pond splash zone** next to the start plaza (soft jelly/cushion pads around it, a fun big splash). The lane stays clear from the summit to the pond at every height.
+  - Shops are placed on the ground floor now (not wired): the hat shack, the Caravan gamepass shop and the hub structures. Space is kept for the CP2 halfway shop.
+  - While a game hat is on, the player's own **hat** accessories are hidden (hair etc. stays) and restored when it comes off.
+- **(USER 2026-10-05, evening) Map layout critique: "a classic linear obby"** (full text in [[Rubber-Tower-Map-Build-Plan]]):
+  - Layout v1 (a dotted line of hops up the west side) was stopped before building.
+  - He wants:
+    - the kit models to BE the obby: rooftops, windmill, giant tree, lily pads, cliff ledges, waterfall, cave, rope bridge;
+    - the whole valley used, with the route crossing over itself at different heights;
+    - 4–6 themed places with a moment each, introducing all special pieces teach → test → twist;
+    - side paths, hidden ducks, the secret room and goofy details.
+  - Next: two layout options (top-down + whole-tower side view + storyboard), then his pick before any build.
+- **(USER 2026-10-05, 15:28 EDT) Map layout = Option B "Through the Middle"**: a figure-8 crossing the valley centre twice (skyway under CP1 at ~y55, treetop bridge over it at ~y90). Places: Lily Lake → Village Rooftops → Windmill Climb → Crystal Skyway → Waterfall Ledges + Cave → Treetop Return → CP1. Windmill blades static first (spin behind a Config toggle, his call after playing). Detailed spec + build: [[Rubber-Tower-Map-Build-Plan]].
+- **(USER 2026-10-05, ~17:30 EDT) First Option B build critique: "progress, but it isn't an obby yet, and parts of it look lazy"** (full text + the rework plan in [[Rubber-Tower-Map-Build-Plan]]):
+  - The bottom isn't an obby: lily pads/raft on a shallow pond next to grass, so no challenge and no fail. The special models are used as decoration.
+  - The upper part is ~20 identical small plank hops (same gap, same size, no timing, no mechanics): far too easy.
+  - The hub is props huddled round the pond, not a world. The ground is one flat green with a sand ring.
+  - The cliff walls repeat one rock model, and he doesn't like the black crack lines on every rock. **This overrides the "dark cracks" line in the locked [[Rubber-Tower-Art-Style-Guide]]: use soft darker-tone crevices and colour variation.**
+  - The waterfall is a flat blue strip with dashes. The floating islets in a row look identical.
+  - **Wants:**
+    - a REAL obby of combos built from the special pieces, every special piece used as gameplay in S1 (ice mostly saved for S3);
+    - real difficulty: sawtooth, easy at the start gate → medium by CP1, a few falls and 5–8 min for a first-timer, phone-fair, measured by playing it;
+    - a hub that feels like a world: a safe village with a clear START GATE that the spawn faces, a square with shops facing it, streets, districts, groves, fences/hedges, height (hills, terraces, ramps, a stream from the waterfall to the pond with a bridge);
+    - crisp v5 ground zones;
+    - 5–6 different cliff pieces with variants, mixed with random rotation and scale, broken up with ledges, vines, trees, crystals, caves, arches and waterfalls;
+    - a real layered waterfall with foam, mist and a splash pool;
+    - varied islets.
+  - **Process:** the combo list first, then ONE vertical slice (hub + ground + start gate + Lily Lake + Village Rooftops, with the new walls and waterfall), then stop with: spawn view, start gate, each combo, walls up close, ground at player height, fall count and time. Keep the Leap lane, checkpoints, colliders and phone-friendliness.
+- **(USER 2026-10-05, ~17:45 EDT) Combo-rework decisions:**
+  - **Mechanics code approved (all):** swing paddles/hammers, fan vents and the slingshot (time-synced from server time, a bonk = the existing ragdoll), the seesaw log and a per-cube jelly stiffness, plus a shared maths module with specs.
+  - **Water hazards = stylised mesh water, no terrain water:** v5 look (crisp colour zones, a lighter edge band, a few painted ripples and lily shadows), clearly deep and dark in the middle so it reads as "don't fall". Falling in = ragdoll, a big goofy splash + "bloop", you bob up for a moment, then a quick ~1 s tween floats you back to the combo's start. **It counts as a fall** for Bonk Survivor / Pro Faller. The same water + splash is reused for the splash pond and every other water hazard.
+  - **Windmill blades spin** (the slow spin, ~4°/s) for the ice slide → bounce → blade combo.
+- Open (titles):
+  - Moonwalker (Uncommon) returns when a low-gravity event exists; it isn't in the list now.
+  - Disco Duck needs a server check that an emote animation is playing inside the room. Built 2026-10-05 as "a non-default animation ID is playing" (emote names don't replicate usefully); ⚠️ verify with a real `/e dance` in play.
+  - Party Starter: ⚠️ verify what Roblox exposes about invites (the fallback is approved).
 - Emotes: 3 basic free ones (picked later); the rest sold in an emote pack.
 - Server-wide twist events such as low gravity, cosmetics (more brainstorming later).
 
@@ -130,39 +230,6 @@ confidence: low
 - **Batch (a) review (Holden, 2026-10-04):**
   - **USER:** "keep the colors". The mechanic colour language is approved: bounce hot pink, ice pale cyan/white, wobble lime jelly, soft rest cream/pastel, movers red rubber, checkpoint white/gold + cyan glow.
   - **USER:** "start with batch B. and after batch B make even more if you can". So after batch (b), keep building further batches (c onwards) before the next stop.
-- **Batches (f)–(h) ordered (Holden, 2026-10-04; brief in [[Rubber-Tower-Kit-FGH-Prompt]]):**
-  - **USER:** "redo the dragon, finish the rest of the models you have to do".
-  - **Batch naming:** (a)–(e) count as done. The old landmarks batch is now (e2).
-  - **USER: only three shops for now, each with an NPC:**
-    - a cosmetics shop in the hub (Squishies);
-    - a gamepass shop in the hub, premium, showing the banana peel, Buddy Carry and skip-checkpoint passes as props;
-    - a smaller halfway cosmetics stall at CP2, themed to that segment.
-  - **USER: structures that support existing systems (not shops):**
-    - world portal plaza, leaderboard plaza, quest board + daily reward spot, codes wishing well;
-    - town crier podium (server twist events);
-    - tutorial hut, Bonk Clinic, friend campfire;
-    - a waystone per checkpoint (teleport menu);
-    - summit podium and arch;
-    - a modular stall kit for later shops.
-  - **USER:** NPC characters come later; structures leave room for them, and the manifest marks the NPC spot and the ProximityPrompt anchor.
-  - **USER:** about 30–40 hats across rarity tiers; some are sold only at the halfway shop. **Squishies prices: Holden decides later.**
-  - **USER:** review stops after (f), after (g) and after (h). No uploads and no map building yet.
-  - **Halfway stall theme:** CP2 sits at the top of S2, so it's **mushroom** (Holden's own example). If CP2 moves, an S3 ice version is a palette swap.
-- **Batch (f) review (Holden, 2026-10-04):**
-  - **USER, Squishies look:** "a pink/purple jelly coin, it should also have a cool icon on it as well, make a few so I have options". The options are in [[Rubber-Tower-Valley-Kit]]; **Holden picks one**.
-  - **USER:** keep the per-structure colours "for now". The hub diorama layout is only a render, not the map layout.
-  - **USER:** the text I added ("SUMMIT!", "!", "?") is fine.
-  - **USER:** "fix what's weak, then we can move forward tomorrow". So: fix the saddle, waystone scale and mannequin trail, then stop. Batch (g) hats starts next session.
-- **Squishies + shop (Holden, 2026-10-04):**
-  - **USER: the Squishies coin is "the purple with duck on it"** = option D (rubber duck icon) in the **Grape** (purple) colour. Model `Squishies_Coin_D_Duck` + `Squishies_Coin_Grape_Paint.png`.
-  - **USER (2026-10-05):** "do the gamepass shop the same way (but give me a few options), and move on to batch g".
-    - Built `Shop_Gamepass_Fantasy` options A Treasury tower / B Merchant caravan / C Mossy gazebo, all green + gold + gem. **Holden picks one.**
-    - Batch (g) hats built: review stop.
-  - **USER (2026-10-05, batch g review):**
-    - **Gamepass shop = option 2: B Merchant Caravan**, "for now".
-    - Fix the weak hats (Flaming_Crown, Rune_Crown, Hot_Dog); otherwise keep all the hats as they are.
-    - Hat Squishies prices: decide tomorrow. Then move on (batch h).
-  - **USER:** "the shop could use some work, I want a cool storefront". Read as the hub **cosmetics shop**: it becomes a boutique storefront; the tent stays as `Shop_Cosmetics_Tent`.
 
 **Process and look**
 - Built in Claude Code connected to this vault; the project folder is created in that session. Holden is preparing a kickoff prompt: [[Rubber-Tower-Claude-Code-Prompt]]. Building does not start until Holden says go.
@@ -183,9 +250,9 @@ confidence: low
 - A push move can be used to grief; needs server validation, cooldown and a force cap. Banana-peel and carry/throw passes raise the same risk for paying players.
 
 ## Open questions (Holden to decide, nothing assumed)
-1. Squishies: rewards per checkpoint, world and title, Robux pack sizes, and confirm the friend boost multiplies Squishies (Holden: decide later).
+1. Squishies: amounts, the missed-daily rule (Restart), the replay reward (+20/day) and the title list are DECIDED 2026-10-05 ([[Rubber-Tower-Squishies-Economy]]). Still open: whether the friend boost multiplies Squishies, and the Legendary-on-day-2 pace (PROPOSAL: Legendary 1,200).
 2. Invite title: ⚠️ verify what Roblox exposes about invited players; the fallback "3 friends in the server" is approved if needed.
-3. Later: titles list, wobble/bounce areas, the three free emotes, world 2's unique mechanic.
+3. Later: wobble/bounce areas, the three free emotes, world 2's unique mechanic. Title UI style: Holden picks from the mockups.
 
 ## Note conflicts found in the kickoff run (2026-10-04, for Holden to settle)
 The decisions above win over every line listed here. Nothing was edited silently.

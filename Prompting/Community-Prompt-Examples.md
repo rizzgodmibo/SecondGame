@@ -88,9 +88,6 @@ Official examples worth reusing as one-liners (paraphrased): fireballs that expl
 ### 11. Already in the vault: reference-first UI and "no one-shot" advice
 palm_dev's TikTok "AI UI that doesn't look bad" (reference screenshots, say what you like, design in chat first) and jakeinatx's "no AI one-shot" advice are already catalogued in [[TikTok-Reference-Library]]; they agree with patterns 2 and 5. The UI method is written up in [[Prompting-UI]].
 
-### 12. Mega one-shot specs and Discord master prompts
-A 1,768-line Steal an Egg recreation spec, a VFX session bootstrap and the TDOD "master prompts" (polish, animation, VFX, map building) arrived in a Discord pack on 2026-10-05. Full analysis and Holden-adapted versions: [[One-Shot-Spec-Prompts]].
-
 ## Tools and skill packs seen (not installed)
 | What | Notes |
 |---|---|

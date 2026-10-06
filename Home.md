@@ -32,6 +32,6 @@ Check [[Gap-Tracker]] for what is due next.
 - [[Reference/_Index|Reference]] — real-game icons, thumbnails, videos, UI and VFX breakdowns
 - [[Prompting/_Index|Prompting]] — how to prompt Claude and other AIs for each part of Roblox development: principles, prompts, checks
 - `Assets/` — owner-supplied icon packs and reference captures ([[Free-Icon-Pack-v3.1-Basic]], [[Dragons-Hoard-Set]], [[VFX-Texture-Pack]], [[Fantasy-Creatures-Set]], [[Rubber-Tower-Valley-Kit]] with [[Rubber-Tower-Kit-Batch-Results]] and [[Rubber-Tower-Kit-Style-History]]); community drops (local only): [[Discord-Prompt-Pack-2026-10-05]], [[SFX-Pack-2026-10-05]] (ability SFX + haunted music, safety report and how the sounds are built)
-- `Projects/` — per-game specs (use [[Project-Template]]); current: [[Rubber-Tower]]
-- `Inbox/` — untriaged findings; parked game ideas: [[Game-Concept-Shortlist-2026-10-04]]
+- `Projects/` — per-game specs (use [[Project-Template]]); current: [[Rubber-Tower]] (economy: [[Rubber-Tower-Squishies-Economy]]; title UI: [[Rubber-Tower-Title-UI]]; map build plan: [[Rubber-Tower-Map-Build-Plan]]; Studio test 2026-10-05: [[2026-10-05-Rubber-Tower-Studio-Test]]), [[Trap-Your-Friends]] (style test v2 built, awaiting review: [[2026-10-06-Trap-Your-Friends-Style-Test-v2]])
+- `Inbox/` — untriaged findings; parked game ideas: [[Game-Concept-Shortlist-2026-10-04]], [[Retro-Party-Game-Concepts-2026-10-05]] ([[Retro-Party-Deep-Dive-2026-10-05|deep dive]])
 - `Meta/` — [[Gap-Tracker]], [[Verification-Log]], [[Sources]], [[Prompt-Library]] (reusable prompts for asking Claude), [[AI-Assisted-Workflow]] (how to drive AI tools well), [[Gauntlet-Loop]] (builder/critic quality loop)

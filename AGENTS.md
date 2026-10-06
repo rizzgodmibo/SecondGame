@@ -1,6 +1,6 @@
 # Roblox Development Vault — Conventions
 
-This vault (canonical location `C:\Vault`, mirrored in git repo `rizzgodmibo/SecondGame`) exists so Codex can
+This vault (canonical location `E:\Vault`; `C:\Vault` is an old copy, don't edit it; mirrored in git repo `rizzgodmibo/SecondGame`) exists so Codex can
 design, build, launch, monetise and grow a successful Roblox game with minimal correction.
 It is never "done": every session should close a gap, verify a claim, or refresh a stale note.
 

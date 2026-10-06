@@ -52,7 +52,7 @@ Deferred until later: shop, cosmetics menu, settings. Details UNDECIDED.
 - (USER) **Currency: Squishies** (name chosen by Holden). Earned when reaching checkpoints, finishing a new level or world, and unlocking titles; can also be bought with Robux; spent on in-game cosmetics and more things in the future. It replaces XP. (USER) Every payout (checkpoint, level/world, title) can be earned only once per player. Levels and rebirth: N/A for v1.
 
 ## 6. Economy
-- (USER) One currency (Squishies), earned in play and sold for Robux (developer products, so receipts must be handled idempotently; see [[ProcessReceipt-Handling]]). Amounts, rewards per checkpoint and pack prices: UNDECIDED. Per [[Pay-To-Win-Boundaries]], any future random item bought with this currency (eggs and similar) needs disclosed odds and a restricted-player path; Holden wants those avoided for now.
+- (USER) One currency (Squishies), earned in play and sold for Robux (developer products, so receipts must be handled idempotently; see [[ProcessReceipt-Handling]]). (USER, 2026-10-05) Amounts DECIDED: checkpoints 50/75/100/Summit 200; titles 25/75/150/300 by difficulty; daily 7-day streak 25/30/40/50/60/75/150; packs 99→400, 249→1,100, 499→2,500 (developer products); hats by rarity 30/75/175/400/900/2,250; Summit_Crown not sold. Full table, player-type model and open proposals (missed-day rule, repeat-summit faucet): [[Rubber-Tower-Squishies-Economy]]. Per [[Pay-To-Win-Boundaries]], any future random item bought with this currency (eggs and similar) needs disclosed odds and a restricted-player path; Holden wants those avoided for now.
 
 ## 7. Rewards & randomness
 - N/A for v1 unless Holden wants eggs or crates. If added later, odds must be disclosed (see [[Reward-Schedules]]).

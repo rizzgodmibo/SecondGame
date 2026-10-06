@@ -34,6 +34,13 @@
         "a": 1,
         "rgb": 16478597
       }
+    },
+    {
+      "query": "path:Projects/Rubber-Tower  ",
+      "color": {
+        "a": 1,
+        "rgb": 5431473
+      }
     }
   ],
   "collapse-display": false,
@@ -46,6 +53,6 @@
   "repelStrength": 11.6416692174268,
   "linkStrength": 1,
   "linkDistance": 174,
-  "scale": 0.25883865621815166,
-  "close": false
+  "scale": 0.13168724279834715,
+  "close": true
 }

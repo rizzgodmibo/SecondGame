@@ -1,7 +1,7 @@
 ---
 tags: [systems/physics, design/obby]
 status: reviewed
-updated: 2026-10-04
+updated: 2026-10-05
 confidence: medium
 ---
 # Obby Special Platforms (ice, wobble, bounce)
@@ -13,6 +13,16 @@ confidence: medium
 - **Wobble ownership:** simulate a local copy on each client. The anchored original is hidden locally, and the copy is unanchored and owned by that client. A server-owned physics platform stutters while network ownership hands over (DevForum).
 - **Bounce:** the owning client sets its own root's velocity along the pad's up vector. Measured apex: 90 studs/s → 20.3 studs, 140 → 50.4 (theory v²/2g = 20.6 and 49.9).
 - Working code: Rubber Tower `SurfaceService.luau`, `WobbleController.luau`, `BounceController.luau`, with numbers in `Config.luau`.
+- **Added 2026-10-05 (USER-approved, the map v3 combos):**
+  - **Water hazard:** mesh water (CanCollide off, CanTouch on). On touch the client splashes, asks the server to ragdoll + count the fall (`HazardService` checks the claim), bobs, then glides ~1 s back to the last combo-start zone and holds the body still until the ragdoll ends.
+  - **Seesaw:** the wobble local-copy pattern on a `HingeConstraint` servo that rests at `RestAngle`.
+  - **Jelly stiffness per cube:** a `WobbleStiffness` attribute. Scale it by 1/size² for smaller pads, or they tilt far more.
+  - **Swing hazards:** anchored, animated on each client from `workspace:GetServerTimeNow()` (`Rules/Movers.swingAngle`); a touch knocks you and the server ragdolls you.
+  - **Fan vents and slingshot:** coded and spec-tested, not placed yet.
+- **Lessons (2026-10-05):**
+  - With **StreamingEnabled** a tagged Model can arrive before its parts: set `ModelStreamingMode = Atomic` and retry on `DescendantAdded`.
+  - The server's copy of a falling body lags ~9 studs, so allow claims from above a hazard.
+  - In MCP play sessions **`Humanoid.Jump = true` is ignored**: bots must use `ChangeState(Jumping)`.
 
 ## Measurements (Studio, Holden's R15 avatar, default gravity 196.2, 2026-10-04)
 | Wobble setup (12×12 platform, ball socket at centre, ±25° limit) | Tilt with player 2.5 studs out | at 5 studs |
